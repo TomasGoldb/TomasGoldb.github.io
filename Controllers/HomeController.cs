@@ -24,6 +24,7 @@ public class HomeController : Controller
         ViewBag.logeado = Sesion.EstaLogeado;
         return View();
     }
+    [HttpPost]
     public IActionResult RegistrarUsuario(string nombre, string nick, string correo, string confirmaContra, string contra){
         ViewBag.logeado = Sesion.EstaLogeado;
         bool coincide=false;
