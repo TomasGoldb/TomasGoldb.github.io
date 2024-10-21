@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+body {
+  margin-bottom: 60px;
+}
+
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: "Poppins", sans-serif;
+}
+main{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagina-index .arriba-index{
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagina-index .arriba-index div{
+  width: 40%;
+}
+.pagina-index .arriba-index div a{
+  padding: 2%;
+  border-radius: 999px;
+  border: 2px solid #7A02ED;
+  text-decoration: none;
+  color: #7A02ED;
+  transition: background-color 0.2s ease-in;
+  transition: color 0.2s ease-in;
+}
+.pagina-index .arriba-index div a:hover{
+  background-color: #7A02ED;
+  color: white;
+}
+.pagina-index .arriba-index img{
+  width: 35%;
+}
+
+
+.pagina-index .cards-index .contenedor-cards{
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagina-index .cards-index .contenedor-cards .card{
+  width: 28%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+  border-radius: 10px;
+  background-color: #E0D2EE;
+}
+
+.pagina-index .cards-index .contenedor-cards .card img{
+  width: 50%;
+}
+.pagina-index .cards-index .contenedor-cards .card p{
+  text-align: center;
+}
+
+
+.pagina-index .abajo-index{
+  width: 60%;
+}
+.pagina-index .abajo-index div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.reversa{
+  flex-direction: row-reverse;
+}
+.pagina-index .abajo-index div img{
+  width: 30%;
+}
+.pagina-index .abajo-index div p{
+  width: 40%;
+}
+.cards-index {
+  position: relative;
+  height: 50vh;
+  background-color: #f2f2f2; /* Color claro en la parte superior */
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards-index::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #7300E6; /* Color púrpura */
+  clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/*HEADER*/
+header{
+  display: flex;
+  justify-content: center;
+}
+header .header-div{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+}
+header img{
+  width: 10%;
+}
+header nav{
+  width: 40%;
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+header nav ul{
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+header nav ul li a{
+  text-decoration: none;
+  color: black;
+  font-size: 1vw;
+}
+
+header .boton-header{
+  padding: 1%;
+  border-radius: 999px;
+  border: 2px solid #7A02ED;
+  text-decoration: none;
+  color: #7A02ED;
+  transition: background-color 0.2s ease-in;
+}
+header .boton-header:hover{
+  background-color: #7A02ED;
+  color: white;
+}
+
+.boton-azul{
+  background-color: #7A02ED;
+  transition: all 0.1s ease-in;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  width: 100%;
+  padding: 2%;
+}
+.boton-azul:hover{
+  background-color: #5f00b8;
+}
+
+.pagina-register-login .card-formulario{
+  width: 100%;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-image: url("/img/foto-a-modo-de-ejemplo.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.pagina-register-login .card-formulario .texto-register{
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 7%;
+}
+.pagina-register-login .card-formulario .register-form{
+  width: 30%;
+  margin-right: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 3%;
+  border-radius: 10px;
+  background-color: #E0D2EE;
+}
+.pagina-register-login .card-formulario .register-form h1{
+  margin-bottom:5%;
+}
+.pagina-register-login .card-formulario .register-form form{
+  width: 100%;
+}
+.pagina-register-login .card-formulario .register-form input{
+  width: 100%;
+}
+
+
+.main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ul-pasos {
+  display: flex;
+}
+
+.ul-pasos li {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 40px;
+}
+
+.ul-pasos li .icons {
+  font-size: 25px;
+  color: #1b761b;
+  margin: 0 60px;
+}
+
+.ul-pasos li .label {
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #1b761b;
+}
+
+.ul-pasos li .step {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #d7d7c3;
+  margin: 16px 0 10px;
+  display: grid;
+  place-items: center;
+  color: green;
+  position: relative;
+  cursor: pointer;
+}
+
+.step::after {
+  content: "";
+  position: absolute;
+  width: 197px;
+  height: 3px;
+  background-color: #d7d7c3;
+  right: 30px;
+}
+
+.first::after {
+  width: 0;
+  height: 0;
+}
+
+.ul-pasos li .step .awesome {
+  display: none;
+}
+
+.ul-pasos li .step p {
+  font-size: 18px;
+}
+
+.ul-pasos li .active {
+  background-color: #1b761b;
+}
+
+.ul-pasos li .active::after {
+  background-color: #1b761b;
+
+}
+
+.ul-pasos li .active p {
+  display: none;
+}
+
+.ul-pasos li .active .awesome {
+  display: flex;
+}
