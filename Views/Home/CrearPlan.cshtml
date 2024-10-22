@@ -3,73 +3,47 @@
 }
 
 <main class="elegir-tipo-plan">
-<div class="main">
+    <div class="main">
+        <div class="progress-container">
+            <div class="step completed">1</div>
+            <div class="line"></div>
+            <div class="step">2</div>
+            <div class="line"></div>
+            <div class="step">3</div>
+            <div class="line"></div>
+            <div class="step">4</div>
+        </div>
+        <button id="next">Siguiente</button>
+        <div class="botones-tipo-plan">
+            <div class="opcion-plan">
+                <a href="#">
+                    <img src="/img/settings.svg">
+                    <h2>Personalizado</h2>
+                </a>
+            </div>
+            <div class="opcion-plan">
+                <a href="#">
+                    <img src="/img/balloon.svg">
+                    <h2>Aleatorio</h2>
+                </a>
+            </div>
+        </div>
 
-    <ul class="ul-pasos">
-        <li>
-            <i class="icons awesome fa-solid fa-user"></i>
-            <div class="step first">
-                <p>1</p>
-                <i class="awesome fa-solid fa-check"></i>
-            </div>
-            <p class="label">Profile</p>
-        </li>
-        <li>
-            <div class="step second">
-                <p>2</p>
-                <i class="awesome fa-solid fa-check"></i>
-            </div>
-            <p class="label">Finances</p>
-        </li>
-        <li>
-            <div class="step third">
-                <p>3</p>
-                <i class="awesome fa-solid fa-check"></i>
-            </div>
-            <p class="label">Property</p>
-        </li>
-        <li>
-            <div class="step fourth">
-                <p>4</p>
-                <i class="awesome fa-solid fa-check"></i>
-            </div>
-            <p class="label">Evaluation</p>
-        </li>
-        <li>
-            <i class="icons awesome fa-solid fa-thumbs-up"></i>
-            <div class="step fifth">
-                <p>5</p>
-                <i class="awesome fa-solid fa-check"></i>
-            </div>
-            <p class="label">Approval</p>
-        </li>
-    </ul>
-</div>
+    </div>
 </main>
 
 <script>
-    const first = document.querySelector(".first");
-const second = document.querySelector(".second");
-const third = document.querySelector(".third");
-const fourth = document.querySelector(".fourth");
-const fifth = document.querySelector(".fifth");
-const steps = [first, second, third, fourth, fifth];
+    let paso = 0;
+const steps = document.querySelectorAll('.step');
+const lines = document.querySelectorAll('.line');
+const nextButton = document.getElementById('next');
 
-function nextStep(currentStep) {
-    steps.forEach(step => step.classList.remove("active"));
-
-    steps.forEach((step, index) => {
-        if (index <= currentStep) {
-            step.classList.add("active");
-        } else {
-            step.classList.remove("active");
-        }
-    });
-}
-
-steps.forEach((step, index) => {
-    step.addEventListener("click", () => {
-        nextStep(index);
-    });
+nextButton.addEventListener('click', () => {
+    if (paso < steps.length - 1) {
+        paso++;
+        steps[paso].classList.add('completed');
+        lines[paso - 1].classList.add('completed'); // Marca la línea anterior como completada
+    }
 });
+
 </script>
