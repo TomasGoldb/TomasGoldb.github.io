@@ -38,7 +38,67 @@ class BD
         }
     }
 
-    public static void AgregarAmigo()
+    public static void AgregarAmigo(int idUsuario1, int idUsuario2){
+        using (SqlConnection db = new SqlConnection(_connectionString))
+        {
+            string sql = "SP_AgregarAmigo";
+            db.Execute(sql, new {@idUsuario1=idUsuario1, @idUsuario2 = idUsuario2});
+        }
+    }
+    public static void AgregarDireccion(int idUsuario, string calle, int altura, double coordenada){
+        using(SqlConnection db=new SqlConnection(_connectionString)){
+            string sql="SP_AgregarDireccion";
+            db.Execute(sql,new{@idUsuario=idUsuario, @calle=calle,@altura=altura, @coordenada=coordenada});
+        }
+    }
+    public static void AgregarParticipantePlan(int idUsuario, int idPlan){
+        using(SqlConnection db=new SqlConnection(_connectionString)){
+            string sql="SP_AgregarParticipantePlan";
+            db.Execute(sql,new{@idUsuario=idUsuario, @idPlan=idPlan});
+        }
+    }
+    public static void CambiarEstadoPlan(int idPlan , int idEstado){
+        using(SqlConnection db=new SqlConnection(_connectionString)){
+            string sql="SP_CambiarEstadoPlan";
+            db.Execute(sql,new{@idPlan=idPlan, @idEstado=idEstado});
+        }
+    }
+    public static void CrearPlan(string nombre, int idEstado, int idTipoLugar, int idTipoSubOpcion){
+        using(SqlConnection db=new SqlConnection(_connectionString)){
+            string sql="SP_CrearPlan";
+            db.Execute(sql,new{@nombre=nombre, @idEstado=idEstado,  @idTipoLugar=idTipoLugar,  @idTipoSubOpcion=idTipoSubOpcion});
+        }
+    }
+    public static void CrearUsuario(string contra, string nick, string nombre, string mail){
+        using(SqlConnection db=new SqlConnection(_connectionString)){
+            string sql="SP_CrearPlan";
+            db.Execute(sql,new{@contra=contra, @nick=nick, @nombre=nombre, @mail=mail});
+        }
+    }
+    public static void EliminarAmigo(int idUsuario1, int idUsuario2){
+        using(SqlConnection db=new SqlConnection(_connectionString)){
+            string sql="SP_EliminarAmigo";
+            db.Execute(sql,new{@idUsuario1=idUsuario1, @idUsuario2=idUsuario2});
+        }
+    }
+      public static List<Usuario> ObtenerUSuarios(){
+        List<Usuario> ListaUsuarios;
+        using (SqlConnection db = new SqlConnection(_connectionString))
+        {
+            string sql = "SP_ListarUsuarios";
+            ListaUsuarios = db.Query<Usuario>(sql).ToList();
+        }
+        return ListaUsuarios;
+    }
+    public static int ObtenerIdUSuario(){
+        int idUsuario; 
+        using (SqlConnection db = new SqlConnection(_connectionString))
+        {
+            string sql = "SP_ObtenerIdUsuario";
+            idUsuario= db.QueryFirstOrDefault<int>(sql);
+        }
+        return idUsuario;
+    }
 }
 
 
