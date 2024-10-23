@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Crear plan - Juntify";
+}
+
+<main class="elegir-tipo-plan">
+    <div class="main">
+        <div class="progress-container">
+            <div class="step completed">1</div>
+            <div class="line"></div>
+            <div class="step">2</div>
+            <div class="line"></div>
+            <div class="step">3</div>
+            <div class="line"></div>
+            <div class="step">4</div>
+        </div>
+        <button id="next">Siguiente</button>
+        <h1 class="titulo-violeta">Elegir tipo de plan</h1>
+        <div class="botones-tipo-plan">
+            <div class="opcion-plan">
+                <a href="#">
+                    <img src="/img/settings.svg">
+                    <h2>Personalizado</h2>
+                </a>
+            </div>
+            <div class="opcion-plan">
+                <a href="#">
+                    <img src="/img/balloon.svg">
+                    <h2>Aleatorio</h2>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<script>
+    let paso = 0;
+const steps = document.querySelectorAll('.step');
+const lines = document.querySelectorAll('.line');
+const nextButton = document.getElementById('next');
+
+nextButton.addEventListener('click', () => {
+    if (paso < steps.length - 1) {
+        paso++;
+        steps[paso].classList.add('completed');
+        lines[paso - 1].classList.add('completed'); // Marca la línea anterior como completada
+    }
+});
+
+</script>
