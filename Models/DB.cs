@@ -64,6 +64,14 @@ public static List<Respuestas> ObtenerRespuestas(int preguntaId){
         }
         return respuestas;
     }
+Un void:
+public static void ReiniciarCantidadCorona(int idUsuario, int idPartida){
+        using (SqlConnection db = new SqlConnection(_connectionString))
+        {
+            string sql = "SP_ReiniciarCantidadCorona";
+            db.Execute(sql, new {@IdUsuario=idUsuario, @IdPartida = idPartida});
+        }
+    }
 
 
 */
