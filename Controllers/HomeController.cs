@@ -25,11 +25,11 @@ public class HomeController : Controller
         return View();
     }
     [HttpPost]
-    public IActionResult RegistrarUsuario(string nombre, string nick, string correo, string confirmaContra, string contra){
+    public IActionResult RegistrarUsuario(string nombre, string nick, string mail, string confirmaContra, string contra){
         ViewBag.logeado = Sesion.EstaLogeado;
         bool coincide=false;
         if (contra==confirmaContra){
-            Usuario user = new Usuario(nombre,nick,contra,correo);
+            Usuario user = new Usuario(nombre,nick,contra,mail);
             List<Usuario> usuarios=BD.Seleccionar("SP_ListarUsuarios");
             foreach(Usuario usu in usuarios){
                 if(usu.Nick==user.Nick||usu.GetMail()==user.GetMail()){
@@ -51,13 +51,16 @@ public class HomeController : Controller
         }
         
     }
+    public IActionResult IniciarSesion(){
+        return View("IniciarSesion");
+    }
     public IActionResult LogearUsuario(string mail, string contra){
         ViewBag.logeado = Sesion.EstaLogeado;
         bool coincide=false;
         List<Usuario> usuarios=BD.Seleccionar("SP_ListarUsuarios");
         foreach(Usuario usu in usuarios){
             if(usu.GetMail()==mail){
-                coincide=true;
+                coincide=true;  
             } 
         }
         if(coincide){
@@ -68,10 +71,12 @@ public class HomeController : Controller
                 return RedirectToAction("Home");
             }else{
                 ViewBag.error=FormatearError("ERROR_003_ContraIncorrecta");
+                Console.WriteLine("HOLA");
                 return View("login");
             }
         } else{
             ViewBag.error=FormatearError("ERROR_005_MailIncorrecto");
+            Console.WriteLine("CHAU");
             return View("login");
         }
     }

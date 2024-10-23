@@ -81,7 +81,7 @@ class BD
             db.Execute(sql,new{@idUsuario1=idUsuario1, @idUsuario2=idUsuario2});
         }
     }
-      public static List<Usuario> ObtenerUSuarios(){
+      public static List<Usuario> ListarUsuarios(){
         List<Usuario> ListaUsuarios;
         using (SqlConnection db = new SqlConnection(_connectionString))
         {
