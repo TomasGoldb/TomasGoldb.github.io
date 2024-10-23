@@ -40,3 +40,30 @@ class BD
 
     public static void AgregarAmigo()
 }
+
+
+
+/*
+Devolver un unico valor:
+ public static Categorias ObtenerIDDeCategoria(string nombreCategoria){
+        Categorias cat= new Categorias();
+        using (SqlConnection db = new SqlConnection(_connectionString))
+        {
+            string sql = "SP_ObtenerIDDeCategoria";
+            cat= db.QueryFirstOrDefault<Categorias>(sql,new { Categoria = nombreCategoria });
+        }
+        return cat;
+    }
+Devolver una lista:
+public static List<Respuestas> ObtenerRespuestas(int preguntaId){
+        List<Respuestas> respuestas;
+        using (SqlConnection db = new SqlConnection(_connectionString))
+        {
+            string sql = "SP_ListarRespuestas";
+            respuestas = db.Query<Respuestas>(sql, new { PreguntaId = preguntaId }).ToList();
+        }
+        return respuestas;
+    }
+
+
+*/

@@ -114,7 +114,6 @@ main{
 .cards-index {
   position: relative;
   height: 50vh;
-  background-color: #f2f2f2; /* Color claro en la parte superior */
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
@@ -137,6 +136,7 @@ main{
 header{
   display: flex;
   justify-content: center;
+  margin-top: 1%;
 }
 header .header-div{
   display: flex;
