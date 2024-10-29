@@ -20,6 +20,9 @@ public class CrearPlanController : Controller
     public IActionResult Personalizado(){
         return View();
     }
+    public IActionResult AgregarParticipantes(){
+        return View();
+    }
 
 
     public IActionResult Privacy()

@@ -1,0 +1,180 @@
+﻿@{
+    ViewData["Title"] = "Crear plan - Juntify";
+}
+
+<main class="elegir-tipo-plan">
+    <div class="main">
+        <div class="progress-container">
+            <div class="step completed">1</div>
+            <div class="line"></div>
+            <div class="step">2</div>
+            <div class="line"></div>
+            <div class="step">3</div>
+            <div class="line"></div>
+            <div class="step">4</div>
+        </div>
+        <button id="next">Siguiente</button>
+        <h1 class="titulo-violeta">Agrega participantes al plan</h1>
+
+       
+    <div class="autoComplete_wrapper">
+        <input id="autoComplete" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off">
+    </div>
+</main>
+
+<script>
+const source=["Sofía Martínez", "Liam García", "Emma Rodríguez", "Noah Pérez", "Olivia Sánchez", "Elijah López", "Ava González", "Lucas Hernández", "Mia Torres", "Mason Ramírez", "Isabella Cruz", "Ethan Flores", "Charlotte Rivera", "James Díaz", "Amelia Morales", "Alexander Ortega", "Harper Delgado", "Benjamin Ramos", "Evelyn Jiménez", "Daniel Vega", "Abigail Castillo", "Michael Ruiz", "Ella Moreno", "Aiden Herrera", "Scarlett Ramos", "Henry Chavez", "Grace Soto", "Sebastián Mendoza", "Chloe Aguirre", "Jackson Salazar", "Victoria Castro", "David Pineda", "Luna Ríos", "Matthew Cordero", "Layla Castañeda", "Samuel Soto", "Zoe Núñez", "Christopher Vázquez", "Nora Franco", "Gabriel Ponce", "Lucy Silva", "Dylan Escobar", "Aria Morales", "Jonathan Camacho", "Riley Medina", "Joseph Peña", "Samantha Salas", "David Robles", "Hannah Guillen", "Isaiah Navarro", "Alyssa Rojas", "Carter Ortega", "Stella Barrera", "Andrew Castillo", "Ariana Lima", "Jack Moreno", "Audrey Mendez", "Owen Reyes", "Brooklyn Salazar", "Ryan Ortega", "Nina Soto", "Thomas Alvarez", "Piper Ruiz", "Caleb Jiménez", "Bella Espinoza", "Lucas Cruz", "Claire Rivas", "Anthony Vargas", "Layla Huerta", "Isaac Cabrera", "Sarah Palacios", "Charles Medina", "Lia Morales", "Josiah Gonzalez", "Kylie Torres", "Hunter Ramos", "Sadie Serrano", "Levi Vargas", "Anna Montalvo", "Julian Flores", "Maya Aguirre", "Ezra Martínez", "Julia Aguayo", "Xavier Peña", "Camila Ortiz", "Asher Rivera", "Maddison Cortez", "Grayson Mejía", "Naomi Morales", "Vincent Guzmán", "Elena Valdez", "Jaxon Ruiz", "Lola Castro", "Hudson López", "Julia López", "Jordan Silva", "Mila Carrillo", "Wyatt Padilla", "Vivian Salazar", "Isaiah Torres", "Miriam Torres", "Nicolas Pizarro", "Serena Jiménez", "Wesley Serrano", "Adeline Torres", "Jace Reyes", "Lindsay Velasco", "Silas Cordero", "Peyton Salas", "Maxwell Serrano", "Esmeralda Ruiz", "Augustus Ríos", "Gianna Villanueva", "Dominic Hernández", "Carmen Torres", "Sawyer Rivas", "Camila Morales", "Lance Villalobos", "Daphne Ríos", "Kendrick García", "Brielle Rodríguez", "Tobias Castro", "Savannah Herrera", "Winston Jiménez", "Zara Córdova", "Harrison Luna", "Athena Zamora", "Maddox Paredes", "Sierra Calderón", "Ronan Pineda", "Rhea Ramírez", "Beckett Serrano", "Valentina Mendoza", "Gideon Guzmán", "Clara Romero", "Declan Cortés", "Nadia Flores", "Cohen Morales", "Jazmin Martínez", "Axton Castro", "Natalie Silva", "Julián Rojas", "Laila Morales", "Freddie Guerra", "Alicia Pizarro", "Samara Castañeda", "Derek López", "Esme Vargas", "Reed Salas", "Aurora Díaz", "Cyrus Aguayo", "Cassidy Jiménez", "Lorenzo Vargas", "Mariana López", "Bridger Mendoza", "Freya Palacios", "Elijah Ríos", "Lyla Guerrero", "Ryder Soto", "Sophie León", "Cyrus Ortega", "Gemma Torres", "Colton Mendoza", "Rosie Aguirre", "Zane Silva", "Eva Ramos", "Jasper Cruz", "Mira Castillo", "Niko Salazar", "Kiera Córdova", "Dustin Guzmán", "Iris Méndez", "Zion Morales", "Cecilia Reyes", "Matteo Vargas", "Imogen Huerta", "Beau López", "Livia Ramírez"];
+    console.log(source);
+    document.addEventListener("DOMContentLoaded", function(){
+        const autoCompleteJS = new autoComplete({
+                        placeHolder: "Search for Food...",
+                        data: {
+                            src: source,
+                            cache: true,
+                        },
+                        resultItem: {
+                            highlight: true
+                        },
+                        events: {
+                            input: {
+                                selection: (event) => {
+                                    const selection = event.detail.selection.value;
+                                    autoCompleteJS.input.value = selection;
+                                }
+                            }
+                        }
+                        });
+                    });
+                    
+
+
+    function AutoCompletado(){
+        $.ajax({
+                    url: '@Url.Action("ObtenerLugares", "CrearPlan")',
+                    type: 'GET',
+                    data: {},
+                    success: function (data) {
+                        console.log(data);
+                        const autoCompleteJS = new autoComplete({
+                        placeHolder: "Search for Food...",
+                        data: {
+                            src: data.Lista,
+                            cache: true,
+                        },
+                        resultItem: {
+                            highlight: true
+                        },
+                        events: {
+                            input: {
+                                selection: (event) => {
+                                    const selection = event.detail.selection.value;
+                                    autoCompleteJS.input.value = selection;
+                                }
+                            }
+                        }
+                        });
+                    }
+                });
+    }
+    document.addEventListener("DOMContentLoaded", function(){
+AutoCompletado();
+    });
+                       
+
+
+
+
+
+    let paso = 0;
+const steps = document.querySelectorAll('.step');
+const lines = document.querySelectorAll('.line');
+const nextButton = document.getElementById('next');
+
+nextButton.addEventListener('click', () => {
+    if (paso < steps.length - 1) {
+        paso++;
+        steps[paso].classList.add('completed');
+        lines[paso - 1].classList.add('completed'); // Marca la línea anterior como completada
+    }
+});
+
+[].forEach.call(document.getElementsByClassName('tags-input'), function (el) {
+    let hiddenInput = document.createElement('input'),
+        mainInput = document.createElement('input'),
+        tags = [];
+    
+    hiddenInput.setAttribute('type', 'hidden');
+    hiddenInput.setAttribute('name', el.getAttribute('data-name'));
+
+    mainInput.setAttribute('type', 'text');
+    mainInput.classList.add('main-input');
+    mainInput.addEventListener('input', function () {
+        let enteredTags = mainInput.value.split(',');
+        if (enteredTags.length > 1) {
+            enteredTags.forEach(function (t) {
+                let filteredTag = filterTag(t);
+                if (filteredTag.length > 0)
+                    addTag(filteredTag);
+            });
+            mainInput.value = '';
+        }
+    });
+
+    mainInput.addEventListener('keydown', function (e) {
+        let keyCode = e.which || e.keyCode;
+        if (keyCode === 8 && mainInput.value.length === 0 && tags.length > 0) {
+            removeTag(tags.length - 1);
+        }
+    });
+
+    el.appendChild(mainInput);
+    el.appendChild(hiddenInput);
+
+    addTag('hello!');
+
+    function addTag (text) {
+        let tag = {
+            text: text,
+            element: document.createElement('span'),
+        };
+
+        tag.element.classList.add('tag');
+        tag.element.textContent = tag.text;
+
+        let closeBtn = document.createElement('span');
+        closeBtn.classList.add('close');
+        closeBtn.addEventListener('click', function () {
+            removeTag(tags.indexOf(tag));
+        });
+        tag.element.appendChild(closeBtn);
+
+        tags.push(tag);
+
+        el.insertBefore(tag.element, mainInput);
+
+        refreshTags();
+    }
+
+    function removeTag (index) {
+        let tag = tags[index];
+        tags.splice(index, 1);
+        el.removeChild(tag.element);
+        refreshTags();
+    }
+
+    function refreshTags () {
+        let tagsList = [];
+        tags.forEach(function (t) {
+            tagsList.push(t.text);
+        });
+        hiddenInput.value = tagsList.join(',');
+    }
+
+    function filterTag (tag) {
+        return tag.replace(/[^\w -]/g, '').trim().replace(/\W+/g, '-');
+    }
+});
+
+
+
+</script>

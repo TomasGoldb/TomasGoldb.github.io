@@ -399,3 +399,6 @@ header .boton-header:hover{
   padding: 0.5em 0.1em;
 }
 
+mark{
+  padding: 0 !important;
+}
