@@ -535,3 +535,14 @@ mark{
   background-color: #6400c2;
   color: white;
 }
+
+.titulo-homehome{
+  text-align: center;
+  color:#7A02ED;
+  font-weight: 700;
+  margin-top: 2%;
+}
+
+.my-4{
+  font-weight: 600;
+}
