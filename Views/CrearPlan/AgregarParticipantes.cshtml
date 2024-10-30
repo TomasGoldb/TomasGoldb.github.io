@@ -13,13 +13,22 @@
             <div class="line"></div>
             <div class="step">4</div>
         </div>
-        <button id="next">Siguiente</button>
         <h1 class="titulo-violeta">Agrega participantes al plan</h1>
 
-       
-    <div class="autoComplete_wrapper">
-        <input id="autoComplete" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off">
-    </div>
+       <input type="text" name="nombre">
+
+       <section class="participantes">
+
+       @{
+        for(int i=0;i<3;i++){
+            <div>
+                <img src="#">
+                <h2>Pedro Sanjo</h2>
+            </div>
+        }
+       }
+       </section>
+    
 </main>
 
 <script>
@@ -83,19 +92,16 @@ AutoCompletado();
 
 
 
-
-
-    let paso = 0;
+    let paso = 3;
 const steps = document.querySelectorAll('.step');
 const lines = document.querySelectorAll('.line');
-const nextButton = document.getElementById('next');
-
-nextButton.addEventListener('click', () => {
-    if (paso < steps.length - 1) {
-        paso++;
-        steps[paso].classList.add('completed');
-        lines[paso - 1].classList.add('completed'); // Marca la línea anterior como completada
+document.addEventListener('DOMContentLoaded', () => {
+    for (let i=1;i<paso;i++){
+    if (i < steps.length - 1) {
+        steps[i].classList.add('completed');
+        lines[i - 1].classList.add('completed'); // Marca la línea anterior como completada
     }
+}
 });
 
 [].forEach.call(document.getElementsByClassName('tags-input'), function (el) {

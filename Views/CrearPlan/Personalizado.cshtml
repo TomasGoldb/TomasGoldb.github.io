@@ -13,24 +13,19 @@
             <div class="line"></div>
             <div class="step">4</div>
         </div>
-        <button id="next">Siguiente</button>
         <h1 class="titulo-violeta">Plan personalizado</h1>
 
-        <p>
-            Enter some tags:
-        </p>
-        <p>
-            <div class="tags-input" data-name="tags-input">
-                <!--<span class="tag">CSS<span class="close"></span></span>
-                <span class="tag">JavaScript<span class="close"></span></span>
-                <span class="tag">HTML<span class="close"></span></span>-->
-            </div>
-        </p>
+        <div class="tag-input">
+        <ul id="tags"></ul>
+        <input type="text" id="tag-input" placeholder="Escribe y presiona Enter o ','" autocomplete="off" />
+        <div id="suggestions" class="suggestions"></div>
+        </div>
 
     </div>
     <div class="autoComplete_wrapper">
         <input id="autoComplete" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off">
     </div>
+    <a class="boton-violeta" href='@Url.Action("AgregarParticipantes","CrearPlan")'>Siguiente</a>
 </main>
 
 <script>
@@ -66,21 +61,86 @@
     
 
 
+const suggestionsArray = ['manzana', 'banana', 'naranja', 'mango', 'kiwi', 'fresa', 'pera', 'uva'];
+let validTags = []; // Para almacenar las etiquetas válidas seleccionadas
 
+document.getElementById('tag-input').addEventListener('input', function() {
+    const input = this.value.toLowerCase();
+    const suggestionsBox = document.getElementById('suggestions');
+    suggestionsBox.innerHTML = '';
 
+    if (input) {
+        // Filtrar sugerencias excluyendo las que ya están en validTags
+        const filteredSuggestions = suggestionsArray.filter(item => 
+            item.toLowerCase().startsWith(input) && !validTags.includes(item.toLowerCase())
+        );
 
-    let paso = 0;
-const steps = document.querySelectorAll('.step');
-const lines = document.querySelectorAll('.line');
-const nextButton = document.getElementById('next');
-
-nextButton.addEventListener('click', () => {
-    if (paso < steps.length - 1) {
-        paso++;
-        steps[paso].classList.add('completed');
-        lines[paso - 1].classList.add('completed'); // Marca la línea anterior como completada
+        filteredSuggestions.forEach(item => {
+            const div = document.createElement('div');
+            div.textContent = item;
+            div.classList.add('suggestion-item');
+            div.onclick = () => selectSuggestion(item);
+            suggestionsBox.appendChild(div);
+        });
     }
 });
+
+document.getElementById('tag-input').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter' || event.key === ',') {
+        event.preventDefault();
+        const input = this.value.trim().toLowerCase();
+
+        // Solo permitir añadir el tag si está en las sugerencias y no está ya en validTags
+        if (validTags.includes(input)) {
+            addTag(input);
+            this.value = ''; // Limpiar el input
+            document.getElementById('suggestions').innerHTML = ''; // Limpiar sugerencias
+        }
+    }
+});
+
+function addTag(item) {
+    const li = document.createElement('li');
+    li.textContent = item;
+
+    const removeBtn = document.createElement('span');
+    removeBtn.textContent = '✖';
+    removeBtn.classList.add('remove-tag');
+    removeBtn.onclick = () => {
+        li.remove(); // Eliminar la etiqueta
+        validTags = validTags.filter(tag => tag !== item.toLowerCase()); // Eliminar de la lista de etiquetas válidas
+        suggestionsArray.push(item); // Volver a añadir la etiqueta eliminada a las sugerencias
+    };
+
+    li.appendChild(removeBtn);
+    document.getElementById('tags').appendChild(li);
+}
+
+function selectSuggestion(item) {
+    if (!validTags.includes(item.toLowerCase())) { // Asegúrate de que no se duplique
+        validTags.push(item.toLowerCase()); // Agregar a las etiquetas válidas
+        // Eliminar de las sugerencias
+        suggestionsArray.splice(suggestionsArray.indexOf(item), 1);
+        addTag(item);
+        document.getElementById('tag-input').value = ''; // Limpiar el input
+        document.getElementById('suggestions').innerHTML = ''; // Limpiar sugerencias
+    }
+}
+
+
+
+
+    let paso = 2;
+const steps = document.querySelectorAll('.step');
+const lines = document.querySelectorAll('.line');
+document.addEventListener('DOMContentLoaded', () => {
+    for (let i=1;i<paso;i++){
+    if (i < steps.length - 1) {
+        steps[i].classList.add('completed');
+        lines[i - 1].classList.add('completed'); // Marca la línea anterior como completada
+    }
+}
+
 
 [].forEach.call(document.getElementsByClassName('tags-input'), function (el) {
     let hiddenInput = document.createElement('input'),
@@ -159,6 +219,6 @@ nextButton.addEventListener('click', () => {
     }
 });
 
-
+});
 
 </script>

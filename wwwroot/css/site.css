@@ -449,3 +449,89 @@ mark{
   color: #258cfb; /* Cambia el color a tu preferido */
   font-size: 1.5rem; /* Ajusta el tamaño de las flechas */
 }
+
+
+
+.tag-input {
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.tag-input ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag-input li {
+  font-size: 85%;
+  padding: 0.5em 0.75em;
+  margin: 0.25em 0.1em;
+  display: inline-block;
+  background-color: #ddd;
+  transition: all 0.1s linear;
+  cursor: pointer;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tag-input li:hover{
+  background-color: #7A02ED;
+  color: white;
+}
+
+.tag-input li .remove-tag {
+  margin-left: 10px;
+  cursor: pointer;
+  color: white;
+  font-weight:200;
+}
+
+#tag-input {
+  border: none;
+  padding: 5px;
+}
+
+.suggestions {
+  border: 1px solid #ccc;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 1;
+}
+
+.suggestion-item {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+.boton-violeta{
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  width: 30%;
+  text-align: center;
+  font-size: 1vw;
+  background-color: #7A02ED;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.1s ease-in;
+  color: white
+}
+.boton-violeta:hover{
+  background-color: #6400c2;
+  color: white;
+}
