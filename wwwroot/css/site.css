@@ -758,3 +758,15 @@ justify-content: center;}
 .view-plan-button:hover {
   background-color: #932cc2;
 }
+
+.titulo-homehome{
+  text-align: center;
+  color:#7A02ED;
+  font-weight: 700;
+  margin-top: 2%;
+}
+
+.my-4{
+  font-weight: 600;
+}
+
