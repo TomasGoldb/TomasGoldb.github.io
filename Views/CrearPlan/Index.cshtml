@@ -13,11 +13,10 @@
             <div class="line"></div>
             <div class="step">4</div>
         </div>
-        <button id="next">Siguiente</button>
         <h1 class="titulo-violeta">Elegir tipo de plan</h1>
         <div class="botones-tipo-plan">
             <div class="opcion-plan">
-                <a href="#">
+                <a href='@Url.Action("Personalizado","CrearPlan")'>
                     <img src="/img/settings.svg">
                     <h2>Personalizado</h2>
                 </a>
@@ -34,17 +33,17 @@
 </main>
 
 <script>
-    let paso = 0;
+
+    let paso = 1;
 const steps = document.querySelectorAll('.step');
 const lines = document.querySelectorAll('.line');
-const nextButton = document.getElementById('next');
-
-nextButton.addEventListener('click', () => {
-    if (paso < steps.length - 1) {
-        paso++;
-        steps[paso].classList.add('completed');
-        lines[paso - 1].classList.add('completed'); // Marca la línea anterior como completada
+document.addEventListener('DOMContentLoaded', () => {
+    for (let i=1;i<paso;i++){
+    if (i < steps.length - 1) {
+        steps[i].classList.add('completed');
+        lines[i - 1].classList.add('completed'); // Marca la línea anterior como completada
     }
+}
 });
 
 </script>
