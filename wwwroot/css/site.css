@@ -402,3 +402,50 @@ header .boton-header:hover{
 mark{
   padding: 0 !important;
 }
+/*Homehome*/
+.carousel-control-prev, .carousel-control-next {
+  width: 5%;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+
+.card-body {
+  background-color: #e6ccff;
+  text-align: center;
+}
+
+.btn-ver-mas {
+  background-color: #a34cd2;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.section-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  border-radius: 50%; /* Opcional: hace que las flechas sean circulares */
+  padding: 10px; /* Opcional: ajusta el tamaño de la flecha */  
+  color: #333;
+}
+.carousel-control-prev-icon {background-image: url('/img/flechaizq.svg') !important;}
+.carousel-control-next-icon {background-image: url('/img/flechaderecha.svg') !important;}
+
+
+.carousel-control-prev-icon::before,
+.carousel-control-next-icon::before {
+  color: #258cfb; /* Cambia el color a tu preferido */
+  font-size: 1.5rem; /* Ajusta el tamaño de las flechas */
+}

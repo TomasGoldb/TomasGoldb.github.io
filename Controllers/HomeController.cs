@@ -95,6 +95,10 @@ public class HomeController : Controller
     }
     //Fin login y registro
 
+    public IActionResult Home(){
+        return View("Home");
+    }
+
     public IActionResult CrearPlan(){
         return View();
     }
