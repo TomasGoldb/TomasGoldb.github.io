@@ -1,15 +1,17 @@
 @{
     ViewData["Title"] = "Finalizar";
 }
-
-<div class="progress-container">
-    <div class="progress-step completed">1</div>
-    <div class="progress-step completed">2</div>
-    <div class="progress-step current">3</div>
-    <div class="progress-step">4</div>
-</div>
-
-<h2 class="title">Finalizar</h2>
+<main>
+<div class="progress-container progreso-creado">
+            <div class="step completed">1</div>
+            <div class="line"></div>
+            <div class="step">2</div>
+            <div class="line"></div>
+            <div class="step">3</div>
+            <div class="line"></div>
+            <div class="step">4</div>
+        </div>
+            <h1 class="titulo-violeta">Finalizar</h1>
 <section class="almacen-todo">
 <div class="section-participantes-preferencias">
     <h3>Participantes invitados:</h3>
@@ -57,6 +59,7 @@
 <div class="loading-bar-container">
     <div class="loading-bar"></div>
 </div>
+</main>
 
 <script>
     function startLoading() {
