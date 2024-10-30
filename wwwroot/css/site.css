@@ -432,6 +432,7 @@ mark{
   text-align: center;
   font-size: 24px;
   color: #ae3cf0;
+  font-weight: 800;
 }
 
 .section-participantes-preferencias {
@@ -535,16 +536,15 @@ justify-content: center;}
   margin-top: 20px;
 }
 
-.check-icon {
-  font-size: 50px;
-  color: #4CAF50;
-  background-color: #e6f4ea;
-  border-radius: 50%;
-  padding: 15px;
+.icon-container img{
+  width: 5%;
+  height: auto;
 }
 
 .view-plan-button {
   display: block;
+  width: 25%;
+  height: auto;
   margin: 30px auto;
   padding: 10px 25px;
   background-color: #ae3cf0;
@@ -770,8 +770,6 @@ justify-content: center;}
   font-weight: 600;
 }
 
-
-
 /*FOOTER*/
 .footer-container {
   background-color: #2e003e; 
@@ -838,4 +836,63 @@ marquee{
   color: #9d9d9d;
   font-size: 12px;
   margin-top: 1%;
+}
+.elegir-tipo-plan .participantes{
+  width: 60%;
+
+}
+.elegir-tipo-plan .participante{
+  display: flex;
+  border-radius: 10px;
+  background-color: #E0D2EE;
+  margin-bottom: 1%;
+  justify-content: space-between;
+    align-items: center;
+}
+.elegir-tipo-plan .participantes .participante div{
+  display: flex;
+  align-items: center;
+}
+.elegir-tipo-plan .participantes .participante div h2{
+  font-size: 1vw;
+}
+.elegir-tipo-plan .participante div img{
+  width: 5%;
+  border-radius: 50%;
+  margin: 1%;
+}
+.elegir-tipo-plan .participantes .participante a{
+  padding: 1%;
+  border-radius: 10px;
+  border: 2px solid ;
+  color: red; 
+  transition: all 0.1s ease-in;
+  margin-right: 1%;
+  font-size: 0.6vw;
+  text-decoration: none;
+}
+.elegir-tipo-plan .participantes .participante a:hover{
+  background-color: red;
+  color: white;
+}
+
+.centrado{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.copiar-enlace{
+  padding: 1%;
+  border-radius: 10px;
+  border: 2px solid #7A02ED;
+  color: #7A02ED; 
+  transition: all 0.1s ease-in;
+  margin-right: 1%;
+  text-decoration: none;
+}
+.copiar-enlace:hover{
+  background-color: #7A02ED;
+  color: white;
 }
