@@ -13,21 +13,28 @@
             <div class="line"></div>
             <div class="step">4</div>
         </div>
-        <h1 class="titulo-violeta">Agrega participantes al plan</h1>
+        <div class="centrado">
+            <h1 class="titulo-violeta">Agrega participantes al plan</h1>
 
-       <input type="text" name="nombre">
+        <input type="text" name="nombre">
 
-       <section class="participantes">
+        <section class="participantes">
 
-       @{
-        for(int i=0;i<3;i++){
-            <div>
-                <img src="#">
-                <h2>Pedro Sanjo</h2>
-            </div>
+        @{
+            for(int i=0;i<3;i++){
+                <div class="participante">
+                    <div>
+                        <img src="/img/perfil.webp">
+                        <h2>Pedro Sanjo</h2>
+                    </div>
+                <a href="#">Eliminar</a>
+                </div>
+            }
         }
-       }
-       </section>
+        <a class="copiar-enlace" id="copiarEnlace" href="#">Copiar enlace</a>
+        <a class="boton-violeta" href='@Url.Action("AgregarParticipantes","CrearPlan")'>Siguiente</a>
+        </section>
+       </div>
     
 </main>
 
@@ -90,7 +97,16 @@ AutoCompletado();
     });
                        
 
-
+let botonCopiarEnlace = document.getElementById("copiarEnlace");
+botonCopiarEnlace.addEventListener("click", function(){
+    botonCopiarEnlace.classList.add("copiado");
+    botonCopiarEnlace.innerHTML="Enlace copiado";
+    navigator.clipboard.writeText("ENLACEEEE");
+    setTimeout(() => {
+        botonCopiarEnlace.classList.remove("copiado");
+        botonCopiarEnlace.innerHTML="Copiar enlace";
+    }, 5000);
+});
 
     let paso = 3;
 const steps = document.querySelectorAll('.step');
