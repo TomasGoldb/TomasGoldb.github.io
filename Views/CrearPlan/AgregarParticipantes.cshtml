@@ -18,16 +18,16 @@
 
         <input type="text" name="nombre">
 
-        <section class="participantes">
+        <section class="participantes-agregados">
 
         @{
             for(int i=0;i<3;i++){
-                <div class="participante">
+                <div class="participante-agregado" id="@i">
                     <div>
                         <img src="/img/perfil.webp">
                         <h2>Pedro Sanjo</h2>
                     </div>
-                <a href="#">Eliminar</a>
+                <a href="#"  onclick="eliminarParticipante(@i)">Eliminar</a>
                 </div>
             }
         }
@@ -95,6 +95,9 @@ const source=["Sofía Martínez", "Liam García", "Emma Rodríguez", "Noah Pére
     document.addEventListener("DOMContentLoaded", function(){
 AutoCompletado();
     });
+    function eliminarParticipante(id){
+        document.getElementById(id).remove();
+    }
                        
 
 let botonCopiarEnlace = document.getElementById("copiarEnlace");
