@@ -402,3 +402,161 @@ header .boton-header:hover{
 mark{
   padding: 0 !important;
 }
+
+.progress-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.progress-step {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: lightgray;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.completed {
+  background-color: #a5a4f8;
+}
+
+.current {
+  background-color: #ae3cf0;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  color: #ae3cf0;
+}
+
+.section-participantes-preferencias {
+  width:60%;
+  display:flex;
+  flex-direction:column;
+  margin: 20px 0;
+}
+
+.participantes {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: stretch;
+  justify-content: flex-start;
+}
+
+.participante {
+  width:20%;
+  display: flex;
+  align-items: center;
+  background-color: #e2d7fc;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: #333;
+  text-align: center;
+  gap: 10px;
+}
+.participante span{
+display:flex;
+justify-content: center;}
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.preferences {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.preference {
+  background-color: #e2d7fc;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: #333;
+  text-align: center;
+}
+
+.create-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 25px;
+  background-color: #ae3cf0;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-button:hover {
+  background-color: #932cc2;
+}
+
+.loading-bar-container {
+  width: 700px;
+  height: 15px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 30px auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.loading-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #ae3cf0, #6e29a5);
+  border-radius: 10px;
+}
+.almacen-todo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.check-icon {
+  font-size: 50px;
+  color: #4CAF50;
+  background-color: #e6f4ea;
+  border-radius: 50%;
+  padding: 15px;
+}
+
+.view-plan-button {
+  display: block;
+  margin: 30px auto;
+  padding: 10px 25px;
+  background-color: #ae3cf0;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-plan-button:hover {
+  background-color: #932cc2;
+}

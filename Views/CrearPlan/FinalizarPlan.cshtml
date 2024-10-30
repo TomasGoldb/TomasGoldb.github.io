@@ -1,0 +1,75 @@
+@{
+    ViewData["Title"] = "Finalizar";
+}
+
+<div class="progress-container">
+    <div class="progress-step completed">1</div>
+    <div class="progress-step completed">2</div>
+    <div class="progress-step current">3</div>
+    <div class="progress-step">4</div>
+</div>
+
+<h2 class="title">Finalizar</h2>
+<section class="almacen-todo">
+<div class="section-participantes-preferencias">
+    <h3>Participantes invitados:</h3>
+    <div class="participantes">
+        <div class="participante">
+            <img src="/img/rostro.png" alt="Foto de perfil" class="profile-pic">
+            <span>Pedro Sanjo</span>
+        </div>
+        <div class="participante">
+            <img src="/img/rostro.png" alt="Foto de perfil" class="profile-pic">
+            <span>Nicola Tesla</span>
+        </div>
+        <div class="participante">
+            <img src="/img/rostro.png" alt="Foto de perfil" class="profile-pic">
+            <span>Elon Mosca</span>
+        </div>
+        <div class="participante">
+            <img src="/img/rostro.png" alt="Foto de perfil" class="profile-pic">
+            <span>Magalí García</span>
+        </div>
+        <div class="participante">
+            <img src="/img/rostro.png" alt="Foto de perfil" class="profile-pic">
+            <span>Santiago Boro</span>
+        </div>
+        <div class="participante">
+            <img src="/img/rostro.png" alt="Foto de perfil" class="profile-pic">
+            <span>Bill Gates</span>
+        </div>
+    </div>
+</div>
+
+<div class="section-participantes-preferencias">
+    <h3>Preferencias:</h3>
+    <div class="preferences">
+        <div class="participante">
+            <img src="/img/empanadas.png" alt="Foto de perfil" class="profile-pic">
+            <span>Empanadas</span>
+        </div>    
+    </div>
+</div>
+<section>
+
+<button class="create-button" onclick="startLoading()">Crear</button>
+
+<div class="loading-bar-container">
+    <div class="loading-bar"></div>
+</div>
+
+<script>
+    function startLoading() {
+        const loadingBar = document.querySelector(".loading-bar");
+        loadingBar.style.width = "0%";
+        
+        setTimeout(() => {
+            loadingBar.style.transition = "width 2s";
+            loadingBar.style.width = "100%";
+            
+            loadingBar.addEventListener("transitionend", () => {
+                window.location.href = '/CrearPlan/PlanCreado';
+            });
+        }, 500);
+    }
+</script>
