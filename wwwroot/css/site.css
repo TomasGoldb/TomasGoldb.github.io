@@ -432,6 +432,7 @@ mark{
   text-align: center;
   font-size: 24px;
   color: #ae3cf0;
+  font-weight: 800;
 }
 
 .section-participantes-preferencias {
@@ -535,16 +536,15 @@ justify-content: center;}
   margin-top: 20px;
 }
 
-.check-icon {
-  font-size: 50px;
-  color: #4CAF50;
-  background-color: #e6f4ea;
-  border-radius: 50%;
-  padding: 15px;
+.icon-container img{
+  width: 5%;
+  height: auto;
 }
 
 .view-plan-button {
   display: block;
+  width: 25%;
+  height: auto;
   margin: 30px auto;
   padding: 10px 25px;
   background-color: #ae3cf0;
