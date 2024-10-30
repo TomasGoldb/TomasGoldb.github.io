@@ -23,7 +23,12 @@ public class CrearPlanController : Controller
     public IActionResult AgregarParticipantes(){
         return View();
     }
-
+    public IActionResult FinalizarPlan(){
+        return View();
+    }
+    public IActionResult PlanCreado(){
+        return View("PlanCreado");
+    }
 
     public IActionResult Privacy()
     {
