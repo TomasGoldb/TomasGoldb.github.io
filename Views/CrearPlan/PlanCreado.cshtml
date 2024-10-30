@@ -2,6 +2,8 @@
     ViewData["Title"] = "Plan Creado";
 }
 
+<link rel="stylesheet" href="~/css/PlanCreado.css" />
+
 <div class="progress-container">
     <div class="progress-step completed">1</div>
     <div class="progress-step completed">2</div>
@@ -15,4 +17,4 @@
     <div class="check-icon">&#10004;</div>
 </div>
 
-<button class="view-plan-button" onclick="window.location.href='@Url.Action("VerPlan", "CrearPlanController")'>Ver plan</button>
+<button class="view-plan-button" onclick="window.location.href='@Url.Action("VerPlan", "Plan")'">Ver plan</button>
