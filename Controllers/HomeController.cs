@@ -82,7 +82,11 @@ public class HomeController : Controller
             return View("login");
         }
     }
-    public IActionResult ConfigurarPerfil(IFormFile archivo){
+    public IActionResult ConfigurarPerfil(){
+        return View();
+        
+    }
+    public IActionResult ActualizarFotoPerfil(IFormFile archivo){
         bool seCambio=Sesion.userActual.CambiarFoto(archivo, Environment);
         if(seCambio){
             
