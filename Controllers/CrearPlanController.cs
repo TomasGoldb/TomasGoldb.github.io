@@ -18,6 +18,7 @@ public class CrearPlanController : Controller
         return View();
     }
     public IActionResult Personalizado(){
+        
         return View();
     }
     public IActionResult AgregarParticipantes(){
@@ -28,6 +29,9 @@ public class CrearPlanController : Controller
     }
     public IActionResult PlanCreado(){
         return View("PlanCreado");
+    }
+    public void TomarParticipantes(string[] participantes){
+        
     }
 
     public IActionResult Privacy()

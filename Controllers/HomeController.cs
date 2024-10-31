@@ -120,7 +120,8 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult DetalleLugar(){
+    public IActionResult DetalleLugar(int idLugar){
+        ViewBag.resenas=Sesion.ListarResenasUsuario(idLugar);
         return View();
     }
 

@@ -20,10 +20,6 @@ public class PlanController : Controller
     public IActionResult VerPlan(){
         return View();
     }
-    public IActionResult DetalleLugar(int idLugar){
-        
-        return View();
-    }
     
     public IActionResult Privacy()
     {
