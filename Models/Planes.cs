@@ -23,5 +23,6 @@ public class Planes
         this.Link=link;
         this.QR=qr;
     }
+    public Planes(){}
 
 }
