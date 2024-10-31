@@ -4,57 +4,107 @@
         <h2>Menorá House</h2>
 
         <div class="content">
+        
             <div class="reviews">
                 <div class="review">
-                <div class= "container-foto-user">
-                    <div class="avatar">J</div>
-                        <p class="user-nombre"><b>Martin Rojas</b></p>
-                </div>
-                    <div class="review-content">
-                        <p>La comida de este lugar es increíble!</p>
-                        <a href="#">Ver más...</a>
+                    <div class= "container-foto-user">
+                        <div class="avatar">
+                            <img class="imagenPerfil" src="/img/perfil.webp">
+                            <p class="user-nombre"><b>Martin Rojas</b></p>
+                        </div>
+                        <div class="rating">
+                        @{
+                            double cantEstrellas=3.5;
+                            for(int i=0;i<5;i++){
+                                if(cantEstrellas>=1){
+                                    <img class="estrellita" src="/img/estrellitaFull.svg">
+                                    cantEstrellas-=1;
+                                }
+                                else if(cantEstrellas==0.5){
+                                    <img class="estrellita" src="/img/mediaEstrellita.svg">
+                                    cantEstrellas-=0.5;
+                                }else{
+                                    <img class="estrellita" src="/img/estrellitaVacia.svg">
+                                    
+                                }
+                               
+                            }
+                        }
+                        </div>
                     </div>
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                <div class="review-content">
+                    <p>La comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del día.La comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del díaLa comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del día</p>
+                    <a href="#">Ver más...</a>
+                </div>
+                </div>
+                <div class="review">
+                    <div class= "container-foto-user">
+                        <div class="avatar">
+                            <img class="imagenPerfil" src="/img/perfil.webp">
+                            <p class="user-nombre"><b>Martin Rojas</b></p>
+                        </div>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                <div class="review-content">
+                    <p>Me gusta que las opciones para comer vayan cambiando dependiendo del día.</p>
+                    <a href="#">Ver más...</a>
+                </div>
                 </div>
                 
-                <div class="review">
-                    <div class="avatar">J</div>
-                    <p><b>Alan Guesher</b></p>
-                    <div class="review-content">
-                        <p>Me gusta que las opciones para comer vayan cambiando dependiendo del día.</p>
-                        <a href="#">Ver más...</a>
+               <div class="review">
+                    <div class= "container-foto-user">
+                        <div class="avatar">
+                            <img class="imagenPerfil" src="/img/perfil.webp">
+                            <p class="user-nombre"><b>Martin Rojas</b></p>
+                        </div>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
                     </div>
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                <div class="review-content">
+                    <p>La comida de este lugar es increíble!</p>
+                    <a href="#">Ver más...</a>
+                </div>
+                </div>
+
+               <<div class="review">
+                    <div class= "container-foto-user">
+                        <div class="avatar">
+                            <img class="imagenPerfil" src="/img/perfil.webp">
+                            <p class="user-nombre"><b>Martin Rojas</b></p>
+                        </div>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                <div class="review-content">
+                    <p>La comida de este lugar es increíble!</p>
+                    <a href="#">Ver más...</a>
+                </div>
                 </div>
 
                 <div class="review">
-                    <div class="avatar">J</div>
-                        <p><b>Taneli Menguez</b></p>
-                    <div class="review-content">
-                        <p>ME ENCANTA EL SUSHI DE MENORAAAA!!!!</p>
-                        <a href="#">Ver más...</a>
+                    <div class= "container-foto-user">
+                        <div class="avatar">
+                            <img class="imagenPerfil" src="/img/perfil.webp">
+                            <p class="user-nombre"><b>Martin Rojas</b></p>
+                        </div>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
                     </div>
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                <div class="review-content">
+                    <p>La comida de este lugar es increíble!</p>
+                    <a href="#">Ver más...</a>
+                </div>
                 </div>
 
-                <div class="review">
-                    <div class="avatar">J</div>
-                    <p><b>Carolina Meko</b></p>
-                    <div class="review-content">
-                        <p>No lo recomiendo, hay muchas mejores opciones por la zona. La comida no es tan rica como dicen.</p>
-                        <a href="#">Ver más...</a>
+               <div class="review">
+                    <div class= "container-foto-user">
+                        <div class="avatar">
+                            <img class="imagenPerfil" src="/img/perfil.webp">
+                            <p class="user-nombre"><b>Martin Rojas</b></p>
+                        </div>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
                     </div>
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
+                <div class="review-content">
+                    <p>La comida de este lugar es increíble!</p>
+                    <a href="#">Ver más...</a>
                 </div>
-
-                <div class="review">
-                    <div class="avatar">J</div>
-                        <p><b>Victoria Napez</b></p>
-                    <div class="review-content">
-                        <p>Hay un lindo ambiente y todo está muy bien decorado. Ideal para almorzar rápido y barato.</p>
-                        <a href="#">Ver más...</a>
-                    </div>
-                    <div class="rating">⭐⭐⭐⭐⭐</div>
                 </div>
             </div>
 

@@ -1037,26 +1037,30 @@ textarea {
 }
 .container-foto-user{
   display: flex;
+  justify-content: space-between;
 }
 
 .user-nombre{
   margin-top: 1.5%;
-  margin-left: 1.5%;
+  margin-left: 3%;
 }
 
 .avatar {
-  background-color: #8a2be2;
-  color: white;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  color: black;
+  width: 50%;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
-  font-weight: bold;
+  justify-content: flex-start;
+  align-items: flex-end
 }
-
+.imagenPerfil{
+ width: 20%;
+ height: auto;
+ border-radius: 50px;
+}
 .review-content {
   text-align: left;
   flex-grow: 1;
@@ -1067,8 +1071,17 @@ textarea {
 }
 
 .rating {
+  display: flex;
+  justify-content: flex-end;
   color: #8a2be2;
   font-size: 18px;
+  width: 50%;
+  margin-right: 1%;
+}
+
+.estrellita{
+  width: 8%;
+  height: auto;
 }
 
 .map-section {
@@ -1144,3 +1157,4 @@ textarea {
 .txt-detallelugar{
   font-size:130%;
 }
+
