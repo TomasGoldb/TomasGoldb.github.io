@@ -908,3 +908,105 @@ marquee{
 .progreso-creado{
   width: 60%;
 }
+
+/* Configurar perfil*/
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+}
+
+.configurar-perfil {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+  color: #6A0DAD; /* Color morado */
+  margin-bottom: 20px;
+}
+
+/* Estilos del formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-group label {
+  font-size: 0.9em;
+  color: #333;
+  font-weight: bold;
+  width: 100%;
+  text-align: left;
+}
+
+.input-group input[type="text"] {
+  width: calc(100% - 80px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.file-input {
+  display: none;
+}
+
+.btn-seleccionar {
+  padding: 8px 15px;
+  background-color: #dcb9f7;
+  color: #6A0DAD;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Estilos de los otros campos */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 0.9em;
+  color: #333;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+  height: 80px;
+}
+
+/* Estilos del botón */
+.btn-submit {
+  padding: 12px;
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #6A0DAD; /* Color morado */
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #5a0c94;
+}
