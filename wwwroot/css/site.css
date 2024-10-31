@@ -908,3 +908,8 @@ marquee{
 .progreso-creado{
   width: 60%;
 }
+
+
+.dashboard-plan section{
+  width: 100%;
+}
