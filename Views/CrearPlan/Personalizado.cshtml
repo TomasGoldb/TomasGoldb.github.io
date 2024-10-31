@@ -16,16 +16,13 @@
         <h1 class="titulo-violeta">Plan personalizado</h1>
 
         <div class="tag-input">
-        <ul id="tags"></ul>
-        <input type="text" id="tag-input" placeholder="Escribe y presiona Enter o ','" autocomplete="off" />
+        <ul id="tags"><input type="text" id="tag-input" placeholder="Escribe y presiona Enter o ','" autocomplete="off" /> </ul>
+        
         <div id="suggestions" class="suggestions"></div>
         </div>
 
     </div>
-    <div class="autoComplete_wrapper">
-        <input id="autoComplete" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off">
-    </div>
-    <a class="boton-violeta" href='@Url.Action("AgregarParticipantes","CrearPlan")'>Siguiente</a>
+    <a class="boton-violeta" onclick="MandarParticipantes()" href='@Url.Action("AgregarParticipantes","CrearPlan")'>Siguiente</a>
 </main>
 
 <script>
@@ -220,5 +217,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 });
+
+
+function MandarParticipantes(){
+    $.ajax({
+                    url: '@Url.Action("TomarParticipantes", "CrearPlan")',
+                    type: 'GET',
+                    data: {participantes=validTags},
+                    success: function (data) {
+                        
+                    }
+                });
+}
+
+
 
 </script>

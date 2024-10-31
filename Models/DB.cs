@@ -19,6 +19,14 @@ class BD
         }
         return listaUsuario;
     }
+    public static List<ResenasXUsuario> ListarResenasXLugar(int idlug){
+        List<ResenasXUsuario> lista = new List<ResenasXUsuario>();
+        using(SqlConnection db = new SqlConnection(_connectionString)){
+            string sql="SP_ListarResenasXLugar";
+            lista = db.Query<ResenasXUsuario>(sql, new{ @idlugar = idlug }).ToList();
+        }
+        return lista;
+    }
     
         public static int CrearUsuario(Usuario objeto){
         int idUsuario;

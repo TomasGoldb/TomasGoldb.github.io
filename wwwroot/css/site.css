@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
@@ -29,6 +29,7 @@ html {
   padding: 0px;
   font-family: "Poppins", sans-serif;
 }
+
 main{
   width: 100%;
   display: flex;
@@ -143,8 +144,11 @@ header .header-div{
   justify-content: space-between;
   width: 60%;
 }
-header img{
+header .a-logo{
   width: 10%;
+}
+header img{
+  width: 100%;
 }
 header nav{
   width: 40%;
@@ -650,7 +654,11 @@ justify-content: center;}
 
 #tag-input {
   border: none;
-  padding: 5px;
+  width: 30%;
+}
+#tag-input:focus{
+  border: none;
+  outline: none;
 }
 
 .suggestions {
@@ -912,102 +920,117 @@ marquee{
 /* Configurar perfil*/
 /* Estilos generales */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
+    background-color: #ffffff;
 }
 
 .configurar-perfil {
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: center;
+    max-width: 600px; /* Ancho máximo aumentado */
+    margin: 0 auto;
+    text-align: center;
+    padding: 25px;
 }
 
 h1 {
-  font-size: 2em;
-  color: #6A0DAD; /* Color morado */
-  margin-bottom: 20px;
+    font-size: 2.5em; /* Tamaño aumentado */
+    color: #7A02ED; /* Color morado actualizado */
+    margin-bottom: 30px;
 }
 
 /* Estilos del formulario */
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px; /* Más espacio entre los elementos */
 }
 
 .input-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.input-group label {
-  font-size: 0.9em;
-  color: #333;
-  font-weight: bold;
-  width: 100%;
-  text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre campo y botones */
 }
 
 .input-group input[type="text"] {
-  width: calc(100% - 80px);
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.1em;
+    min-width: 250px; /* Anchura mínima para campos más largos */
 }
 
 .file-input {
-  display: none;
+    display: none;
 }
 
 .btn-seleccionar {
-  padding: 8px 15px;
-  background-color: #dcb9f7;
-  color: #6A0DAD;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
+    padding: 10px 18px;
+    background-color: #dcb9f7;
+    color: #7A02ED;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-eliminar {
+    padding: 10px 18px;
+    background-color: #ff6b6b;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+
+.btn-seleccionar:hover {
+    background-color: #caa0ed;
+}
+
+.btn-eliminar:hover {
+    background-color: #e05151;
 }
 
 /* Estilos de los otros campos */
 .form-group {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
 
 .form-group label {
-  font-size: 0.9em;
-  color: #333;
-  font-weight: bold;
+    font-size: 1em;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .form-group input,
 .form-group textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1em;
-  width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.1em;
+    width: 100%;
 }
 
 textarea {
-  resize: vertical;
-  height: 80px;
+    resize: vertical;
+    height: 100px;
 }
 
-/* Estilos del botón */
+/* Estilos del botón de Enviar */
 .btn-submit {
-  padding: 12px;
-  font-size: 1em;
-  color: #ffffff;
-  background-color: #6A0DAD; /* Color morado */
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+    padding: 12px;
+    font-size: 1em;
+    color: #ffffff;
+    background-color: #7A02ED;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .btn-submit:hover {
+    background-color: #6802c9;
   background-color: #5a0c94;
 }
 
@@ -1156,5 +1179,89 @@ textarea {
 
 .txt-detallelugar{
   font-size:130%;
+}
+
+
+/*Aceptar invitación*/
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.container {
+  text-align: left;
+  width: 60%;
+}
+
+
+.details {
+  font-size: 1.1em;
+  color: #000;
+  margin-bottom: 1.5em;
+}
+
+.location {
+  margin-bottom: 2em;
+  display: flex;
+  align-items: center;
+}
+
+.location label {
+  font-size: 1em;
+  margin-right: 1em;
+}
+
+.location input {
+  padding: 8px 10px;
+  font-size: 1em;
+  width: 250px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.location input:focus {
+  border-color: #7A02ED;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+}
+
+.accept, .decline {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.accept {
+  background-color: #7A02ED;
+  color: #fff;
+}
+
+.accept:hover {
+  background-color: #5a00b8;
+  transform: scale(1.05);
+}
+
+.decline {
+  background-color: #ffffff;
+  color: #e63946;
+  border: 1px solid #e63946;
+}
+
+.decline:hover {
+  background-color: #f8d7da;
+  transform: scale(1.05);
 }
 
