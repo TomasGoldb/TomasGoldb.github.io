@@ -120,6 +120,9 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult DetalleLugar(){
+        return View();
+    }
 
     public IActionResult Privacy()
     {
