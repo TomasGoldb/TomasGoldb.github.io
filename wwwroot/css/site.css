@@ -238,7 +238,6 @@ header .boton-header:hover{
 }
 .pagina-register-login .card-formulario .register-form{
   width: 30%;
-  margin-right: 15%;
   margin-top:4%;
   display: flex;
   flex-direction: column;
@@ -532,6 +531,7 @@ justify-content: center;}
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  width: 75%;
 }
 
 .icon-container img{
@@ -907,4 +907,138 @@ marquee{
 
 .progreso-creado{
   width: 60%;
+}
+
+/*PROBANDO DETALLE LUGAR*/
+
+.content {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.reviews {
+  width: 50%;
+}
+
+.review {
+  background-color: #f0f0f5;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  align-items: stretch;
+  flex-direction:column;
+  flex-wrap:wrap;
+  gap: 10px;
+}
+.container-foto-user{
+  display: flex;
+}
+
+.user-nombre{
+  margin-top: 1.5%;
+  margin-left: 1.5%;
+}
+
+.avatar {
+  background-color: #8a2be2;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.review-content {
+  text-align: left;
+  flex-grow: 1;
+}
+
+.review-content p {
+  margin-bottom: 5px;
+}
+
+.rating {
+  color: #8a2be2;
+  font-size: 18px;
+}
+
+.map-section {
+  width: 50%;
+  text-align: left;
+}
+
+.map {
+  background-color: #e0e0e0;
+  border: 2px solid #8a2be2;
+  height: 200px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #8a2be2;
+}
+
+.transport {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin: 5px 0;
+}
+
+.bus{
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+} 
+
+.subway {
+  padding: 5px 10px;
+  border-radius: 15px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.bus.red { background-color: #e74c3c; }
+.bus.yellow { background-color: #f39c12; }
+.subway.green { background-color: #27ae60; }
+.subway.light-green { background-color: #2ecc71; }
+.subway.blue { background-color: #3498db; }
+
+.boton-volver-detallelugar {
+  display:flex;
+  justify-content: center;
+  width:50%;
+  background-color: #8a2be2;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.back-button:hover {
+  background-color: #6a1cb0;
+}
+
+.container-boton-volver-detallelugar{
+  margin-top:2%;
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.txt-detallelugar{
+  font-size:130%;
 }
