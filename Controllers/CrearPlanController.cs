@@ -18,7 +18,7 @@ public class CrearPlanController : Controller
         return View();
     }
     public IActionResult Personalizado(){
-        
+        Sesion.IniciarCreacionPlan();
         return View();
     }
     public IActionResult AgregarParticipantes(){
