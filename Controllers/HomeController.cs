@@ -7,11 +7,13 @@ namespace JuntifyApp.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private IWebHostEnvironment Environment;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IWebHostEnvironment environment)
     {
         _logger = logger;
-    }
+        Environment=environment;
+    } 
 
     public IActionResult Index()
     {
@@ -79,6 +81,21 @@ public class HomeController : Controller
             Console.WriteLine("CHAU");
             return View("login");
         }
+    }
+    public IActionResult ConfigurarPerfil(){
+        return View();
+        
+    }
+    public IActionResult ActualizarFotoPerfil(IFormFile archivo){
+        bool seCambio=Sesion.userActual.CambiarFoto(archivo, Environment);
+        if(seCambio){
+            
+            return RedirectToAction("index");
+        }else{
+            ViewBag.error=FormatearError("ERROR_004_SinArchivo");
+            return View("setearfotoperfil");
+        }
+        
     }
     private string FormatearError(string error)
     {
