@@ -11,8 +11,8 @@
                         <p class="user-nombre"><b>Martin Rojas</b></p>
                 </div>
                     <div class="review-content">
-                        <p>La comida de este lugar es increíble!</p>
-                        <a href="#">Ver más...</a>
+                        <p id="texto">La comida de este lugar es increíble!</p>
+                        <a id="verMasBtn" href="#">Ver más...</a>
                     </div>
                     <div class="rating">⭐⭐⭐⭐⭐</div>
                 </div>
@@ -76,3 +76,37 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+    const textoCompleto = "Este es el texto completo que queremos mostrar. Aquí hay más información que será visible solo al hacer clic en el botón 'Ver más'.";
+const longitudVisible = 100; // Número máximo de caracteres a mostrar inicialmente
+
+// Función para obtener el texto visible sin cortar palabras
+function obtenerTextoVisible(texto, longitud) {
+    if (texto.length <= longitud) return texto; // Si el texto es más corto, devuélvelo todo
+    
+    let puntoCorte = texto.lastIndexOf(' ', longitud); // Encuentra el último espacio antes de la longitud
+    return puntoCorte > 0 ? texto.substring(0, puntoCorte) : texto.substring(0, longitud); // Devuelve el texto hasta el último espacio
+}
+
+// Divide el texto en partes
+const textoVisible = obtenerTextoVisible(textoCompleto, longitudVisible);
+const textoAdicional = textoCompleto.substring(textoVisible.length);
+
+// Muestra la parte visible y oculta el resto
+document.getElementById('texto').innerHTML = textoVisible + '<span id="textoAdicional" style="display:none;">' + textoAdicional + '</span>';
+
+document.getElementById('verMasBtn').addEventListener('click', function() {
+    const textoAdicionalElement = document.getElementById('textoAdicional');
+    if (textoAdicionalElement.style.display === 'none') {
+        textoAdicionalElement.style.display = 'inline';
+        this.textContent = 'Ver menos';
+    } else {
+        textoAdicionalElement.style.display = 'none';
+        this.textContent = 'Ver más';
+    }
+});
+
+
+    </script>
