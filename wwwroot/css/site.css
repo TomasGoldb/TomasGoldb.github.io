@@ -1265,3 +1265,68 @@ textarea {
   transform: scale(1.05);
 }
 
+
+.dropdown {
+  position: relative;
+}
+
+/* Botón del dropdown */
+.dropdown-button {
+  background-color: #9c27b0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-button:hover {
+  background-color: #7b1fa2;
+}
+
+/* Flecha del botón */
+.dropdown-button .arrow {
+  margin-left: 8px;
+  font-size: 12px;
+}
+
+/* Contenido del dropdown */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 110%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+  z-index: 1;
+}
+
+/* Opciones del dropdown */
+.dropdown-content a {
+  color: #333;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: #f7f7f7;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+/* Mostrar el dropdown al hacer hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}

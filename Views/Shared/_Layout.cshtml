@@ -12,6 +12,7 @@
 </head>
 <body>
     <header>
+
         <div class="header-div">
             <a class="a-logo" href='@Url.Action("Home","Home")'>
             <img src="/img/Logo3.png">
@@ -25,6 +26,26 @@
             </nav>
             <a class="boton-header" href='@Url.Action("Register", "Home")'>Ingresar</a>
         </div>
+
+<!----
+        <div class="header-logueado">
+            <img src="/img/Logo3.png">
+            <div class="derecha-header-logueado">
+                <div class="perfil-container">
+                    <p>Magali Garcia</p>
+                    <img src="/img/rostro.png">
+                </div>
+                <div class="dropdown">
+                    <button class="dropdown-button">Crear Plan<span class="arrow">&#9662;</span></button>
+                    <div class="dropdown-content">
+                        <a href="#">Opción 1</a>
+                        <a href="#">Opción 2</a>
+                        <a href="#">Opción 3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        --->
     </header>
 
         @RenderBody()
