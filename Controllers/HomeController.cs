@@ -115,6 +115,9 @@ public class HomeController : Controller
     public IActionResult Home(){
         return View("Home");
     }
+    public IActionResult PruebaMaps(){
+        return View();
+    }
 
     public IActionResult CrearPlan(){
         return View();
