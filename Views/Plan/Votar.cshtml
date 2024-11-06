@@ -1,0 +1,108 @@
+
+<main>
+<div class="container text-center my-5">
+  <h2 class="title">Votá la ubicación del plan</h2>
+  <div class="row justify-content-center mt-4">
+    <!-- Card 1 -->
+    <div class="col-md-3">
+      <div class="vote-card">
+        <div class="card-img-container">
+          <img src="/img/mcdonalds.jpg" alt="Hoyts" class="card-img-top">
+          <button class="vote-icon">+</button>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Hoyts</h5>
+          <p class="card-text">Abasto</p>
+            @{
+                            double cantEstrellas=3.5;
+                            for(int i=0;i<5;i++){
+                                if(cantEstrellas>=1){
+                                    <img class="estrellita" src="/img/estrellitaFull.svg">
+                                    cantEstrellas-=1;
+                                }
+                                else if(cantEstrellas==0.5){
+                                    <img class="estrellita" src="/img/mediaEstrellita.svg">
+                                    cantEstrellas-=0.5;
+                                }else{
+                                    <img class="estrellita" src="/img/estrellitaVacia.svg">
+                                    
+                                }
+                               
+                            }
+                        }
+          
+        </div>
+      </div>
+      <button class="btn btn-vote">Votar</button>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-3">
+      <div class="vote-card">
+        <div class="card-img-container">
+          <img src="/img/mcdonalds.jpg" alt="Menorá House" class="card-img-top">
+          <button class="vote-icon">+</button>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Menorá House</h5>
+          <p class="card-text">Yatay 226</p>
+            @{
+                             cantEstrellas=5;
+                            for(int i=0;i<5;i++){
+                                if(cantEstrellas>=1){
+                                    <img class="estrellita" src="/img/estrellitaFull.svg">
+                                    cantEstrellas-=1;
+                                }
+                                else if(cantEstrellas==0.5){
+                                    <img class="estrellita" src="/img/mediaEstrellita.svg">
+                                    cantEstrellas-=0.5;
+                                }else{
+                                    <img class="estrellita" src="/img/estrellitaVacia.svg">
+                                    
+                                }
+                               
+                            }
+                        }
+          
+        </div>
+      </div>
+      <button class="btn btn-vote">Votar</button>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-3">
+      <div class="vote-card">
+        <div class="card-img-container">
+          <img src="/img/mcdonalds.jpg" alt="Menorá House" class="card-img-top">
+          <button class="vote-icon">+</button>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Menorá House</h5>
+          <p class="card-text">Yatay 226</p>
+            @{
+                             cantEstrellas=2.5;
+                            for(int i=0;i<5;i++){
+                                if(cantEstrellas>=1){
+                                    <img class="estrellita" src="/img/estrellitaFull.svg">
+                                    cantEstrellas-=1;
+                                }
+                                else if(cantEstrellas==0.5){
+                                    <img class="estrellita" src="/img/mediaEstrellita.svg">
+                                    cantEstrellas-=0.5;
+                                }else{
+                                    <img class="estrellita" src="/img/estrellitaVacia.svg">
+                                    
+                                }
+                               
+                            }
+                        }
+          
+        </div>
+      </div>
+      <button class="btn btn-vote">Votar</button>
+    </div>
+  </div>
+</div>
+
+
+</main>
