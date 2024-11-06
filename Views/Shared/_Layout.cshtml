@@ -28,46 +28,50 @@
 
 
 <div class="engloba-header-2">
-        <div class="header-logueado">
-            <!-- Logo de Juntify -->
-            <img src="/img/Logo3.png" class="logo">
-            
-            <!-- Contenedor de perfil, notificaciones y menú -->
-            <div class="derecha-header-logueado">
-                <!-- Perfil -->
-                <div class="perfil-container">
-                    <p class="nombre-header-2">Magalí García</p>
-                    <img src="/img/rostro.png" class="profile-pic">
-                </div>
+    <div class="header-logueado">
+        <!-- Logo de Juntify -->
+        <img src="/img/Logo3.png" class="logo">
+        
+        <!-- Contenedor de perfil, notificaciones y menú -->
+        <div class="derecha-header-logueado">
+            <!-- Perfil -->
+            <div class="perfil-container">
+                <p class="nombre-header-2">Magalí García</p>
+                <!-- Imagen de perfil como enlace -->
+                <a href="/Home/ConfigurarPerfil" class="perfil-enlace">
+                    <img src="/img/rostro.png" class="profile-pic" alt="Imagen de perfil">
+                </a>
+            </div>
 
-                <!-- Icono de notificaciones con badge -->
-                <div class="notificacion">
-                    <img src="/img/campana.png" class="icono-notificacion" onclick="toggleNotificationMenu()">
-                    <span class="badge">2</span>
-                    <div class="notification-content" id="notificationMenu">
-                        <p class="notification-title">Notificaciones</p>
-                        <div class="notification-item">
-                            <p><strong>Juan Pérez</strong> te ha enviado una solicitud de amistad.</p>
-                        </div>
-                        <div class="notification-item">
-                            <p><strong>María Gómez</strong> comentó en tu plan.</p>
-                        </div>
+            <!-- Icono de notificaciones con badge -->
+            <div class="notificacion">
+                <img src="/img/campana.png" class="icono-notificacion" onclick="toggleNotificationMenu()">
+                <span class="badge">2</span>
+                <div class="notification-content" id="notificationMenu">
+                    <p class="notification-title">Notificaciones</p>
+                    <div class="notification-item">
+                        <p><strong>Juan Pérez</strong> te ha enviado una solicitud de amistad.</p>
+                        <a href="#" class="see-more">Ver más</a>
+                    </div>
+                    <div class="notification-item">
+                        <p><strong>María Gómez</strong> comentó en tu plan.</p>
                         <a href="#" class="see-more">Ver más</a>
                     </div>
                 </div>
+            </div>
 
-                <!-- Menú desplegable "Crear Plan" -->
-                <div class="dropdown">
-                    <button class="dropdown-button" onclick="toggleDropdown()">Crear Plan<span class="arrow">&#9662;</span></button>
-                    <div class="dropdown-content" id="dropdownMenu">
-                        <a href="#">Crear plan</a>
-                        <a href="#">Añadir amigo</a>
-                        <a href="#">Unirse a un plan</a>
-                    </div>
+            <!-- Menú desplegable "Crear Plan" -->
+            <div class="dropdown">
+                <button class="dropdown-button" onclick="toggleDropdown()">Crear Plan<span class="arrow">&#9662;</span></button>
+                <div class="dropdown-content" id="dropdownMenu">
+                    <a href="#">Crear plan</a>
+                    <a href="#">Añadir amigo</a>
+                    <a href="#">Unirse a un plan</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
         @RenderBody()

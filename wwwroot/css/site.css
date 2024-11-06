@@ -23,7 +23,6 @@ html {
 }
 
 
-
 *{
   margin: 0px;
   padding: 0px;
@@ -1270,6 +1269,7 @@ textarea {
 }
 
 /* Botón del dropdown */
+/* Botón del dropdown */
 .dropdown-button {
   background-color: #9c27b0;
   color: white;
@@ -1332,15 +1332,14 @@ textarea {
 
 /*HEADER 2*/
 .engloba-header-2 {
-  display:flex;
+  display: flex;
   justify-content: center;
   padding: 20px 40px;
   background-color: #ffffff;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .header-logueado {
-  width:80%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1348,7 +1347,7 @@ textarea {
 
 /* Logo */
 .logo {
-  width: 80px; /* Ajusta el tamaño del logo */
+  width: 100px; /* Ajusta el tamaño del logo */
   height: auto;
 }
 
@@ -1365,8 +1364,9 @@ textarea {
   align-items: center;
   gap: 10px;
 }
-.nombre-header-2{
-  margin-top:1rem;
+
+.nombre-header-2 {
+  margin-top: 1rem;
 }
 
 .profile-pic {
@@ -1385,8 +1385,14 @@ textarea {
   height: 30px;
   width: auto;
   cursor: pointer;
+  transition: filter 0.3s ease; 
+}
+.icono-notificacion:hover {
+  transform: scale(1.2);
+  transition: transform 0.5s ease;
 }
 
+/* Badge de notificación */
 .badge {
   position: absolute;
   top: -5px;
@@ -1398,10 +1404,11 @@ textarea {
   font-size: 12px;
 }
 
+/* Contenido de la notificación */
 .notification-content {
-  display: none; /* Oculto por defecto */
+  display: none;
   position: absolute;
-  top: 100%; /* Posición debajo de la campana */
+  top: 100%;
   right: 0;
   background-color: #e8d4ff;
   border-radius: 10px;
@@ -1420,7 +1427,6 @@ textarea {
 }
 
 .notification-item {
-  padding: 8px;
   border-bottom: 1px solid #ddd;
   font-size: 14px;
 }
@@ -1463,9 +1469,9 @@ textarea {
 }
 
 .dropdown-content {
-  display: none; /* Oculto por defecto */
+  display: none;
   position: absolute;
-  top: 100%; /* Alineado debajo del botón */
+  top: 100%;
   right: 0;
   background-color: #e8d4ff;
   border-radius: 10px;
@@ -1485,8 +1491,7 @@ textarea {
 }
 
 .dropdown-content a:hover {
-  background-color: #c3b3e8;
+  background-color: #e8d4ff;
   border-radius: 5px;
 }
-
 
