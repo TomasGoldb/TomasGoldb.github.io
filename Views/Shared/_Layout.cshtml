@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="~/JuntifyApp.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-
+<!-- 
         <div class="header-div">
             <a class="a-logo" href='@Url.Action("Home","Home")'>
             <img src="/img/Logo3.png">
@@ -25,28 +24,51 @@
                 </ul>
             </nav>
             <a class="boton-header" href='@Url.Action("Register", "Home")'>Ingresar</a>
-        </div>
+        </div> -->
 
-<!----
+
+<div class="engloba-header-2">
         <div class="header-logueado">
-            <img src="/img/Logo3.png">
+            <!-- Logo de Juntify -->
+            <img src="/img/Logo3.png" class="logo">
+            
+            <!-- Contenedor de perfil, notificaciones y menú -->
             <div class="derecha-header-logueado">
+                <!-- Perfil -->
                 <div class="perfil-container">
-                    <p>Magali Garcia</p>
-                    <img src="/img/rostro.png">
+                    <p class="nombre-header-2">Magalí García</p>
+                    <img src="/img/rostro.png" class="profile-pic">
                 </div>
+
+                <!-- Icono de notificaciones con badge -->
+                <div class="notificacion">
+                    <img src="/img/campana.png" class="icono-notificacion" onclick="toggleNotificationMenu()">
+                    <span class="badge">2</span>
+                    <div class="notification-content" id="notificationMenu">
+                        <p class="notification-title">Notificaciones</p>
+                        <div class="notification-item">
+                            <p><strong>Juan Pérez</strong> te ha enviado una solicitud de amistad.</p>
+                        </div>
+                        <div class="notification-item">
+                            <p><strong>María Gómez</strong> comentó en tu plan.</p>
+                        </div>
+                        <a href="#" class="see-more">Ver más</a>
+                    </div>
+                </div>
+
+                <!-- Menú desplegable "Crear Plan" -->
                 <div class="dropdown">
-                    <button class="dropdown-button">Crear Plan<span class="arrow">&#9662;</span></button>
-                    <div class="dropdown-content">
-                        <a href="#">Opción 1</a>
-                        <a href="#">Opción 2</a>
-                        <a href="#">Opción 3</a>
+                    <button class="dropdown-button" onclick="toggleDropdown()">Crear Plan<span class="arrow">&#9662;</span></button>
+                    <div class="dropdown-content" id="dropdownMenu">
+                        <a href="#">Crear plan</a>
+                        <a href="#">Añadir amigo</a>
+                        <a href="#">Unirse a un plan</a>
                     </div>
                 </div>
             </div>
         </div>
-        --->
-    </header>
+    </div>
+
 
         @RenderBody()
 
