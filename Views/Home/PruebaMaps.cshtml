@@ -2,15 +2,39 @@
     ViewData["Title"] = "Prueba Maps";
 }
 
-<!-- Lugar de la información -->
-<div id="placeDetails">
-    <p><strong>Nombre:</strong> <span id="placeName"></span></p>
-    <p><strong>Calificación:</strong> <span id="placeRating"></span></p>
-    <p><strong>Teléfono:</strong> <span id="placePhone"></span></p>
-</div>
 
-<script>
-    // Aquí puedes llamar a la función `getPlaceDetails` con el `placeId` correspondiente
-    // Por ejemplo, puedes usar un botón o cualquier otro evento para obtener los detalles
-    getPlaceDetails("ChIJN1t_tDeuEmsRUsoyG83frY4");  // Ejemplo de placeId
-</script>
+   <script type="module" src="https://unpkg.com/@@googlemaps/extended-component-library@@0.6"></script> 
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .place-picker-container {
+            padding: 20px;
+        }
+        gmp-map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <h1>dejamos esto de ejemplo por si lo queremos usar</h1>
+    
+    <gmpx-api-loader key="AIzaSyC2Sp2t0k8EtGxiJDpcwDmYc_UzML9QIek" solution-channel="GMP_GE_mapsandplacesautocomplete_v1"></gmpx-api-loader>
+
+
+    <gmp-map id="mapa" center="-34.6099906,-58.4291423" zoom="15" map-id="mapa">
+        <div slot="control-block-start-inline-start" class="place-picker-container">
+            <gmpx-place-picker placeholder="Enter an address"></gmpx-place-picker>
+        </div>
+        <gmp-advanced-marker></gmp-advanced-marker>
+    </gmp-map>
+
+
+    <gmpx-place-overview place="ChIJc3ppC2jKvJURyQ3P9zmN-rY"></gmpx-place-overview>
+
+
+
+
+    <script src="/js/mapa.js"></script>
