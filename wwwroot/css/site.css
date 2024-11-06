@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 html {
   font-size: 14px;
@@ -1101,8 +1100,10 @@ textarea {
 }
 
 .estrellita{
-  width: 8%;
+  width: 10%;
   height: auto;
+  margin-top: 7%;
+  margin-bottom: 7%;
 }
 
 .map-section {
@@ -1330,6 +1331,94 @@ textarea {
   display: block;
 }
 
+
+/*probandooooooooooo*/
+.container {
+  font-family: "Poppins", sans-serif;
+}
+
+.title {
+ 
+  font-size: 1.8rem;
+  color: #8f3af9; /* Color púrpura para el título */
+  font-weight: bold;
+}
+
+.vote-card {
+  background-color: #e8d4fc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.card-img-container {
+  position: relative;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.vote-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #8f3af9;
+  color: #fff;
+  font-weight: bold;
+  padding: 3px 10px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  border: none; /* Elimina cualquier borde */
+  box-shadow: none; /* Elimina cualquier sombra */
+  outline: none; /* Evita bordes de enfoque */
+}
+
+.card-body {
+ 
+  padding: 10px;
+  text-align: center;
+}
+
+.card-title {
+  
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-text {
+  color: #73737c;
+  font-size: 0.9rem;
+  margin-block: auto;
+}
+
+
+.rating {
+  color: #ffc107;
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+.btn-vote {
+  background-color: #8f3af9;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+.btn-vote:hover {
+  background-color: #751bcc;
+}
+
 /*HEADER 2*/
 .engloba-header-2 {
   display: flex;
@@ -1495,3 +1584,21 @@ textarea {
   border-radius: 5px;
 }
 
+/*BARRAS PENSALAS*/
+.progress{
+  display: flex;
+  height:auto;
+  width: 100%;
+  margin-top: 3%;
+  margin-bottom: 4%;
+  background-color: #c3b3e8;
+  border-radius: 10px;
+  padding: 1%;
+  font-size: 0.8rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.progress-bar{
+  border-radius: 10px;
+  background-color: #5a00b8;
+}

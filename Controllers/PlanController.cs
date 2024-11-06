@@ -20,6 +20,13 @@ public class PlanController : Controller
     public IActionResult VerPlan(){
         return View();
     }
+    public IActionResult Votar(){
+        return View();
+    }
+
+    public IActionResult PostVoto(){
+        return View();
+    }
     
     public IActionResult Privacy()
     {

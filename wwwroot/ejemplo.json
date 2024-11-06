@@ -1,0 +1,287 @@
+{
+   "html_attributions" : [],
+   "result" : 
+   {
+      "address_components" : 
+      [
+         {
+            "long_name" : "240",
+            "short_name" : "240",
+            "types" : 
+            [
+               "street_number"
+            ]
+         },
+         {
+            "long_name" : "Yatay",
+            "short_name" : "Yatay",
+            "types" : 
+            [
+               "route"
+            ]
+         },
+         {
+            "long_name" : "Almagro",
+            "short_name" : "Almagro",
+            "types" : 
+            [
+               "sublocality_level_1",
+               "sublocality",
+               "political"
+            ]
+         },
+         {
+            "long_name" : "Buenos Aires",
+            "short_name" : "CABA",
+            "types" : 
+            [
+               "locality",
+               "political"
+            ]
+         },
+         {
+            "long_name" : "Comuna 5",
+            "short_name" : "Comuna 5",
+            "types" : 
+            [
+               "administrative_area_level_2",
+               "political"
+            ]
+         },
+         {
+            "long_name" : "Ciudad Autónoma de Buenos Aires",
+            "short_name" : "Cdad. Autónoma de Buenos Aires",
+            "types" : 
+            [
+               "administrative_area_level_1",
+               "political"
+            ]
+         },
+         {
+            "long_name" : "Argentina",
+            "short_name" : "AR",
+            "types" : 
+            [
+               "country",
+               "political"
+            ]
+         },
+         {
+            "long_name" : "C1184",
+            "short_name" : "C1184",
+            "types" : 
+            [
+               "postal_code"
+            ]
+         }
+      ],
+      "adr_address" : "\u003cspan class=\"street-address\"\u003eYatay 240\u003c/span\u003e, \u003cspan class=\"region\"\u003eAlmagro\u003c/span\u003e\u003cspan class=\"postal-code\"\u003eC1184\u003c/span\u003e \u003cspan class=\"locality\"\u003eCdad. Autónoma de Buenos Aires\u003c/span\u003e, \u003cspan class=\"country-name\"\u003eArgentina\u003c/span\u003e",
+      "business_status" : "OPERATIONAL",
+      "formatted_address" : "Yatay 240, C1184 Cdad. Autónoma de Buenos Aires, Argentina",
+      "formatted_phone_number" : "011 4958-9000",
+      "geometry" : 
+      {
+         "location" : 
+         {
+            "lat" : -34.6099906,
+            "lng" : -58.4291423
+         },
+         "viewport" : 
+         {
+            "northeast" : 
+            {
+               "lat" : -34.60857791970849,
+               "lng" : -58.4277504197085
+            },
+            "southwest" : 
+            {
+               "lat" : -34.61127588029149,
+               "lng" : -58.43044838029152
+            }
+         }
+      },
+      "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/school-71.png",
+      "icon_background_color" : "#7B9EB0",
+      "icon_mask_base_uri" : "https://maps.gstatic.com/mapfiles/place_api/icons/v2/school_pinlet",
+      "international_phone_number" : "+54 11 4958-9000",
+      "name" : "Escuela ORT sede Almagro",
+      "photos" : 
+      [
+         {
+            "height" : 4608,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/102465293947144413693\"\u003eGuillermo Fischer\u003c/a\u003e"
+            ],
+            "photo_reference" : "AdCG2DPtqscfVC_oqeDHfjZimEjoaGbr1tG50KzfMC1nGm4khOPznJ9jWyP9MXg3o4ByTVO2hDeSiFORZm9452TPwV7ofjPWYcIqQJVqHVYI_QaZ0X2r5myPvIxsm-YjYhlaMzkJ3ltqA2ArsZJtxhuscIq3vXl4g-rLJEQi_czQmNJXok1-",
+            "width" : 3456
+         },
+         {
+            "height" : 553,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/115455880900123401697\"\u003eEscuela ORT sede Almagro\u003c/a\u003e"
+            ],
+            "photo_reference" : "AdCG2DN5t0q-jwjGFNsiOlKpa6iuQj5uttobmOS4pyjg1xYqmm5_alcUrO6VKXJxg_slxlo86I38pnw6Pp8_OMeS1VJ2KjcxE1dbQ336xD7XvzvLwMSjr09UcIuW5bZSGnxbIclNZQRgZzd8uhvVu8G7YwQgz_rPdpqwAW02TSteiYcr8h1G",
+            "width" : 750
+         },
+         {
+            "height" : 2448,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/101266114991628523188\"\u003eJuan Avellaneda\u003c/a\u003e"
+            ],
+            "photo_reference" : "AdCG2DOwdW8o-nT6qOunQyNgt7mm9ZIdRbxJCBloDX91yFZZa8VEwNVUSQxDHVufvkmw8Wh-fOngjmHsXPdcipLqb7s_QPhe7iIBKEsnwH6ZmWjbjo1w3joncjoAMWC_E9hZLO_FlT6Z0qVE3Ve5lsQBz5bGJBLmE2DVoydC0JAMtRb26_7v",
+            "width" : 3264
+         },
+         {
+            "height" : 4000,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/110202135496263652050\"\u003eSofia I SF\u003c/a\u003e"
+            ],
+            "photo_reference" : "AdCG2DOd78XJBnb6_sDt1xNbfdSBQuBjuXZYfz8sYCPkD22-4Z8LJBwE0-awhXQ2FhoA-GxRwfMnbPw_BhmBRQ38Dkqy7oMZBnbC3HV5TyhufN35wsCG-tMfEaOjmdiJG5sTmX2Wlfgu1Y5RQup047jGENYMpKjTsXIwTy7nNPCiBrlRpq4j",
+            "width" : 2252
+         },
+         {
+            "height" : 3628,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/110202135496263652050\"\u003eSofia I SF\u003c/a\u003e"
+            ],
+            "photo_reference" : "AdCG2DOGkkUaL3gB7lSuMbjqz0RYEc3BDpa4BS3TpUvSMZIe8lTmcobjDlB0eMr9ci_8M3axrd4NyOAk8uy8dcCgb1c3YzWInMMFOtXrn6_Y2XDuFRUYurZT4r-iEJiAkypR0VZZsVbivUM25mBHK0fJB6n0BCd0s_kMSZZ7NyIej2U9abOn",
+            "width" : 2043
+         },
+         {
+            "height" : 596,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/110848949643806179892\"\u003eGuido Wainstein\u003c/a\u003e"
+            ],
+            "photo_reference" : "AdCG2DO9PtAxjLA_qza-h7-jvDn3SHpgJcQsjL0fI1XJLtfzcvHPCDiaVNp4ZCa5NdC1mjXpwPykQCmDz7hir4wHBg9O2EyCfv92-orhWpUW0pRLFikKNPBTDROM6T4VPM6n1ctWvjMMGdMJVAZk8n9yj0xod_FN0ML3K6VwyZVQRfe4CRMF",
+            "width" : 795
+         },
+         {
+            "height" : 4608,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/102465293947144413693\"\u003eGuillermo Fischer\u003c/a\u003e"
+            ],
+            "photo_reference" : "AdCG2DN0k1u77rAWv4mLSrajwwaUR8hz4jpaO5LwCk9NPqp9vg5Abu46P3mJr5E3MR9z-nSEN2v07AKkcQ_B8qjXbhc96IMXo90IG-LvuxZlc1APJ_3XffZVgiZnSCONPviHqADtkTU6jd7OI5dSM8If6YthcpzxrbDzpKl2XXS05yTJLyLg",
+            "width" : 3456
+         },
+         {
+            "height" : 2448,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/111284363216536250952\"\u003eLang Strife\u003c/a\u003e"
+            ],
+            "photo_reference" : "AdCG2DNpHSkbR7StTjNEGmMRUa-MClbXEDem1zhl_pLO7wZUQypA9e5iI0OkDO0xP1IJvPE0VPDHE1RxovTnjFCHaKIyL3LXLsGEa_paTk6Uvmen-5oE9EiHWHWZFqiRad7e3wdgnGpn7ZjAinSu-JvZDU57_suJtXR7zc7GuogaFVpSTlCO",
+            "width" : 3264
+         },
+         {
+            "height" : 3120,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/110544229472644198913\"\u003eMaría del Valle Brizuela\u003c/a\u003e"
+            ],
+            "photo_reference" : "AdCG2DMTUOMoLtZcYvjK79Tabt5Q-SQCOSb_CF3GXwiK5GeqW9WMsXlJ7rcXwiYbUr1Yk2hlXMiABUMm7hnyU4a6ks0EQthPYA5WQAzbmJ3Ln7Dw15gIniLYl8KzHsniLwjHwxe4GC6AiELvU_lQS9z4btmybJZ7m9_mLJI7vyj06DrCpdJ8",
+            "width" : 4160
+         },
+         {
+            "height" : 596,
+            "html_attributions" : 
+            [
+               "\u003ca href=\"https://maps.google.com/maps/contrib/110848949643806179892\"\u003eGuido Wainstein\u003c/a\u003e"
+            ],
+            "photo_reference" : "AdCG2DONZhtBfNdU_i4LxPeEz2pvU5oMtBmHlh1N1uF1YoQa2QpxE5mCxoyf7vXfxLmABtl94OtPu_OkyXf6a2sXcNci3CM8_JMAQb6zaw5zEeNeNtXgUE3sZnG-Nntzsb1itQQ1gPVLo4K0mPIg8YuFr_oxNa_MLOl3SOJbyXRlkL1P1dav",
+            "width" : 795
+         }
+      ],
+      "place_id" : "ChIJc3ppC2jKvJURyQ3P9zmN-rY",
+      "plus_code" : 
+      {
+         "compound_code" : "9HRC+28 Buenos Aires, Ciudad Autónoma de Buenos Aires, Argentina",
+         "global_code" : "48Q39HRC+28"
+      },
+      "rating" : 3.8,
+      "reference" : "ChIJc3ppC2jKvJURyQ3P9zmN-rY",
+      "reviews" : 
+      [
+         {
+            "author_name" : "Flavia Anabella Fernandez",
+            "author_url" : "https://www.google.com/maps/contrib/117522723351889829631/reviews",
+            "language" : "es",
+            "original_language" : "es",
+            "profile_photo_url" : "https://lh3.googleusercontent.com/a-/ALV-UjV-A9Eo3aELfOHMp_SyHaJGg8yPmi9yOJQ7P8dkL2Ewzy2oz7Ej=s128-c0x00000000-cc-rp-mo-ba3",
+            "rating" : 1,
+            "relative_time_description" : "Hace 3 meses",
+            "text" : "No recomiendo la carrera de analista. Un desastre todo, te quieren hacer recursar como sea ( hay muchísimos recursantes)   y si te das de baja te siguen enviando las facturas. Dice que no se necesitan conocimientos previos de programación ( no caigan en esa )",
+            "time" : 1722452132,
+            "translated" : false
+         },
+         {
+            "author_name" : "Shoba R.",
+            "author_url" : "https://www.google.com/maps/contrib/105539761308574604418/reviews",
+            "language" : "es",
+            "original_language" : "es",
+            "profile_photo_url" : "https://lh3.googleusercontent.com/a-/ALV-UjUEW1xncsFT5ZhKFxg-WBktxnXzwGssLP73flyHBNOUOBIlPs4C=s128-c0x00000000-cc-rp-mo-ba3",
+            "rating" : 1,
+            "relative_time_description" : "Hace 5 meses",
+            "text" : "Empezando por la comunicación...nunca me contestaron un mail...ingrese en la carrera de analista de sistemas...hice algunas consultas y solo me contestaban para mandarme las facturas. Era una carrera que tenía que ser de $120000...pague la matrícula y antes de arrancar aumentó a $145000. Segundo mes, lo subieron a $175000... Estafa total...en un año de carrera no hubiera podido seguir pagando. sin excusas y de a 40 lucas.. Una lastima...",
+            "time" : 1715876331,
+            "translated" : false
+         },
+         {
+            "author_name" : "m4",
+            "author_url" : "https://www.google.com/maps/contrib/114773773612648170924/reviews",
+            "language" : "es",
+            "original_language" : "es",
+            "profile_photo_url" : "https://lh3.googleusercontent.com/a-/ALV-UjX8IsXQhg9YUMQwNAju-Gm9MtzEAcLVQ7zPysMC17DQ6Ze37TZFEw=s128-c0x00000000-cc-rp-mo-ba3",
+            "rating" : 1,
+            "relative_time_description" : "Hace 7 meses",
+            "text" : "Estudié la carrera de Analista de Sistemas, modalidad virtual. No la recomiendo para nada, es desastrosa tanto a nivel administrativo como a nivel docente. Empecé cuando salía 15.000 pesos la cuota, ahora está arriba de los 100.000, te cobran cosas que NO te deberían cobrar porque la cursada es virtual, o te aumentan casi todos los meses con la excusa de \" las consecuencias de la evolución de la paritaria docente \" cuando los profesores faltan sin avisar, cambian horarios a último momento, no corrigen parciales o se confunden con las notas o te hacen re-hacer un parcial porque ni siquiera te la tomaron.\n\nAlgunos docentes son ex-alumnos de la ORT que no tienen ni idea de lo que hacen, y la administración nunca escucha quejas de sus alumnos ( su fuente de ingresos ) cuando hablan del mal nivel educativo que manejan estas personas. Solo muy pocos docentes son destacables a nivel profesional.\n\nPésimo servicio para lo elevada que es la matrícula.",
+            "time" : 1710489809,
+            "translated" : false
+         },
+         {
+            "author_name" : "Julieta Ponce",
+            "author_url" : "https://www.google.com/maps/contrib/114649009600196742706/reviews",
+            "language" : "es",
+            "original_language" : "es",
+            "profile_photo_url" : "https://lh3.googleusercontent.com/a-/ALV-UjVWH0WBpkivuwr9XxHePYA5wLbHlqljuhF9RjfVRoNQryc-bZA=s128-c0x00000000-cc-rp-mo",
+            "rating" : 1,
+            "relative_time_description" : "Hace un año",
+            "text" : "estuve un año para la carrera de Análisis de Sistemas, mi recomendación es que ni se gasten en este lugar. Aumentan como tienen ganas (comencé pagando 15k y ahora está 75k), valdría la pena si tuvieran buen profesorado, pero sólo me tocaron 2 profesores que sabían, el resto son ex alumnos que llegaban tarde, o sólo te ponían videos. La gota que rebasó el vaso fue un ex alumno como profesor que no sabia nada, y lo poco que sabía, no sabía explicarlo (se le preguntó cómo llegar a la carpeta contenedora desde Eclipse y no supo). Nos quejamos con dirección y le echaron la culpa a los recursantes, diciendo que estaban saboteando la clase.\nNo gasten su dinero y energia en este instituto",
+            "time" : 1698098049,
+            "translated" : false
+         },
+         {
+            "author_name" : "Tomas Verly",
+            "author_url" : "https://www.google.com/maps/contrib/109700109162957345049/reviews",
+            "language" : "es",
+            "original_language" : "es",
+            "profile_photo_url" : "https://lh3.googleusercontent.com/a-/ALV-UjWcIxLmperv4emhpANSG6TrmRpwrLpJkGfcSH6wRxtn8M_b7l-i=s128-c0x00000000-cc-rp-mo",
+            "rating" : 1,
+            "relative_time_description" : "Hace un año",
+            "text" : "Capaz en su momento tenía buen nivel pero ya no es el caso, se les subió a la cabeza tener 1000 alumnos más por más plata que dejaron de lado el nivel educativo, que es deplorable desde mínimo la pandemia. Necesité una cadena de 20 mails para que me cambien de curso...inutilidad total. Lo único que hicieron rápido es cuando solicité la baja de la facultad. Son un desastre y van para cada vez peor",
+            "time" : 1682381684,
+            "translated" : false
+         }
+      ],
+      "types" : 
+      [
+         "secondary_school",
+         "school",
+         "point_of_interest",
+         "establishment"
+      ],
+      "url" : "https://maps.google.com/?cid=13185006139190742473",
+      "user_ratings_total" : 235,
+      "utc_offset" : -180,
+      "vicinity" : "Yatay 240",
+      "website" : "http://www.ort.edu.ar/",
+      "wheelchair_accessible_entrance" : true
+   },
+   "status" : "OK"
+}
