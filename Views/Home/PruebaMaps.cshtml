@@ -1,51 +1,16 @@
+@{
+    ViewData["Title"] = "Prueba Maps";
+}
 
+<!-- Lugar de la información -->
+<div id="placeDetails">
+    <p><strong>Nombre:</strong> <span id="placeName"></span></p>
+    <p><strong>Calificación:</strong> <span id="placeRating"></span></p>
+    <p><strong>Teléfono:</strong> <span id="placePhone"></span></p>
+</div>
 
-<h3>Buscar un Lugar en Google Maps</h3>
-    <div id="map"></div>
-
-    <script>
-      // Definir la función initMap
-      function initMap() {
-        // Crear un objeto de mapa centrado en una ubicación inicial
-        var map = new google.maps.Map(document.getElementById("map"), {
-          center: { lat: -34.397, lng: 150.644 },
-          zoom: 15,
-        });
-
-        // Crear un objeto de servicio de Places
-        var service = new google.maps.places.PlacesService(map);
-
-        // Realizar una búsqueda de un lugar por nombre o tipo
-        var request = {
-          query: "ORT Almagro", // Nombre del lugar que deseas buscar
-          fields: ["name", "formatted_address", "place_id", "geometry"], // Campos que deseas obtener
-        };
-
-        // Realizar la búsqueda
-        service.findPlaceFromQuery(request, function (results, status) {
-          if (status === google.maps.places.PlacesServiceStatus.OK) {
-            // Si se encuentra el lugar, se centra en él y agrega un marcador
-            map.setCenter(results[0].geometry.location);
-
-            var marker = new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location,
-            });
-
-            // Obtener detalles del lugar con el PlaceDetailsService
-            var placeId = results[0].place_id;
-            service.getDetails({ placeId: placeId }, function (place, status) {
-              if (status === google.maps.places.PlacesServiceStatus.OK) {
-                // Aquí puedes obtener la información del lugar
-                console.log(place); // Muestra toda la información del lugar en la consola
-
-                // Ejemplo: Mostrar el nombre y la dirección
-                alert("Lugar: " + place.name + "\nDirección: " + place.formatted_address);
-              }
-            });
-          } else {
-            alert("No se encontró el lugar: " + status);
-          }
-        });
-      }
-    </script>
+<script>
+    // Aquí puedes llamar a la función `getPlaceDetails` con el `placeId` correspondiente
+    // Por ejemplo, puedes usar un botón o cualquier otro evento para obtener los detalles
+    getPlaceDetails("ChIJN1t_tDeuEmsRUsoyG83frY4");  // Ejemplo de placeId
+</script>
