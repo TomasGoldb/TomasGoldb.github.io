@@ -23,5 +23,8 @@ public class Sesion
         public static List<ResenasXUsuario> ListarResenasUsuario(int idlugar){
             return BD.ListarResenasXLugar(idlugar);
         }
+        //public static double[] promedioCoordenadas(double[] coords){
+//
+        //}
 
     }
