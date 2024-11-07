@@ -12,9 +12,9 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+/*.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
+}*/
 
 html {
   position: relative;
@@ -1601,4 +1601,27 @@ textarea {
 .progress-bar{
   border-radius: 10px;
   background-color: #5a00b8;
+}
+
+.boton-invertido{
+  display: block;
+  background-color: white;
+  width: 15%;
+  padding: 0.8%;
+  border: 2px solid #7A02ED;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #7A02ED;
+  transition: background-color 0.5s ease-in;
+  transition: color 0.2s ease-in;
+  margin-bottom: 2.5%;
+}
+
+.boton-invertido:hover {
+  background-color: #7A02ED;
+  color:white;
+}
+.btn-vote:hover{
+  color:white;
+  
 }
