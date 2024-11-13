@@ -135,7 +135,30 @@
     </div>
 
 
+
     <script>
+
+   
+    let url="https://maps.googleapis.com/maps/api/place/details/json?place_id="+ @ViewBag.idLugarMaps +"&key=AIzaSyC2Sp2t0k8EtGxiJDpcwDmYc_UzML9QIek";
+
+
+    fetch(url, {
+        method: 'GET',        // or 'POST', depending on your needs
+        mode: 'no-cors',      // This will bypass CORS restrictions
+        headers: {
+            'Content-Type': 'application/json'  // Add any necessary headers
+        }
+        })  // Ruta del archivo JSON
+  .then(response => {
+    
+    if (!response.ok) {
+        throw new Error('Error en la carga del archivo JSON');
+    }
+    return response.json();  // Parseamos la respuesta como JSON
+  }).then(data =>{
+    console.log(data);
+  });
+    
     const textoCompleto = "Este es el texto completo que queremos mostrar. Aquí hay más información que será visible solo al hacer clic en el botón 'Ver más'.";
 const longitudVisible = 100; // Número máximo de caracteres a mostrar inicialmente
 
