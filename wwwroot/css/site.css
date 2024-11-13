@@ -1625,3 +1625,108 @@ textarea {
   color:white;
   
 }
+
+/*PROGRAMANDOOOO*/
+/* Estilos globales */
+.dash {
+  font-family: Arial, sans-serif;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2.5%;
+}
+
+.containerDash {
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+}
+
+.h2Dash {
+  color: #8f3af9;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.h3Dash {
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.participants, .preferences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: start;
+  margin-bottom: 20px;
+}
+
+.participant, .preference {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #e1d5f9;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.participant img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.status {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-left: auto;
+}
+
+.status-confirmed {
+  background-color: #66e265;
+  margin-left: 5px;
+}
+
+.status-pending {
+  background-color: #f4c542;
+  margin-left: 5px;
+}
+
+.preference img {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.buttonsDash {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btnDash {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: #8f3af9;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btnDash:hover {
+  background-color: #7328c9;
+}
