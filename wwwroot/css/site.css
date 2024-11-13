@@ -1725,8 +1725,10 @@ textarea {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
+  text-decoration: none;
 }
 
 .btnDash:hover {
   background-color: #7328c9;
+  color:black;
 }
