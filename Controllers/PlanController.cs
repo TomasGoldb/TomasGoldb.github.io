@@ -27,7 +27,18 @@ public class PlanController : Controller
     public IActionResult PostVoto(){
         return View();
     }
+
+    public IActionResult DashPlan(){
+        return View();
+    }
+    public IActionResult DashPlan2(){
+        return View();
+    }
     
+    public IActionResult DashPlan3(){
+        return View();
+    }
+
     public IActionResult Privacy()
     {
         return View();
