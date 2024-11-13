@@ -1,3 +1,98 @@
+<script>
+        // Esta función se ejecutará cuando la API se haya cargado correctamente
+        function initMap() {
+            // Asegurarnos de que el objeto google esté disponible
+            if (typeof google === "undefined" || !google.maps) {
+                console.error("La API de Google Maps no se ha cargado correctamente.");
+                return;
+            }
+
+            // Crear un mapa invisible solo para inicializar el servicio de lugares
+            const map = new google.maps.Map(document.createElement('div')); 
+
+            // Inicializar el servicio de lugares
+            placeService = new google.maps.places.PlacesService(map);
+            console.log('El servicio de lugares está disponible:', placeService); // Verificación en consola
+        }
+
+        function fetchPlaceDetails(placeId) {
+            if (!placeService) {
+                console.error("El servicio de lugares no está disponible.");
+                return;
+            }
+
+            const request = {
+        placeId: placeId
+    };
+
+    // Realizar la solicitud para obtener detalles del lugar
+    placeService.getDetails(request, (place, status) => {
+        const resultDiv = document.getElementById('result');
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            resultDiv.innerHTML = `
+                <h2>${place.name}</h2>
+                <p><strong>Dirección:</strong> ${place.formatted_address || 'No disponible'}</p>
+                <p><strong>Teléfono:</strong> ${place.formatted_phone_number || 'No disponible'}</p>
+                <p><strong>Reviews</strong> ${place.reviews[0].author_name || 'No disponible'}</p>
+                <p><strong>Calificación:</strong> ${place.rating || 'No disponible'} (${place.user_ratings_total || 0} reseñas)</p>
+                <p><strong>Sitio web:</strong> ${place.website ? `<a href="${place.website}" target="_blank">${place.website}</a>` : 'No disponible'}</p>
+            `;
+
+            for(let i=0;i<place.reviews.length;i++){
+                reviews.innerHTML+=`
+                <div class="review">
+                <div class= "container-foto-user">
+                    <div class="avatar">J</div>
+                        <p class="user-nombre"><b>${place.reviews[i].author_name}</b></p>
+                </div>
+                    <div class="review-content">
+                        <p id="texto">${place.reviews[i].text}</p>
+                        <a id="verMasBtn" href="#">Ver más...</a>
+                    <div class= "container-foto-user">
+                        <div class="avatar">
+                            <img class="imagenPerfil" src="${profile_photo_urlx}">
+                            <p class="user-nombre"><b>Martin Rojas</b></p>
+                        </div>
+                        <div class="rating">
+                        @{
+                            double cantEstrellas=3.5;
+                            for(int i=0;i<5;i++){
+                                if(cantEstrellas>=1){
+                                    <img class="estrellita" src="/img/estrellitaFull.svg">
+                                    cantEstrellas-=1;
+                                }
+                                else if(cantEstrellas==0.5){
+                                    <img class="estrellita" src="/img/mediaEstrellita.svg">
+                                    cantEstrellas-=0.5;
+                                }else{
+                                    <img class="estrellita" src="/img/estrellitaVacia.svg">
+                                    
+                                }
+                               
+                            }
+                        }
+                        </div>
+                    </div>
+                <div class="review-content">
+                    <p>La comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del día.La comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del díaLa comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del día</p>
+                    <a href="#">Ver más...</a>
+                </div>
+                </div>
+                `
+            }
+
+        } else {
+            resultDiv.innerHTML = '<p class="error">No se pudo obtener los detalles del lugar. Estado: ' + status + '</p>';
+        }
+
+        // Limpiar resultados
+        document.getElementById('predictions').innerHTML = '';
+        document.getElementById('placeInput').value = '';
+    });
+    
+        }
+    </script>
+
 <h1 class="titulo-homehome">Detalles del Lugar</h1>
 
 <div class="container">
@@ -133,31 +228,22 @@
             </div>
         </div>
     </div>
+    <div id="result"></div>
+    <div id="predictions"></div>
+    <input id="placeInput" type="text" placeholder="Buscar lugar">
 
-
-
+<script src="/js/maps.js"></script>
     <script>
-
-   
-    let url="https://maps.googleapis.com/maps/api/place/details/json?place_id="+ @ViewBag.idLugarMaps +"&key=AIzaSyC2Sp2t0k8EtGxiJDpcwDmYc_UzML9QIek";
-
-
-    fetch(url, {
-        method: 'GET',        // or 'POST', depending on your needs
-        mode: 'no-cors',      // This will bypass CORS restrictions
-        headers: {
-            'Content-Type': 'application/json'  // Add any necessary headers
+ // Ejecutamos la función de ejemplo después de que la API de Google Maps esté cargada
+        function testPlaceDetails() {
+            fetchPlaceDetails("ChIJc3ppC2jKvJURyQ3P9zmN-rY");
         }
-        })  // Ruta del archivo JSON
-  .then(response => {
-    
-    if (!response.ok) {
-        throw new Error('Error en la carga del archivo JSON');
-    }
-    return response.json();  // Parseamos la respuesta como JSON
-  }).then(data =>{
-    console.log(data);
-  });
+
+        // Esperamos a que la API cargue para ejecutar la prueba
+        window.onload = function () {
+            testPlaceDetails(); 
+        }
+   
     
     const textoCompleto = "Este es el texto completo que queremos mostrar. Aquí hay más información que será visible solo al hacer clic en el botón 'Ver más'.";
 const longitudVisible = 100; // Número máximo de caracteres a mostrar inicialmente
@@ -190,3 +276,13 @@ document.getElementById('verMasBtn').addEventListener('click', function() {
 
 
     </script>
+
+
+
+    
+
+
+    <div id="result"></div>
+    <div id="predictions"></div>
+    <input id="placeInput" type="text" placeholder="Buscar lugar">
+
