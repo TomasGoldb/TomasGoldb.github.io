@@ -36,6 +36,36 @@ function fetchPlaceDetails(placeId) {
                 <p><strong>Calificación:</strong> ${place.rating || 'No disponible'} (${place.user_ratings_total || 0} reseñas)</p>
                 <p><strong>Sitio web:</strong> ${place.website ? `<a href="${place.website}" target="_blank">${place.website}</a>` : 'No disponible'}</p>
             `;
+            let reviews=document.getElementById("reviews");
+            console.log(place.reviews);
+            for(let i=0;i<place.reviews.length;i++){
+                let revi=`
+                <div class="review">
+                <div class= "container-foto-user">
+                    <div class="avatar">J</div>
+                        <p class="user-nombre"><b>${place.reviews[i].author_name}</b></p>
+                </div>
+                    <div class="review-content">
+                        <p id="texto">${place.reviews[i].text}</p>
+                        <a id="verMasBtn" href="#">Ver más...</a>
+                    <div class= "container-foto-user">
+                        <div class="avatar">
+                            <img class="imagenPerfil" src="${place.reviews[i].profile_photo_url}">
+                            <p class="user-nombre"><b>Martin Rojas</b></p>
+                        </div>
+                        <div class="rating">
+                       
+                        </div>
+                    </div>
+                <div class="review-content">
+                    <p>La comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del día.La comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del díaLa comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del día</p>
+                    <a href="#">Ver más...</a>
+                </div>
+                </div>
+                `;
+                reviews.innerHTML+=revi;
+                console.log(revi);
+            }
         } else {
             resultDiv.innerHTML = '<p class="error">No se pudo obtener los detalles del lugar. Estado: ' + status + '</p>';
         }

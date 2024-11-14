@@ -37,9 +37,10 @@
                 <p><strong>Calificación:</strong> ${place.rating || 'No disponible'} (${place.user_ratings_total || 0} reseñas)</p>
                 <p><strong>Sitio web:</strong> ${place.website ? `<a href="${place.website}" target="_blank">${place.website}</a>` : 'No disponible'}</p>
             `;
-
+            let reviews=document.getElementById("reviews");
+            console.log(place.reviews);
             for(let i=0;i<place.reviews.length;i++){
-                reviews.innerHTML+=`
+                let revi=`
                 <div class="review">
                 <div class= "container-foto-user">
                     <div class="avatar">J</div>
@@ -50,27 +51,11 @@
                         <a id="verMasBtn" href="#">Ver más...</a>
                     <div class= "container-foto-user">
                         <div class="avatar">
-                            <img class="imagenPerfil" src="${profile_photo_urlx}">
+                            <img class="imagenPerfil" src="${profile_photo_url}">
                             <p class="user-nombre"><b>Martin Rojas</b></p>
                         </div>
                         <div class="rating">
-                        @{
-                            double cantEstrellas=3.5;
-                            for(int i=0;i<5;i++){
-                                if(cantEstrellas>=1){
-                                    <img class="estrellita" src="/img/estrellitaFull.svg">
-                                    cantEstrellas-=1;
-                                }
-                                else if(cantEstrellas==0.5){
-                                    <img class="estrellita" src="/img/mediaEstrellita.svg">
-                                    cantEstrellas-=0.5;
-                                }else{
-                                    <img class="estrellita" src="/img/estrellitaVacia.svg">
-                                    
-                                }
-                               
-                            }
-                        }
+                       
                         </div>
                     </div>
                 <div class="review-content">
@@ -78,7 +63,9 @@
                     <a href="#">Ver más...</a>
                 </div>
                 </div>
-                `
+                `;
+                reviews.innerHTML+=revi;
+                console.log(revi);
             }
 
         } else {
@@ -100,114 +87,8 @@
 
         <div class="content">
         
-            <div class="reviews">
-                <div class="review">
-                <div class= "container-foto-user">
-                    <div class="avatar">J</div>
-                        <p class="user-nombre"><b>Martin Rojas</b></p>
-                </div>
-                    <div class="review-content">
-                        <p id="texto">La comida de este lugar es increíble!</p>
-                        <a id="verMasBtn" href="#">Ver más...</a>
-                    <div class= "container-foto-user">
-                        <div class="avatar">
-                            <img class="imagenPerfil" src="/img/perfil.webp">
-                            <p class="user-nombre"><b>Martin Rojas</b></p>
-                        </div>
-                        <div class="rating">
-                        @{
-                            double cantEstrellas=3.5;
-                            for(int i=0;i<5;i++){
-                                if(cantEstrellas>=1){
-                                    <img class="estrellita" src="/img/estrellitaFull.svg">
-                                    cantEstrellas-=1;
-                                }
-                                else if(cantEstrellas==0.5){
-                                    <img class="estrellita" src="/img/mediaEstrellita.svg">
-                                    cantEstrellas-=0.5;
-                                }else{
-                                    <img class="estrellita" src="/img/estrellitaVacia.svg">
-                                    
-                                }
-                               
-                            }
-                        }
-                        </div>
-                    </div>
-                <div class="review-content">
-                    <p>La comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del día.La comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del díaLa comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del día</p>
-                    <a href="#">Ver más...</a>
-                </div>
-                </div>
-                <div class="review">
-                    <div class= "container-foto-user">
-                        <div class="avatar">
-                            <img class="imagenPerfil" src="/img/perfil.webp">
-                            <p class="user-nombre"><b>Martin Rojas</b></p>
-                        </div>
-                        <div class="rating">⭐⭐⭐⭐⭐</div>
-                    </div>
-                <div class="review-content">
-                    <p>Me gusta que las opciones para comer vayan cambiando dependiendo del día.</p>
-                    <a href="#">Ver más...</a>
-                </div>
-                </div>
+            <div class="reviews" id="reviews">
                 
-               <div class="review">
-                    <div class= "container-foto-user">
-                        <div class="avatar">
-                            <img class="imagenPerfil" src="/img/perfil.webp">
-                            <p class="user-nombre"><b>Martin Rojas</b></p>
-                        </div>
-                        <div class="rating">⭐⭐⭐⭐⭐</div>
-                    </div>
-                <div class="review-content">
-                    <p>La comida de este lugar es increíble!</p>
-                    <a href="#">Ver más...</a>
-                </div>
-                </div>
-
-               <<div class="review">
-                    <div class= "container-foto-user">
-                        <div class="avatar">
-                            <img class="imagenPerfil" src="/img/perfil.webp">
-                            <p class="user-nombre"><b>Martin Rojas</b></p>
-                        </div>
-                        <div class="rating">⭐⭐⭐⭐⭐</div>
-                    </div>
-                <div class="review-content">
-                    <p>La comida de este lugar es increíble!</p>
-                    <a href="#">Ver más...</a>
-                </div>
-                </div>
-
-                <div class="review">
-                    <div class= "container-foto-user">
-                        <div class="avatar">
-                            <img class="imagenPerfil" src="/img/perfil.webp">
-                            <p class="user-nombre"><b>Martin Rojas</b></p>
-                        </div>
-                        <div class="rating">⭐⭐⭐⭐⭐</div>
-                    </div>
-                <div class="review-content">
-                    <p>La comida de este lugar es increíble!</p>
-                    <a href="#">Ver más...</a>
-                </div>
-                </div>
-
-               <div class="review">
-                    <div class= "container-foto-user">
-                        <div class="avatar">
-                            <img class="imagenPerfil" src="/img/perfil.webp">
-                            <p class="user-nombre"><b>Martin Rojas</b></p>
-                        </div>
-                        <div class="rating">⭐⭐⭐⭐⭐</div>
-                    </div>
-                <div class="review-content">
-                    <p>La comida de este lugar es increíble!</p>
-                    <a href="#">Ver más...</a>
-                </div>
-                </div>
             </div>
 
             <div class="map-section">
@@ -231,6 +112,7 @@
     <div id="result"></div>
     <div id="predictions"></div>
     <input id="placeInput" type="text" placeholder="Buscar lugar">
+    </div>
 
 <script src="/js/maps.js"></script>
     <script>
