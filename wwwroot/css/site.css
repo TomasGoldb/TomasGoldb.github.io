@@ -1732,3 +1732,99 @@ textarea {
   background-color: #7328c9;
   color:black;
 }
+/*Probando*/
+.plan-details-section {
+  display:flex;
+  flex-direction: column;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  width:80%;
+  margin-left: 15%;
+}
+
+.plan-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #7e00ff;
+  margin-bottom: 20px;
+}
+
+.plan-info-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.plan-info {
+  max-width: 50%;
+  line-height: 2;
+}
+
+.plan-info-item {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.info-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.plan-map {
+  max-width: 45%;
+  margin-bottom: 2%;
+}
+
+.map-image {
+  width: 70%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.plan-participants {
+  display: flex;
+  margin-top: 20px;
+  flex-direction: row;
+  width: 50%;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.participant-item {
+  background-color: #e2d4ff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.participant-photo {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.start-plan-button-container {
+  text-align: center;
+}
+
+.start-plan-button {
+  background-color: #7e00ff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.start-plan-button:hover {
+  background-color: #6900cc;
+}

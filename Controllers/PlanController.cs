@@ -38,6 +38,9 @@ public class PlanController : Controller
     public IActionResult DashPlan3(){
         return View();
     }
+    public IActionResult DashPlan4(){
+        return View();
+    }
 
     public IActionResult Privacy()
     {
