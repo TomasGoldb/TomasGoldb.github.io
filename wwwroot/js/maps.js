@@ -14,6 +14,19 @@ function initMap() {
     console.log('El servicio de lugares está disponible:', placeService); // Verificación en consola
 }
 
+const verMas = (num) => {
+    const textoAdicionalElement = document.getElementById('textoAdicional'+num);
+    let verMasBoton=document.getElementById("verMasBtn"+num);
+    if (textoAdicionalElement.style.display === 'none') {
+        textoAdicionalElement.style.display = 'inline';
+        verMasBoton.textContent = 'Ver menos';
+    } else {
+        textoAdicionalElement.style.display = 'none';
+        verMasBoton.textContent = 'Ver más';
+    }
+
+}
+
 function fetchPlaceDetails(placeId) {
     if (!placeService) {
         console.error("El servicio de lugares no está disponible.");
@@ -28,6 +41,7 @@ function fetchPlaceDetails(placeId) {
     placeService.getDetails(request, (place, status) => {
         const resultDiv = document.getElementById('result');
         if (status === google.maps.places.PlacesServiceStatus.OK) {
+            console.log(place);
             resultDiv.innerHTML = `
                 <h2>${place.name}</h2>
                 <p><strong>Dirección:</strong> ${place.formatted_address || 'No disponible'}</p>
@@ -39,8 +53,20 @@ function fetchPlaceDetails(placeId) {
             let reviews=document.getElementById("reviews");
             
 
-
-            const textoCompleto = "Este es el texto completo que queremos mostrar. Aquí hay más información que será visible solo al hacer clic en el botón 'Ver más'.";
+            for(let i=0;i<place.reviews.length;i++){
+                let revi=`
+                <div class="review">
+                    <div class= "container-foto-user">
+                        <div class="avatar">
+                                <img class="imagenPerfil" src="${place.reviews[i].profile_photo_url}">
+                                <p class="user-nombre"><b>${place.reviews[i].author_name}</b></p>
+                        </div>
+                        <div class="rating">
+                       
+                        </div>
+                    </div>
+                    <div class="review-content">`;
+            const textoCompleto = place.reviews[i].text;
             const longitudVisible = 100; // Número máximo de caracteres a mostrar inicialmente
             
             // Función para obtener el texto visible sin cortar palabras
@@ -56,39 +82,23 @@ function fetchPlaceDetails(placeId) {
             const textoAdicional = textoCompleto.substring(textoVisible.length);
             
             // Muestra la parte visible y oculta el resto
-            document.getElementById('texto').innerHTML = textoVisible + '<span id="textoAdicional" style="display:none;">' + textoAdicional + '</span>';
+            if(textoCompleto.length >= longitudVisible){
+             revi += "<p>"+textoVisible + '<span id="textoAdicional'+i+'" style="display:none;">' + textoAdicional + '</span>'+"</p>";
+             console.log(i+"a");
+            }else{
+                console.log(i+"a");
+                revi += "<p>"+textoCompleto +"</p>";
+            }
             
-            document.getElementById('verMasBtn').addEventListener('click', function() {
-                const textoAdicionalElement = document.getElementById('textoAdicional');
-                if (textoAdicionalElement.style.display === 'none') {
-                    textoAdicionalElement.style.display = 'inline';
-                    this.textContent = 'Ver menos';
-                } else {
-                    textoAdicionalElement.style.display = 'none';
-                    this.textContent = 'Ver más';
-                }
-            });
+            
 
 
 
 
 
 
-            for(let i=0;i<place.reviews.length;i++){
-                let revi=`
-                <div class="review">
-                    <div class= "container-foto-user">
-                        <div class="avatar">
-                                <img class="imagenPerfil" src="${place.reviews[i].profile_photo_url}">
-                                <p class="user-nombre"><b>${place.reviews[i].author_name}</b></p>
-                        </div>
-                        <div class="rating">
-                       
-                        </div>
-                    </div>
-                    <div class="review-content">
-                        <p id="texto">${place.reviews[i].text}</p>
-                        <a id="verMasBtn" href="#">Ver más...</a> 
+                revi+=`
+                        <a id="verMasBtn${i}" href="#" onclick="verMas(${i})">Ver más...</a> 
                         
                     </div>
                 
@@ -97,6 +107,7 @@ function fetchPlaceDetails(placeId) {
                 reviews.innerHTML+=revi;
                 console.log(revi);
             }
+            
         } else {
             resultDiv.innerHTML = '<p class="error">No se pudo obtener los detalles del lugar. Estado: ' + status + '</p>';
         }
@@ -104,6 +115,8 @@ function fetchPlaceDetails(placeId) {
         // Limpiar resultados
         document.getElementById('predictions').innerHTML = '';
         document.getElementById('placeInput').value = '';
+
+        
     });
     
 
