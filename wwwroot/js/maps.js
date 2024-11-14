@@ -37,30 +37,61 @@ function fetchPlaceDetails(placeId) {
                 <p><strong>Sitio web:</strong> ${place.website ? `<a href="${place.website}" target="_blank">${place.website}</a>` : 'No disponible'}</p>
             `;
             let reviews=document.getElementById("reviews");
-            console.log(place.reviews);
+            
+
+
+            const textoCompleto = "Este es el texto completo que queremos mostrar. Aquí hay más información que será visible solo al hacer clic en el botón 'Ver más'.";
+            const longitudVisible = 100; // Número máximo de caracteres a mostrar inicialmente
+            
+            // Función para obtener el texto visible sin cortar palabras
+            function obtenerTextoVisible(texto, longitud) {
+                if (texto.length <= longitud) return texto; // Si el texto es más corto, devuélvelo todo
+                
+                let puntoCorte = texto.lastIndexOf(' ', longitud); // Encuentra el último espacio antes de la longitud
+                return puntoCorte > 0 ? texto.substring(0, puntoCorte) : texto.substring(0, longitud); // Devuelve el texto hasta el último espacio
+            }
+            
+            // Divide el texto en partes
+            const textoVisible = obtenerTextoVisible(textoCompleto, longitudVisible);
+            const textoAdicional = textoCompleto.substring(textoVisible.length);
+            
+            // Muestra la parte visible y oculta el resto
+            document.getElementById('texto').innerHTML = textoVisible + '<span id="textoAdicional" style="display:none;">' + textoAdicional + '</span>';
+            
+            document.getElementById('verMasBtn').addEventListener('click', function() {
+                const textoAdicionalElement = document.getElementById('textoAdicional');
+                if (textoAdicionalElement.style.display === 'none') {
+                    textoAdicionalElement.style.display = 'inline';
+                    this.textContent = 'Ver menos';
+                } else {
+                    textoAdicionalElement.style.display = 'none';
+                    this.textContent = 'Ver más';
+                }
+            });
+
+
+
+
+
+
             for(let i=0;i<place.reviews.length;i++){
                 let revi=`
                 <div class="review">
-                <div class= "container-foto-user">
-                    <div class="avatar">J</div>
-                        <p class="user-nombre"><b>${place.reviews[i].author_name}</b></p>
-                </div>
-                    <div class="review-content">
-                        <p id="texto">${place.reviews[i].text}</p>
-                        <a id="verMasBtn" href="#">Ver más...</a>
                     <div class= "container-foto-user">
                         <div class="avatar">
-                            <img class="imagenPerfil" src="${place.reviews[i].profile_photo_url}">
-                            <p class="user-nombre"><b>Martin Rojas</b></p>
+                                <img class="imagenPerfil" src="${place.reviews[i].profile_photo_url}">
+                                <p class="user-nombre"><b>${place.reviews[i].author_name}</b></p>
                         </div>
                         <div class="rating">
                        
                         </div>
                     </div>
-                <div class="review-content">
-                    <p>La comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del día.La comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del díaLa comida de este lugar es increíble! Me gusta que las opciones para comer vayan cambiando dependiendo del día</p>
-                    <a href="#">Ver más...</a>
-                </div>
+                    <div class="review-content">
+                        <p id="texto">${place.reviews[i].text}</p>
+                        <a id="verMasBtn" href="#">Ver más...</a> 
+                        
+                    </div>
+                
                 </div>
                 `;
                 reviews.innerHTML+=revi;
