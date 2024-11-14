@@ -26,6 +26,46 @@ const verMas = (num) => {
     }
 
 }
+function mostrarEstrellas(calificacion, id) {
+    const contenedor = document.getElementsByClassName("rating"+id);
+    contenedor.innerHTML = ' '; // Limpiar contenido previo
+
+    // Número de estrellas completas
+    const estrellasCompletas = Math.floor(calificacion);
+    // El decimal restante para las estrellas parciales
+    const decimal = calificacion % 1;
+
+    // Mostrar estrellas completas
+    for (let i = 0; i < estrellasCompletas; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star', 'filled');
+        contenedor.appendChild(star);
+    }
+
+    // Mostrar estrella parcial dependiendo del decimal
+    if (decimal >= 0.75) {
+        const star = document.createElement('div');
+        star.classList.add('star', 'partial-3'); // 3/4 llena
+        contenedor.appendChild(star);
+    } else if (decimal >= 0.5) {
+        const star = document.createElement('div');
+        star.classList.add('star', 'partial-2'); // 1/2 llena
+        contenedor.appendChild(star);
+    } else if (decimal >= 0.25) {
+        const star = document.createElement('div');
+        star.classList.add('star', 'partial-1'); // 1/4 llena
+        contenedor.appendChild(star);
+    }
+
+    // Mostrar estrellas vacías restantes
+    const estrellasFaltantes = 5 - Math.ceil(calificacion); 
+    for (let i = 0; i < estrellasFaltantes; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        contenedor.appendChild(star);
+    }
+}
+
 
 function fetchPlaceDetails(placeId) {
     if (!placeService) {
@@ -61,11 +101,12 @@ function fetchPlaceDetails(placeId) {
                                 <img class="imagenPerfil" src="${place.reviews[i].profile_photo_url}">
                                 <p class="user-nombre"><b>${place.reviews[i].author_name}</b></p>
                         </div>
-                        <div class="rating">
+                        <div class="rating${i}"></div>
+                        `;
+
+
                        
-                        </div>
-                    </div>
-                    <div class="review-content">`;
+
             const textoCompleto = place.reviews[i].text;
             const longitudVisible = 100; // Número máximo de caracteres a mostrar inicialmente
             
@@ -84,9 +125,9 @@ function fetchPlaceDetails(placeId) {
             // Muestra la parte visible y oculta el resto
             if(textoCompleto.length >= longitudVisible){
              revi += "<p>"+textoVisible + '<span id="textoAdicional'+i+'" style="display:none;">' + textoAdicional + '</span>'+"</p>";
-             console.log(i+"a");
+             revi+=`
+                        <a id="verMasBtn${i}" class="ver-mas" onclick="verMas(${i})">Ver más...</a> `
             }else{
-                console.log(i+"a");
                 revi += "<p>"+textoCompleto +"</p>";
             }
             
@@ -98,8 +139,7 @@ function fetchPlaceDetails(placeId) {
 
 
                 revi+=`
-                        <a id="verMasBtn${i}" href="#" onclick="verMas(${i})">Ver más...</a> 
-                        
+
                     </div>
                 
                 </div>
@@ -107,7 +147,6 @@ function fetchPlaceDetails(placeId) {
                 reviews.innerHTML+=revi;
                 console.log(revi);
             }
-            
         } else {
             resultDiv.innerHTML = '<p class="error">No se pudo obtener los detalles del lugar. Estado: ' + status + '</p>';
         }
@@ -130,3 +169,16 @@ function fetchPlaceDetails(placeId) {
         setTimeout(testPlaceDetails, 2000);  // Intentamos después de 2 segundos para asegurarnos de que la API esté lista
     }
 }
+
+
+
+
+/*
+
+const request = {
+    location: map.getCenter(),
+    radius: 5000, // Radio de búsqueda en metros
+    type: [tipoLugar.toLowerCase()] // Convertir a minúsculas, como "restaurant"
+};
+
+*/
