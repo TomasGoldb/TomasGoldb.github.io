@@ -9,8 +9,10 @@
         <div class="input-group">
             <input type="text" placeholder="Añade una foto de perfil" readonly id="profilePicInput" />
             <input type="file" class="file-input" id="inputGroupFile04" name="archivo" onchange="document.getElementById('profilePicInput').value = this.files[0].name" />
-            <label class="btn-seleccionar" for="inputGroupFile04">Selecciona</label>
-            <button type="button" class="btn-eliminar" onclick="document.getElementById('profilePicInput').value = ''; document.getElementById('inputGroupFile04').value = '';">Eliminar</button>
+            <label class="btn-seleccionar" style="border-radius:10px;" for="inputGroupFile04">
+                    Selecciona
+            </label>
+            <button type="button" class="btn-eliminar" style="border-radius:10px;" onclick="document.getElementById('profilePicInput').value = ''; document.getElementById('inputGroupFile04').value = '';">Eliminar</button>
         </div>
         
         <!-- Campo de Nombre de usuario -->

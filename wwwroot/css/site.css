@@ -316,6 +316,7 @@ header .boton-header:hover{
   align-items: center;
   justify-content: space-around;
   margin-top: 6%;
+  margin-bottom: 5%;
 }
 .elegir-tipo-plan .opcion-plan a{
   width: 100%;
@@ -678,10 +679,7 @@ justify-content: center;}
 }
 
 .boton-violeta{
-  padding-left: 1%;
-  padding-right: 1%;
-  padding-top: 0.5%;
-  padding-bottom: 0.5%;
+  padding: 1%;
   width: 30%;
   text-align: center;
   font-size: 1vw;
@@ -882,11 +880,16 @@ marquee{
   color: white;
 }
 
+.h2-indexx{
+  font-size: 1.5rem;
+}
+
 .centrado{
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 5%;
 }
 
 .copiar-enlace{
@@ -1211,6 +1214,18 @@ textarea {
 .location label {
   font-size: 1em;
   margin-right: 1em;
+}
+
+/*input*/
+.rellenado{
+  padding:0.5%;
+  width: 35%;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  border-radius: 10px; 
+  margin-bottom: 2%;
 }
 
 .location input {

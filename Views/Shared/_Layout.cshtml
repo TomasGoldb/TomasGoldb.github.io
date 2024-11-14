@@ -64,9 +64,9 @@
             <div class="dropdown">
                 <button class="dropdown-button" onclick="toggleDropdown()">Crear Plan<span class="arrow">&#9662;</span></button>
                 <div class="dropdown-content" id="dropdownMenu">
-                    <a href="#">Crear plan</a>
-                    <a href="#">Añadir amigo</a>
-                    <a href="#">Unirse a un plan</a>
+                    <a href='@Url.Action("Index", "CrearPlan")'>Crear plan</a>
+                    <a href='@Url.Action("AgregarParticipantes", "CrearPlan")'>Añadir amigo</a>
+                    <a href='@Url.Action("HACERVIEW", "CrearPlan")'>Unirse a un plan</a>
                 </div>
             </div>
         </div>
