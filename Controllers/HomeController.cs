@@ -123,7 +123,7 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult DetalleLugar(int idLugarMaps){
+    public IActionResult DetalleLugar(string idLugarMaps){
         ViewBag.idLugarMaps=idLugarMaps;
         return View();
     }
