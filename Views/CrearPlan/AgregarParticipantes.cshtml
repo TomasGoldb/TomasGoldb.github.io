@@ -38,7 +38,19 @@
 </main>
 
 <script>
-
+    $.ajax({
+                    url: '/CrearPlan/ListaAmigos',
+                    type: 'GET',
+                    data: {},
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        window.location.href="/crearplan/agregarParticipantes";
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("Error:", jqXHR.status, textStatus, errorThrown); 
+                    }
+    });
 
     const suggestionsArray = Object.values(typeTranslations), boton=document.getElementById("siguiente-btn");
 let tipo;

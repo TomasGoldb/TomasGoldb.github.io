@@ -36,6 +36,8 @@ public class Sesion
             coords[1]=sumaY/coordsY.Length;
             return coords;
         }
-
+        public static List<Usuario> ListarAmigos(int idUsuario){
+            return BD.ListarAmigos(idUsuario);
+        }
 
     }

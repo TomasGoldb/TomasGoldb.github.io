@@ -33,7 +33,11 @@ public class CrearPlanController : Controller
     public void TomarParticipantes(string[] participantes){
         
     }
-
+    [HttpGet]
+    public List<Usuario> ListaAmigos(){
+        Console.WriteLine(Sesion.ListarAmigos(Sesion.userActual.idUsuario));
+        return Sesion.ListarAmigos(Sesion.userActual.idUsuario);
+    }
     public IActionResult Privacy()
     {
         return View();
