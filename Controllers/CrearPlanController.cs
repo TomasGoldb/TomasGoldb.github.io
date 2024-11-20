@@ -15,19 +15,24 @@ public class CrearPlanController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
     public IActionResult Personalizado(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         Sesion.IniciarCreacionPlan();
         return View();
     }
     public IActionResult AgregarParticipantes(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
     public IActionResult FinalizarPlan(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
     public IActionResult PlanCreado(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View("PlanCreado");
     }
     public void TomarParticipantes(string[] participantes){

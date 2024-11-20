@@ -615,6 +615,8 @@ justify-content: center;}
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: 2%;
+  border-radius: 10px;
 }
 
 .tag-input ul {
@@ -660,7 +662,6 @@ justify-content: center;}
 }
 
 .suggestions {
-  border: 1px solid #ccc;
   position: absolute;
   top: 100%;
   left: 0;
@@ -687,7 +688,9 @@ justify-content: center;}
   text-decoration: none;
   border-radius: 10px;
   transition: all 0.1s ease-in;
-  color: white
+  color: white;
+  margin-bottom: 2%;
+  width: 20%;
 }
 .boton-violeta:hover{
   background-color: #6400c2;
@@ -851,7 +854,8 @@ marquee{
   background-color: #E0D2EE;
   margin-bottom: 1%;
   justify-content: space-between;
-    align-items: center;
+  align-items: center;
+  margin-bottom: 2%;
 }
 .elegir-tipo-plan .participantes-agregados .participante-agregado div{
   display: flex;
