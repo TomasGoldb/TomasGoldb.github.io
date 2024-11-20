@@ -1877,3 +1877,35 @@ textarea {
 .start-plan-button:hover {
   background-color: #6900cc;
 }
+
+.autocomplete-container {
+  position: relative;
+  width: 300px;
+}
+
+#autocomplete-input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: none;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.suggestion-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}

@@ -7,18 +7,18 @@ public class Planes
     public int IdLugar;
     public DateTime FechaYHora;
     public int IdEstado;
-    public int IdTipoLugar;
+    public string TipoLugar;
     public int IdTipoSubOpcion;
     public string Link;
     public string QR;
 
-    public Planes(int idplan, string nombre, int idlugar, DateTime fechayhora, int idestado, int idtipolugar, int idtiposubopcion, string link, string qr){
+    public Planes(int idplan, string nombre, int idlugar, DateTime fechayhora, int idestado, string tipolugar, int idtiposubopcion, string link, string qr){
         this.IdPlan=idplan;
         this.Nombre=nombre;
         this.IdLugar=idlugar;
         this.FechaYHora=fechayhora;
         this.IdEstado=idestado;
-        this.IdTipoLugar=idtipolugar;
+        this.TipoLugar=tipolugar;
         this.IdTipoSubOpcion=idtiposubopcion;
         this.Link=link;
         this.QR=qr;

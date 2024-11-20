@@ -16,21 +16,20 @@
         <div class="centrado">
             <h1 class="titulo-violeta">Agrega participantes al plan</h1>
 
-        <input class= "rellenado" type="text" name="nombre">
+        <div class="autocomplete-container">
+        <input type="text" id="autocomplete-input" autocomplete="off" placeholder="Escribe para buscar...">
+        <div class="suggestions" id="suggestions"></div>
 
         <section class="participantes-agregados">
 
-        @{
-            for(int i=0;i<3;i++){
-                <div class="participante-agregado" id="@i">
+
+                <div class="participante-agregado" >
                     <div>
                         <img src="/img/perfil.webp">
                         <h2>Pedro Sanjo</h2>
                     </div>
-                <a href="#"  onclick="eliminarParticipante(@i)">Eliminar</a>
+                <a href="#"  onclick="eliminarParticipante(2)">Eliminar</a>
                 </div>
-            }
-        }
         <a class="copiar-enlace" id="copiarEnlace" href="#">Copiar enlace</a>
         <a class="boton-violeta" href='@Url.Action("AgregarParticipantes","CrearPlan")'>Siguiente</a>
         </section>
@@ -39,59 +38,49 @@
 </main>
 
 <script>
-const source=["Sofía Martínez", "Liam García", "Emma Rodríguez", "Noah Pérez", "Olivia Sánchez", "Elijah López", "Ava González", "Lucas Hernández", "Mia Torres", "Mason Ramírez", "Isabella Cruz", "Ethan Flores", "Charlotte Rivera", "James Díaz", "Amelia Morales", "Alexander Ortega", "Harper Delgado", "Benjamin Ramos", "Evelyn Jiménez", "Daniel Vega", "Abigail Castillo", "Michael Ruiz", "Ella Moreno", "Aiden Herrera", "Scarlett Ramos", "Henry Chavez", "Grace Soto", "Sebastián Mendoza", "Chloe Aguirre", "Jackson Salazar", "Victoria Castro", "David Pineda", "Luna Ríos", "Matthew Cordero", "Layla Castañeda", "Samuel Soto", "Zoe Núñez", "Christopher Vázquez", "Nora Franco", "Gabriel Ponce", "Lucy Silva", "Dylan Escobar", "Aria Morales", "Jonathan Camacho", "Riley Medina", "Joseph Peña", "Samantha Salas", "David Robles", "Hannah Guillen", "Isaiah Navarro", "Alyssa Rojas", "Carter Ortega", "Stella Barrera", "Andrew Castillo", "Ariana Lima", "Jack Moreno", "Audrey Mendez", "Owen Reyes", "Brooklyn Salazar", "Ryan Ortega", "Nina Soto", "Thomas Alvarez", "Piper Ruiz", "Caleb Jiménez", "Bella Espinoza", "Lucas Cruz", "Claire Rivas", "Anthony Vargas", "Layla Huerta", "Isaac Cabrera", "Sarah Palacios", "Charles Medina", "Lia Morales", "Josiah Gonzalez", "Kylie Torres", "Hunter Ramos", "Sadie Serrano", "Levi Vargas", "Anna Montalvo", "Julian Flores", "Maya Aguirre", "Ezra Martínez", "Julia Aguayo", "Xavier Peña", "Camila Ortiz", "Asher Rivera", "Maddison Cortez", "Grayson Mejía", "Naomi Morales", "Vincent Guzmán", "Elena Valdez", "Jaxon Ruiz", "Lola Castro", "Hudson López", "Julia López", "Jordan Silva", "Mila Carrillo", "Wyatt Padilla", "Vivian Salazar", "Isaiah Torres", "Miriam Torres", "Nicolas Pizarro", "Serena Jiménez", "Wesley Serrano", "Adeline Torres", "Jace Reyes", "Lindsay Velasco", "Silas Cordero", "Peyton Salas", "Maxwell Serrano", "Esmeralda Ruiz", "Augustus Ríos", "Gianna Villanueva", "Dominic Hernández", "Carmen Torres", "Sawyer Rivas", "Camila Morales", "Lance Villalobos", "Daphne Ríos", "Kendrick García", "Brielle Rodríguez", "Tobias Castro", "Savannah Herrera", "Winston Jiménez", "Zara Córdova", "Harrison Luna", "Athena Zamora", "Maddox Paredes", "Sierra Calderón", "Ronan Pineda", "Rhea Ramírez", "Beckett Serrano", "Valentina Mendoza", "Gideon Guzmán", "Clara Romero", "Declan Cortés", "Nadia Flores", "Cohen Morales", "Jazmin Martínez", "Axton Castro", "Natalie Silva", "Julián Rojas", "Laila Morales", "Freddie Guerra", "Alicia Pizarro", "Samara Castañeda", "Derek López", "Esme Vargas", "Reed Salas", "Aurora Díaz", "Cyrus Aguayo", "Cassidy Jiménez", "Lorenzo Vargas", "Mariana López", "Bridger Mendoza", "Freya Palacios", "Elijah Ríos", "Lyla Guerrero", "Ryder Soto", "Sophie León", "Cyrus Ortega", "Gemma Torres", "Colton Mendoza", "Rosie Aguirre", "Zane Silva", "Eva Ramos", "Jasper Cruz", "Mira Castillo", "Niko Salazar", "Kiera Córdova", "Dustin Guzmán", "Iris Méndez", "Zion Morales", "Cecilia Reyes", "Matteo Vargas", "Imogen Huerta", "Beau López", "Livia Ramírez"];
-    console.log(source);
-    document.addEventListener("DOMContentLoaded", function(){
-        const autoCompleteJS = new autoComplete({
-                        placeHolder: "Search for Food...",
-                        data: {
-                            src: source,
-                            cache: true,
-                        },
-                        resultItem: {
-                            highlight: true
-                        },
-                        events: {
-                            input: {
-                                selection: (event) => {
-                                    const selection = event.detail.selection.value;
-                                    autoCompleteJS.input.value = selection;
-                                }
-                            }
-                        }
-                        });
-                    });
-                    
 
 
-    function AutoCompletado(){
-        $.ajax({
-                    url: '@Url.Action("ObtenerLugares", "CrearPlan")',
-                    type: 'GET',
-                    data: {},
-                    success: function (data) {
-                        console.log(data);
-                        const autoCompleteJS = new autoComplete({
-                        placeHolder: "Search for Food...",
-                        data: {
-                            src: data.Lista,
-                            cache: true,
-                        },
-                        resultItem: {
-                            highlight: true
-                        },
-                        events: {
-                            input: {
-                                selection: (event) => {
-                                    const selection = event.detail.selection.value;
-                                    autoCompleteJS.input.value = selection;
-                                }
-                            }
-                        }
-                        });
-                    }
-                });
+    const suggestionsArray = Object.values(typeTranslations), boton=document.getElementById("siguiente-btn");
+let tipo;
+
+document.getElementById('autocomplete-input').addEventListener('input', function() {
+    const input = this.value.toLowerCase();
+    const suggestionsBox = document.getElementById('suggestions');
+    suggestionsBox.innerHTML = '';
+
+    if (input) {
+        // Filtrar las sugerencias y limitar a 10 elementos
+        const filteredSuggestions = suggestionsArray
+            .filter(item => item.toLowerCase().includes(input))
+            .slice(0, 6); // Mostrar solo las primeras 10
+
+        filteredSuggestions.forEach(item => {
+            const div = document.createElement('div');
+            div.textContent = item;
+            div.classList.add('suggestion-item');
+            div.onclick = () => {
+                selectSuggestion(item);
+            };
+            suggestionsBox.appendChild(div);
+        });
     }
+});
+
+function selectSuggestion(item) {
+    const inputField = document.getElementById('autocomplete-input');
+    inputField.value = item;
+    document.getElementById('suggestions').innerHTML = ''; // Limpiar sugerencias
+    tipo=getKeyByValue(typeTranslations,item);
+    
+    console.log(getKeyByValue(typeTranslations,item));
+}
+
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key =>
+        object[key] === value);
+}
+
+
     document.addEventListener("DOMContentLoaded", function(){
 AutoCompletado();
     });
@@ -104,7 +93,7 @@ let botonCopiarEnlace = document.getElementById("copiarEnlace");
 botonCopiarEnlace.addEventListener("click", function(){
     botonCopiarEnlace.classList.add("copiado");
     botonCopiarEnlace.innerHTML="Enlace copiado";
-    navigator.clipboard.writeText("ENLACEEEE");
+    navigator.clipboard.writeText("Berman es CAPOOO");
     setTimeout(() => {
         botonCopiarEnlace.classList.remove("copiado");
         botonCopiarEnlace.innerHTML="Copiar enlace";
