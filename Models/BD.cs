@@ -28,9 +28,9 @@ class BD
         return lista;
     }
     public static List<Usuario> ListarAmigos(int idUsuario){
-        List<Usuario> lista = new List<Usuario>();
+        List<Usuario> lista =  new List<Usuario>();
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            string sql="SP_ListarResenasXLugar";
+            string sql="SP_ListarAmigos";
             lista = db.Query<Usuario>(sql, new{ @idUsuario = idUsuario }).ToList();
         }
         return lista;
