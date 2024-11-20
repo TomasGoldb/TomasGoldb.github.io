@@ -89,6 +89,10 @@ public class HomeController : Controller
         return View();
         
     }
+    public IActionResult Perfil(){
+        ViewBag.IdUsuario=Sesion.userActual.idUsuario;
+        return View();
+    }
     public IActionResult ActualizarFotoPerfil(IFormFile archivo){
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         bool seCambio=Sesion.userActual.CambiarFoto(archivo, Environment);

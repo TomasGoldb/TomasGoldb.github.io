@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil</title>
+  <link rel="stylesheet" href="site.css"> <!-- Reemplaza con la ruta correcta del CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Sección del Perfil -->
+    <div class="perfil-header text-center py-4" style="background: linear-gradient(to right, #7A02ED, #a5a4f8); color: white;">
+      <img src="/img/rostro.png" alt="Foto de perfil" class="rounded-circle mb-3" style="width: 120px; height: 120px;">
+      <h3>Magalí García</h3>
+      <p>@@maga.garcia</p>
+      <p>
+        Exploradora de la vida, fotografía & naturaleza.<br>
+        Amante de las novelas de misterio, café y buenas charlas.<br>
+        "La aventura comienza donde termina la zona de confort."
+      </p>
+      <div class="d-flex justify-content-center gap-3">
+        <button class="btn btn-light">Editar Perfil</button>
+        <button class="btn btn-light">Configuración</button>
+      </div>
+    </div>
+
+    <!-- Planes Actuales -->
+    <div class="mt-5">
+      <h4 class="mb-3">Planes Actuales</h4>
+      <div id="carouselPlanesActuales" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- Primer slide -->
+          <div class="carousel-item active">
+            <section class="section-cards">
+              <div class="row text-center">
+                <!-- Reutiliza las tarjetas proporcionadas -->
+                <div class="col-md-3">
+                  <div class="card">
+                    <img src="/img/mcdonalds.jpg" class="card-img-top" alt="Don Zoilo">
+                    <div class="card-body">
+                      <h5 class="card-title">Don Zoilo</h5>
+                      <p class="card-text">Honorio Pueyrredón 1406</p>
+                      <p class="estrellas">★★★★★</p>
+                      <a href="#" class="btn btn-ver-mas">Ver más</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Más tarjetas aquí -->
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historial de Planes -->
+    <div class="mt-5">
+      <h4 class="mb-3">Historial de Planes</h4>
+      <div id="carouselHistorialPlanes" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- Reutiliza el contenido de los planes actuales -->
+          <!-- Más contenido aquí -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Mis Domicilios -->
+    <div class="mt-5">
+      <h4 class="mb-3">Mis Domicilios</h4>
+      <ul class="list-group">
+        <li class="list-group-item">Rivadavia 2344, CABA</li>
+        <li class="list-group-item">Yatay 456, CABA</li>
+        <li class="list-group-item">Av. Diaz Velez 346, CABA</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
