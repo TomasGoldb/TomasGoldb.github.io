@@ -38,14 +38,18 @@ public class CrearPlanController : Controller
     public void TomarParticipantes(string[] participantes){
         
     }
-
+    [HttpGet]
+    public List<Usuario> ListaAmigos(){
+        Console.WriteLine(Sesion.ListarAmigos(Sesion.userActual.idUsuario));
+        return Sesion.ListarAmigos(Sesion.userActual.idUsuario);
+    }
     public IActionResult Privacy()
     {
         return View();
     }
-    public JsonResult ObtenerLugares(){
-        string[] a ={"hola","como","te","va"};
-        return Json(new {Lista=a});
+    public void InsertarTypeLugar(string type){
+        Sesion.CreandoPlan.TipoLugar=type;
+        Console.WriteLine(Sesion.CreandoPlan.TipoLugar);
     }
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

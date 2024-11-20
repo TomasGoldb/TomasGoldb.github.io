@@ -15,50 +15,181 @@
         </div>
         <h1 class="titulo-violeta">Plan personalizado</h1>
 
-        <div class="tag-input">
+        <!----<div class="tag-input">
         <ul id="tags"><input type="text" id="tag-input" placeholder="Escribe y presiona Enter o ','" autocomplete="off" /> </ul>
         
         <div id="suggestions" class="suggestions"></div>
-        </div>
+        </div>--->
+        <div class="autocomplete-container">
+        <input type="text" id="autocomplete-input" autocomplete="off" placeholder="Escribe para buscar...">
+        <div class="suggestions" id="suggestions"></div>
+    </div>
+
 
     </div>
-    <a class="boton-violeta" onclick="MandarParticipantes()" href='@Url.Action("AgregarParticipantes","CrearPlan")'>Siguiente</a>
+    <a class="boton-violeta" id="siguiente-btn" href="#">Siguiente</a>
 </main>
 
 <script>
 
+const typeTranslations = {
+  accounting: "contabilidad",
+  airport: "aeropuerto",
+  amusement_park: "parque de atracciones",
+  aquarium: "acuario",
+  art_gallery: "galería de arte",
+  atm: "cajero automático",
+  bakery: "panadería",
+  bank: "banco",
+  bar: "bar",
+  beauty_salon: "salón de belleza",
+  bicycle_store: "tienda de bicicletas",
+  book_store: "librería",
+  bowling_alley: "bolera",
+  bus_station: "estación de autobuses",
+  cafe: "cafetería",
+  campground: "campamento",
+  car_dealer: "concesionario de coches",
+  car_rental: "alquiler de coches",
+  car_repair: "reparación de coches",
+  car_wash: "lavado de coches",
+  casino: "casino",
+  cemetery: "cementerio",
+  church: "iglesia",
+  city_hall: "ayuntamiento",
+  clothing_store: "tienda de ropa",
+  convenience_store: "tienda de conveniencia",
+  courthouse: "palacio de justicia",
+  dentist: "dentista",
+  department_store: "gran almacén",
+  doctor: "doctor",
+  drugstore: "farmacia",
+  electrician: "electricista",
+  electronics_store: "tienda de electrónica",
+  embassy: "embajada",
+  fire_station: "estación de bomberos",
+  florist: "floristería",
+  funeral_home: "funeraria",
+  furniture_store: "tienda de muebles",
+  gas_station: "gasolinera",
+  gym: "gimnasio",
+  hair_care: "cuidado del cabello",
+  hardware_store: "ferretería",
+  hindu_temple: "templo hindú",
+  home_goods_store: "tienda de artículos para el hogar",
+  hospital: "hospital",
+  insurance_agency: "agencia de seguros",
+  jewelry_store: "joyería",
+  laundry: "lavandería",
+  lawyer: "abogado",
+  library: "biblioteca",
+  light_rail_station: "estación de tren ligero",
+  liquor_store: "licorería",
+  local_government_office: "oficina de gobierno local",
+  locksmith: "cerrajero",
+  lodging: "alojamiento",
+  meal_delivery: "entrega de comida",
+  meal_takeaway: "comida para llevar",
+  mosque: "mezquita",
+  movie_rental: "alquiler de películas",
+  movie_theater: "cine",
+  moving_company: "empresa de mudanzas",
+  museum: "museo",
+  night_club: "club nocturno",
+  painter: "pintor",
+  park: "parque",
+  parking: "estacionamiento",
+  pet_store: "tienda de mascotas",
+  pharmacy: "farmacia",
+  physiotherapist: "fisioterapeuta",
+  plumber: "plomero",
+  police: "policía",
+  post_office: "oficina de correos",
+  primary_school: "escuela primaria",
+  real_estate_agency: "agencia inmobiliaria",
+  restaurant: "restaurante",
+  roofing_contractor: "contratista de techos",
+  rv_park: "parque para casas rodantes",
+  school: "escuela",
+  secondary_school: "escuela secundaria",
+  shoe_store: "zapatería",
+  shopping_mall: "centro comercial",
+  spa: "spa",
+  stadium: "estadio",
+  storage: "almacenamiento",
+  store: "tienda",
+  subway_station: "estación de metro",
+  supermarket: "supermercado",
+  synagogue: "sinagoga",
+  taxi_stand: "parada de taxis",
+  tourist_attraction: "atracción turística",
+  train_station: "estación de tren",
+  transit_station: "estación de transporte",
+  travel_agency: "agencia de viajes",
+  university: "universidad",
+  veterinary_care: "cuidado veterinario",
+  zoo: "zoológico"
+};
 
-    function AutoCompletado(){
-        $.ajax({
-                    url: '@Url.Action("ObtenerLugares", "CrearPlan")',
+const suggestionsArray = Object.values(typeTranslations), boton=document.getElementById("siguiente-btn");
+let tipo;
+
+document.getElementById('autocomplete-input').addEventListener('input', function() {
+    const input = this.value.toLowerCase();
+    const suggestionsBox = document.getElementById('suggestions');
+    suggestionsBox.innerHTML = '';
+
+    if (input) {
+        // Filtrar las sugerencias y limitar a 10 elementos
+        const filteredSuggestions = suggestionsArray
+            .filter(item => item.toLowerCase().includes(input))
+            .slice(0, 6); // Mostrar solo las primeras 10
+
+        filteredSuggestions.forEach(item => {
+            const div = document.createElement('div');
+            div.textContent = item;
+            div.classList.add('suggestion-item');
+            div.onclick = () => {
+                selectSuggestion(item);
+            };
+            suggestionsBox.appendChild(div);
+        });
+    }
+});
+
+function selectSuggestion(item) {
+    const inputField = document.getElementById('autocomplete-input');
+    inputField.value = item;
+    document.getElementById('suggestions').innerHTML = ''; // Limpiar sugerencias
+    tipo=getKeyByValue(typeTranslations,item);
+    
+    console.log(getKeyByValue(typeTranslations,item));
+}
+
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key =>
+        object[key] === value);
+}
+
+boton.addEventListener("click", ()=>{
+    if(tipo!=null){
+    $.ajax({
+                    url: '@Url.Action("InsertarTypeLugar", "CrearPlan")',
                     type: 'GET',
-                    data: {},
+                    data: {type: tipo},
                     success: function (data) {
-                        const autoCompleteJS = new autoComplete({
-                        placeHolder: "Search for Food...",
-                        data: {
-                            src: data.Lista,
-                            cache: true,
-                        },
-                        resultItem: {
-                            highlight: true
-                        },
-                        events: {
-                            input: {
-                                selection: (event) => {
-                                    const selection = event.detail.selection.value;
-                                    autoCompleteJS.input.value = selection;
-                                }
-                            }
-                        }
-                        });
+                        console.log("Se ha guardado correctamente el type.");
                     }
                 });
+            window.location.href="/crearplan/agregarParticipantes"
+    }else{
+        alert("error");
     }
+});
     
-
-
-const suggestionsArray = ['manzana', 'banana', 'naranja', 'mango', 'kiwi', 'fresa', 'pera', 'uva'];
+/*
+// Convertir las traducciones a un array de valores
+const suggestionsArray = Object.values(typeTranslations);
 let validTags = []; // Para almacenar las etiquetas válidas seleccionadas
 
 document.getElementById('tag-input').addEventListener('input', function() {
@@ -88,10 +219,13 @@ document.getElementById('tag-input').addEventListener('keypress', function(event
         const input = this.value.trim().toLowerCase();
 
         // Solo permitir añadir el tag si está en las sugerencias y no está ya en validTags
-        if (validTags.includes(input)) {
-            addTag(input);
-            this.value = ''; // Limpiar el input
-            document.getElementById('suggestions').innerHTML = ''; // Limpiar sugerencias
+        if (!validTags.includes(input)) {
+            const matchingSuggestion = suggestionsArray.find(item => item.toLowerCase() === input);
+            if (matchingSuggestion) {
+                addTag(matchingSuggestion);
+                this.value = ''; // Limpiar el input
+                document.getElementById('suggestions').innerHTML = ''; // Limpiar sugerencias
+            }
         }
     }
 });
@@ -111,11 +245,12 @@ function addTag(item) {
 
     li.appendChild(removeBtn);
     document.getElementById('tags').appendChild(li);
+    validTags.push(item.toLowerCase());
+    console.log(validTags);
 }
 
 function selectSuggestion(item) {
     if (!validTags.includes(item.toLowerCase())) { // Asegúrate de que no se duplique
-        validTags.push(item.toLowerCase()); // Agregar a las etiquetas válidas
         // Eliminar de las sugerencias
         suggestionsArray.splice(suggestionsArray.indexOf(item), 1);
         addTag(item);
@@ -123,6 +258,9 @@ function selectSuggestion(item) {
         document.getElementById('suggestions').innerHTML = ''; // Limpiar sugerencias
     }
 }
+*/
+
+
 
 
 
