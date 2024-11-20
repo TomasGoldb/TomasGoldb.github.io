@@ -3,7 +3,6 @@ namespace JuntifyApp.Models;
 public class Sesion
 {
     public static bool EstaLogeado = false;
-        public static bool EstaJugando = false;
         public static Usuario userActual = new Usuario();
         public static Planes CreandoPlan;
 
@@ -36,6 +35,8 @@ public class Sesion
             coords[1]=sumaY/coordsY.Length;
             return coords;
         }
-
+        public static List<Usuario> ListarAmigos(int idUsuario){
+            return BD.ListarAmigos(idUsuario);
+        }
 
     }

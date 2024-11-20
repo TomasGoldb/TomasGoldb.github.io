@@ -23,24 +23,38 @@
         <section class="participantes-agregados">
 
 
-                <div class="participante-agregado" >
-                    <div>
-                        <img src="/img/perfil.webp">
-                        <h2>Pedro Sanjo</h2>
-                    </div>
-                <a href="#"  onclick="eliminarParticipante(2)">Eliminar</a>
-                </div>
+                
+                    
         <a class="copiar-enlace" id="copiarEnlace" href="#">Copiar enlace</a>
-        <a class="boton-violeta" href='@Url.Action("AgregarParticipantes","CrearPlan")'>Siguiente</a>
+        <a class="boton-violeta" href='@Url.Action("FinalizarPlan","CrearPlan")'>Siguiente</a>
         </section>
        </div>
     
 </main>
 
 <script>
+    let amigos=[];
+    let cantPersonas=0;
+    $.ajax({
+                    url: '/CrearPlan/ListaAmigos',
+                    type: 'GET',
+                    data: {},
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        data.forEach(function (amigo, index) {
+                        amigos[index] = amigo.nombre;
+                        
+                        
+                    });
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("Error:", jqXHR.status, textStatus, errorThrown); 
+                    }
+    });
+            
 
-
-    const suggestionsArray = Object.values(typeTranslations), boton=document.getElementById("siguiente-btn");
+    const suggestionsArray = amigos, boton=document.getElementById("siguiente-btn");
 let tipo;
 
 document.getElementById('autocomplete-input').addEventListener('input', function() {
@@ -70,15 +84,24 @@ function selectSuggestion(item) {
     const inputField = document.getElementById('autocomplete-input');
     inputField.value = item;
     document.getElementById('suggestions').innerHTML = ''; // Limpiar sugerencias
-    tipo=getKeyByValue(typeTranslations,item);
+    console.log(item);
+    let persona=
+    `
+    <div class="participante-agregado" id="${cantPersonas}}">
+                    <div>
+                        <img src="/img/perfil.webp">
+                        <h2>${cantPersonas}</h2>
+                    </div>
+                <a href="#"  onclick="eliminarParticipante(${cantPersonas})">Eliminar</a>
+                </div>
+    `;
+    cantPersonas++;
+    let contenedorAmigos = document.getElementById("participantes-agregados");
+    contenedorAmigos.appendChild(persona);
     
-    console.log(getKeyByValue(typeTranslations,item));
 }
 
-function getKeyByValue(object, value) {
-    return Object.keys(object).find(key =>
-        object[key] === value);
-}
+
 
 
     document.addEventListener("DOMContentLoaded", function(){
