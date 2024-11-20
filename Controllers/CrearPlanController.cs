@@ -41,10 +41,12 @@ public class CrearPlanController : Controller
     [HttpGet]
     public List<Usuario> ListaAmigos(){
         Console.WriteLine(Sesion.ListarAmigos(Sesion.userActual.idUsuario));
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return Sesion.ListarAmigos(Sesion.userActual.idUsuario);
     }
     public IActionResult Privacy()
     {
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
     public void InsertarTypeLugar(string type){
@@ -54,6 +56,7 @@ public class CrearPlanController : Controller
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }

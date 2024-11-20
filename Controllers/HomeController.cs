@@ -17,6 +17,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
 
@@ -54,6 +55,7 @@ public class HomeController : Controller
         
     }
     public IActionResult IniciarSesion(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View("IniciarSesion");
     }
     public IActionResult LogearUsuario(string mail, string contra){
@@ -83,10 +85,12 @@ public class HomeController : Controller
         }
     }
     public IActionResult ConfigurarPerfil(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
         
     }
     public IActionResult ActualizarFotoPerfil(IFormFile archivo){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         bool seCambio=Sesion.userActual.CambiarFoto(archivo, Environment);
         if(seCambio){
             
@@ -113,17 +117,21 @@ public class HomeController : Controller
     //Fin login y registro
 
     public IActionResult Home(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View("Home");
     }
     public IActionResult PruebaMaps(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
 
     public IActionResult CrearPlan(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
 
     public IActionResult DetalleLugar(string idLugarMaps){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         ViewBag.idLugarMaps=idLugarMaps;
         return View();
     }

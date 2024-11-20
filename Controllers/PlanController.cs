@@ -15,30 +15,38 @@ public class PlanController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
     public IActionResult VerPlan(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
     public IActionResult Votar(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
 
     public IActionResult PostVoto(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
 
     public IActionResult DashPlan(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
     public IActionResult DashPlan2(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
     
     public IActionResult DashPlan3(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
     public IActionResult DashPlan4(){
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
 
