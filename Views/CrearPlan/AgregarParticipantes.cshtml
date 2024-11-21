@@ -19,21 +19,22 @@
         <div class="autocomplete-container">
         <input type="text" id="autocomplete-input" autocomplete="off" placeholder="Escribe para buscar...">
         <div class="suggestions" id="suggestions"></div>
+        <button id="agregar-boton">Agregar</button>
 
-        <section class="participantes-agregados">
-
+        <div class="participantes-agregados" id="par-agr">
+        </div>
 
                 
                     
         <a class="copiar-enlace" id="copiarEnlace" href="#">Copiar enlace</a>
-        <a class="boton-violeta" href='@Url.Action("FinalizarPlan","CrearPlan")'>Siguiente</a>
-        </section>
+        <a class="boton-violeta" id="siguiente-btn" href='@Url.Action("FinalizarPlan","CrearPlan")'>Siguiente</a>
+        
        </div>
     
 </main>
 
 <script>
-    let amigos=[];
+    let amigos=[], nombresParticipantes=[];
     let cantPersonas=0;
     $.ajax({
                     url: '/CrearPlan/ListaAmigos',
@@ -43,7 +44,13 @@
                     success: function (data) {
                         console.log(data);
                         data.forEach(function (amigo, index) {
-                        amigos[index] = amigo.nombre;
+                            if (!amigos[index]) {
+                        amigos[index] = {};  // Asegúrate de que el índice exista
+                            }
+                            nombresParticipantes.push(amigo.nombre);
+                        amigos[index].nombre = amigo.nombre;
+                        amigos[index].id = amigo.idUsuario;
+                        console.log(amigos[index]);
                         
                         
                     });
@@ -54,9 +61,8 @@
     });
             
 
-    const suggestionsArray = amigos, boton=document.getElementById("siguiente-btn");
+    const suggestionsArray = nombresParticipantes;
 let tipo;
-
 document.getElementById('autocomplete-input').addEventListener('input', function() {
     const input = this.value.toLowerCase();
     const suggestionsBox = document.getElementById('suggestions');
@@ -79,34 +85,39 @@ document.getElementById('autocomplete-input').addEventListener('input', function
         });
     }
 });
-
+let seleccionado;
 function selectSuggestion(item) {
     const inputField = document.getElementById('autocomplete-input');
     inputField.value = item;
     document.getElementById('suggestions').innerHTML = ''; // Limpiar sugerencias
     console.log(item);
+    seleccionado=item;
+    
+    
+}
+let botonAgregar=document.getElementById("agregar-boton");
+botonAgregar.addEventListener("click",()=>{
+    console.log("a"+seleccionado);
     let persona=
-    `
-    <div class="participante-agregado" id="${cantPersonas}}">
+    `<div class="participante-agregado" id="${cantPersonas}}">
                     <div>
                         <img src="/img/perfil.webp">
-                        <h2>${cantPersonas}</h2>
+                        <h2>${seleccionado}</h2>
                     </div>
                 <a href="#"  onclick="eliminarParticipante(${cantPersonas})">Eliminar</a>
                 </div>
     `;
     cantPersonas++;
-    let contenedorAmigos = document.getElementById("participantes-agregados");
-    contenedorAmigos.appendChild(persona);
-    
-}
+    let contenedorAmigos = document.getElementById("par-agr");
+    console.log(contenedorAmigos);
+    console.log(persona);
+    contenedorAmigos.innerHTML=persona;
+});
 
 
 
 
-    document.addEventListener("DOMContentLoaded", function(){
-AutoCompletado();
-    });
+   
     function eliminarParticipante(id){
         document.getElementById(id).remove();
     }
@@ -212,6 +223,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+let boton=document.getElementById("siguiente-btn");
+boton.addEventListener("click", ()=>{
+    if(amigos!=null){
+        let idParticipantes=[];
+        for(let i=0;i<amigos.length;i++){
+            idParticipantes[i]=amigos[i].id;
+        }
+    $.ajax({
+                    url: '@Url.Action("IngresarParticipantes", "CrearPlan")',
+                    type: 'GET',
+                    data: {idUsuarios: idParticipantes},
+                    success: function (data) {
+                        console.log("Se han guardado correctamente los participantes.");
+                    }
+                });
+            window.location.href="/crearplan/finalizarPlan"
+    }else{
+        alert("error");
+    }
+});
 
+ document.addEventListener("DOMContentLoaded", function(){
+AutoCompletado();
+    });
 
 </script>

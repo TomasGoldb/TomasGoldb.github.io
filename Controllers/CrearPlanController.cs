@@ -29,6 +29,12 @@ public class CrearPlanController : Controller
     }
     public IActionResult FinalizarPlan(){
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        List<int> ides = Sesion.idUsuariosPlan;
+        List<Usuario> listaParticipantes=new List<Usuario>();
+        for(int i=0;i<ides.Count;i++){
+            listaParticipantes[i]=Sesion.UsuarioXID(Sesion.idUsuariosPlan[i]);
+        }
+        ViewBag.ListaParticipantes=listaParticipantes;
         return View();
     }
     public IActionResult PlanCreado(){
@@ -51,7 +57,9 @@ public class CrearPlanController : Controller
     }
     public void InsertarTypeLugar(string type){
         Sesion.CreandoPlan.TipoLugar=type;
-        Console.WriteLine(Sesion.CreandoPlan.TipoLugar);
+    }
+    public void IngresarParticipantes(List<int> idUsuarios){
+        Sesion.idUsuariosPlan=idUsuarios;
     }
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
