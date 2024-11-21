@@ -11,17 +11,15 @@
 <body>
   <div class="container">
     <!-- Sección del Perfil -->
-    <div class="perfil-header text-center py-4" style="background: linear-gradient(to right, #7A02ED, #a5a4f8); color: white;">
-      <img src="/img/rostro.png" alt="Foto de perfil" class="rounded-circle mb-3" style="width: 120px; height: 120px;">
-      <h3>Magalí García</h3>
-      <p>@@maga.garcia</p>
-      <p>
-        Exploradora de la vida, fotografía & naturaleza.<br>
-        Amante de las novelas de misterio, café y buenas charlas.<br>
-        "La aventura comienza donde termina la zona de confort."
+    <div class="perfil-header text-center py-4">
+          <img src="@ViewBag.FotoUsuario" alt="Foto de perfil" class="rounded-circle mb-3">
+      <h3>@ViewBag.NombreUsuario</h3>
+      <p >@@@ViewBag.Nick</p>
+      <p >
+        @ViewBag.Biografia
       </p>
-      <div class="d-flex justify-content-center gap-3">
-        <button class="btn btn-light">Editar Perfil</button>
+      <div class="d-flex justify-content-center gap-3 div-opciones-perfil">
+        <a href='@Url.Action("ConfigurarPerfil", "Home")'><button class="btn btn-light">Editar Perfil</button></a>
         <button class="btn btn-light">Configuración</button>
       </div>
     </div>
@@ -29,27 +27,41 @@
     <!-- Planes Actuales -->
     <div class="mt-5">
       <h4 class="mb-3">Planes Actuales</h4>
-      <div id="carouselPlanesActuales" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <!-- Primer slide -->
-          <div class="carousel-item active">
-            <section class="section-cards">
-              <div class="row text-center">
-                <!-- Reutiliza las tarjetas proporcionadas -->
-                <div class="col-md-3">
-                  <div class="card">
-                    <img src="/img/mcdonalds.jpg" class="card-img-top" alt="Don Zoilo">
-                    <div class="card-body">
-                      <h5 class="card-title">Don Zoilo</h5>
-                      <p class="card-text">Honorio Pueyrredón 1406</p>
-                      <p class="estrellas">★★★★★</p>
-                      <a href="#" class="btn btn-ver-mas">Ver más</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Más tarjetas aquí -->
-              </div>
-            </section>
+      <div class="section-cards">
+        <div class="card">
+          <img src="/img/mcdonalds.jpg" class="card-img-top" alt="Don Zoilo">
+          <div class="card-body">
+            <h5 class="card-title">Don Zoilo</h5>
+            <p class="card-text">Honorio Pueyrredón 1406</p>
+            <p class="estrellas">★★★★★</p>
+            <a href="#" class="btn btn-ver-mas">Ver más</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/img/mcdonalds.jpg" class="card-img-top" alt="Vickens">
+          <div class="card-body">
+            <h5 class="card-title">Vickens</h5>
+            <p class="card-text">Rojas 1259</p>
+            <p class="estrellas">★★★★★</p>
+            <a href="#" class="btn btn-ver-mas">Ver más</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/img/mcdonalds.jpg" class="card-img-top" alt="La Vicca">
+          <div class="card-body">
+            <h5 class="card-title">La Vicca</h5>
+            <p class="card-text">Gascón 307</p>
+            <p class="estrellas">★★★★★</p>
+            <a href="#" class="btn btn-ver-mas">Ver más</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/img/mcdonalds.jpg" class="card-img-top" alt="McDonald's">
+          <div class="card-body">
+            <h5 class="card-title">McDonald's</h5>
+            <p class="card-text">Av. Corrientes 3966</p>
+            <p class="estrellas">★★★★★</p>
+            <a href="#" class="btn btn-ver-mas">Ver más</a>
           </div>
         </div>
       </div>
@@ -58,23 +70,59 @@
     <!-- Historial de Planes -->
     <div class="mt-5">
       <h4 class="mb-3">Historial de Planes</h4>
-      <div id="carouselHistorialPlanes" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <!-- Reutiliza el contenido de los planes actuales -->
-          <!-- Más contenido aquí -->
+      <div class="section-cards">
+        <div class="card">
+          <img src="/img/mcdonalds.jpg" class="card-img-top" alt="Don Zoilo">
+          <div class="card-body">
+            <h5 class="card-title">Don Zoilo</h5>
+            <p class="card-text">Honorio Pueyrredón 1406</p>
+            <p class="estrellas">★★★★★</p>
+            <a href="#" class="btn btn-ver-mas">Ver más</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/img/mcdonalds.jpg" class="card-img-top" alt="Vickens">
+          <div class="card-body">
+            <h5 class="card-title">Vickens</h5>
+            <p class="card-text">Rojas 1259</p>
+            <p class="estrellas">★★★★★</p>
+            <a href="#" class="btn btn-ver-mas">Ver más</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/img/mcdonalds.jpg" class="card-img-top" alt="La Vicca">
+          <div class="card-body">
+            <h5 class="card-title">La Vicca</h5>
+            <p class="card-text">Gascón 307</p>
+            <p class="estrellas">★★★★★</p>
+            <a href="#" class="btn btn-ver-mas">Ver más</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/img/mcdonalds.jpg" class="card-img-top" alt="McDonald's">
+          <div class="card-body">
+            <h5 class="card-title">McDonald's</h5>
+            <p class="card-text">Av. Corrientes 3966</p>
+            <p class="estrellas">★★★★★</p>
+            <a href="#" class="btn btn-ver-mas">Ver más</a>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Mis Domicilios -->
-    <div class="mt-5">
-      <h4 class="mb-3">Mis Domicilios</h4>
-      <ul class="list-group">
-        <li class="list-group-item">Rivadavia 2344, CABA</li>
-        <li class="list-group-item">Yatay 456, CABA</li>
-        <li class="list-group-item">Av. Diaz Velez 346, CABA</li>
-      </ul>
-    </div>
+   <!-- Mis Domicilios -->
+<div class="mt-5">
+  <div class="d-flex align-items-center mb-3">
+    <h4 class="me-3 mb-0">Mis Domicilios</h4>
+    <button class="btn-add-domicilio">+</button>
+  </div>
+  <ul class="list-group text-start"> <!-- Alineación izquierda -->
+    <li class="list-group-item">Rivadavia 2344, CABA</li>
+    <li class="list-group-item">Yatay 456, CABA</li>
+    <li class="list-group-item">Av. Diaz Velez 346, CABA</li>
+  </ul>
+</div>
   </div>
 </body>
 </html>

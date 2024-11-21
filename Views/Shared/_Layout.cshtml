@@ -13,35 +13,34 @@
 </head>
 <body>
 @{
-    if (ViewBag.EstaLogeado==false){
+    if (ViewBag.logeado==false){
     <div class= "header-inicial">
         <div class="header-div">
-            <a class="a-logo" href='@Url.Action("Home","Home")'>
+            <a class="a-logo" href='@Url.Action("Index","Home")'>
             <img src="/img/Logo3.png" class= "logo1">
             </a>
-            <nav>
+            <nav class= "nav-header-ppl">
                 <ul>
                     <li><a href='@Url.Action("Index", "Home")'>Inicio</a></li>
                     <li><a href='@Url.Action("AboutUs", "Home")'>Nosotros</a></li>
                 </ul>
             </nav>
-            <a class="boton-header" href='@Url.Action("Register", "Home")'>Ingresar</a>
+            <a class="boton-header" href='@Url.Action("register", "Home")'>Ingresar</a>
         </div> 
     </div>
 }else{
      <div class="engloba-header-2">
     <div class="header-logueado">
-        <a href="/Home/Index">
+        <a href="/Home/Home">
         <img src="/img/Logo3.png" class="logo">
         </a>
         
         <div class="derecha-header-logueado">
             <div class="perfil-container">
-                <p class="nombre-header-2">Magalí García</p>
+                <p class="nombre-header-2">@ViewBag.NombreUsuario</p>
                 <!-- Imagen de perfil como enlace -->
                 <a href="/Home/Perfil" class="perfil-enlace">
-                <a href="/Home/ConfigurarPerfil" class="perfil-enlace">
-                    <img src="/img/rostro.png" class="profile-pic" alt="Imagen de perfil">
+                    <img src="@ViewBag.FotoUsuario" class="profile-pic" alt="Imagen de perfil">
                 </a>
             </div>
 
@@ -103,10 +102,13 @@
             <h4 class="footer-heading">Seguinos</h4>
             <p>Seguinos en nuestras redes sociales así te puedes enterar de los eventos más recientes.</p>
             <div class="div-iconos-footer">
-                <img src="/img/insta-logo.svg" alt="Instagram" class="iconos-footer" />
-                <img src="/img/youtube-logo.svg" alt="YouTube" class="iconos-footer" />
-                <img src="/img/twitter-logo.svg" alt="Twitter" class="iconos-footer" />
-                <img src="/img/facebook-logo.svg" alt="Facebook" class="iconos-footer" />
+                <a href="https://www.instagram.com/" target="_blank">
+                <img src="/img/insta-logo.svg" alt="Instagram" class="iconos-footer" /></a>
+                  <a href="https://www.youtube.com/" target="_blank">
+                <img src="/img/youtube-logo.svg" alt="YouTube" class="iconos-footer" /></a>
+                <a href="https://x.com/?lang=en" target="_blank">
+                <img src="/img/twitter-logo.svg" alt="Twitter" class="iconos-footer" /></a>
+                
             </div>
         </div>
     </div>

@@ -15,16 +15,28 @@ public class CrearPlanController : Controller
 
     public IActionResult Index()
     {
-        ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.logeado=Sesion.EstaLogeado;
         return View();
     }
     public IActionResult Personalizado(){
-        ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.logeado=Sesion.EstaLogeado;
         Sesion.IniciarCreacionPlan();
         return View();
     }
     public IActionResult AgregarParticipantes(){
-        ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.logeado=Sesion.EstaLogeado;
+        return View();
+    }
+     public IActionResult Amigos(){
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.logeado=Sesion.EstaLogeado;
         return View();
     }
     public IActionResult FinalizarPlan(){
@@ -35,27 +47,37 @@ public class CrearPlanController : Controller
             listaParticipantes[i]=Sesion.UsuarioXID(Sesion.idUsuariosPlan[i]);
         }
         ViewBag.ListaParticipantes=listaParticipantes;
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.logeado=Sesion.EstaLogeado;
         return View();
     }
     public IActionResult PlanCreado(){
-        ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.logeado=Sesion.EstaLogeado;
         return View("PlanCreado");
     }
     public void TomarParticipantes(string[] participantes){
-        
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
     }
     [HttpGet]
     public List<Usuario> ListaAmigos(){
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         Console.WriteLine(Sesion.ListarAmigos(Sesion.userActual.idUsuario));
-        ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        ViewBag.logeado=Sesion.EstaLogeado;
         return Sesion.ListarAmigos(Sesion.userActual.idUsuario);
     }
     public IActionResult Privacy()
     {
-        ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        ViewBag.logeado=Sesion.EstaLogeado;
         return View();
     }
     public void InsertarTypeLugar(string type){
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         Sesion.CreandoPlan.TipoLugar=type;
     }
     public void IngresarParticipantes(List<int> idUsuarios){
@@ -64,7 +86,7 @@ public class CrearPlanController : Controller
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
-        ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        ViewBag.logeado=Sesion.EstaLogeado;
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
