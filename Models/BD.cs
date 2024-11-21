@@ -109,6 +109,15 @@ class BD
         }
         return idUsuario;
     }
+    public static Usuario UsuarioXID(int idUsuario){
+        Usuario user=new Usuario();
+        using (SqlConnection db = new SqlConnection(_connectionString))
+        {
+            string sql = "SP_ObtenerUsuario";
+            user= db.QueryFirstOrDefault<Usuario>(sql,new{@idUsuario=idUsuario});
+        }
+        return user;
+    }
 }
 
 

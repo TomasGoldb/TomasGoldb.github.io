@@ -5,6 +5,7 @@ public class Sesion
     public static bool EstaLogeado = false;
         public static Usuario userActual = new Usuario();
         public static Planes CreandoPlan;
+        public static List<int> idUsuariosPlan = new List<int>();
 
 
         public static void SetearSesion(Usuario use){
@@ -37,6 +38,9 @@ public class Sesion
         }
         public static List<Usuario> ListarAmigos(int idUsuario){
             return BD.ListarAmigos(idUsuario);
+        }
+        public static Usuario UsuarioXID(int idUsuario){
+            return BD.UsuarioXID(idUsuario);
         }
 
     }

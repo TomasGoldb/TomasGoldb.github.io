@@ -1897,7 +1897,7 @@ textarea {
 
 .autocomplete-container {
   position: relative;
-  width: 300px;
+  width: 100%;
 }
 
 #autocomplete-input {
@@ -2214,4 +2214,7 @@ nav ul li a:hover {
   
   justify-content: center;
   
+}
+.div-opciones-perfil{
+  margin-top:1.5%;
 }

@@ -15,31 +15,16 @@
 <section class="almacen-todo">
 <div class="section-participantes-preferencias">
     <h3>Participantes invitados:</h3>
-    <div class="participantes">
-        <div class="participante">
-            <img src="/img/rostro.png" alt="Foto de perfil" class="profile-pic">
-            <span>Pedro Sanjo</span>
-        </div>
-        <div class="participante">
-            <img src="/img/rostro.png" alt="Foto de perfil" class="profile-pic">
-            <span>Nicola Tesla</span>
-        </div>
-        <div class="participante">
-            <img src="/img/rostro.png" alt="Foto de perfil" class="profile-pic">
-            <span>Elon Mosca</span>
-        </div>
-        <div class="participante">
-            <img src="/img/rostro.png" alt="Foto de perfil" class="profile-pic">
-            <span>Magalí García</span>
-        </div>
-        <div class="participante">
-            <img src="/img/rostro.png" alt="Foto de perfil" class="profile-pic">
-            <span>Santiago Boro</span>
-        </div>
-        <div class="participante">
-            <img src="/img/rostro.png" alt="Foto de perfil" class="profile-pic">
-            <span>Bill Gates</span>
-        </div>
+    <div class="participantes">     
+        @{
+            for(int i=0;i<ViewBag.ListaParticipantes.Count;i++){
+                <div class="participante">
+                    <img src="@ViewBag.ListaParticipantes.FotoPerfil" alt="Foto de perfil" class="profile-pic">
+                    <span>@ViewBag.ListaParticipantes.Nombre</span>
+                </div>
+            }
+            
+        }
     </div>
 </div>
 

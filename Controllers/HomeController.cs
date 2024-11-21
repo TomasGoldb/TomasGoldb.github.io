@@ -17,6 +17,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
         return View();
@@ -25,6 +26,7 @@ public class HomeController : Controller
     //Login y registro
     public IActionResult register()
     {
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado = Sesion.EstaLogeado;
         
@@ -32,6 +34,7 @@ public class HomeController : Controller
     }
     [HttpPost]
     public IActionResult RegistrarUsuario(string nombre, string nick, string mail, string confirmaContra, string contra){
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado = Sesion.EstaLogeado;
         bool coincide=false;
@@ -59,11 +62,13 @@ public class HomeController : Controller
         
     }
     public IActionResult IniciarSesion(){
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
         return View("IniciarSesion");
     }
     public IActionResult LogearUsuario(string mail, string contra){
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         bool coincide=false;
         List<Usuario> usuarios=BD.Seleccionar("SP_ListarUsuarios");
@@ -90,12 +95,15 @@ public class HomeController : Controller
         }
     }
     public IActionResult ConfigurarPerfil(){
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
         return View();
         
     }
     public IActionResult Perfil(){
+        ViewBag.Biografia=Sesion.userActual.Biografia;
+        ViewBag.Nick=Sesion.userActual.Nick;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.IdUsuario=Sesion.userActual.idUsuario;
