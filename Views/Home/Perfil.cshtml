@@ -12,16 +12,14 @@
   <div class="container">
     <!-- Sección del Perfil -->
     <div class="perfil-header text-center py-4">
-      <img src="/img/rostro.png" alt="Foto de perfil" class="rounded-circle mb-3">
-      <h3>Magalí García</h3>
-      <p>@@maga.garcia</p>
-      <p>
-        Exploradora de la vida, fotografía & naturaleza.<br>
-        Amante de las novelas de misterio, café y buenas charlas.<br>
-        "La aventura comienza donde termina la zona de confort."
+          <img src="@ViewBag.FotoUsuario" alt="Foto de perfil" class="rounded-circle mb-3">
+      <h3>@ViewBag.NombreUsuario</h3>
+      <p >@@@ViewBag.Nick</p>
+      <p >
+        @ViewBag.Biografia
       </p>
-      <div class="d-flex justify-content-center gap-3">
-        <button class="btn btn-light">Editar Perfil</button>
+      <div class="d-flex justify-content-center gap-3 div-opciones-perfil">
+        <a href='@Url.Action("ConfigurarPerfil", "Home")'><button class="btn btn-light">Editar Perfil</button></a>
         <button class="btn btn-light">Configuración</button>
       </div>
     </div>
