@@ -13,31 +13,31 @@
 </head>
 <body>
 @{
-    if (ViewBag.EstaLogeado==false){
+    if (ViewBag.logeado==false){
     <div class= "header-inicial">
         <div class="header-div">
-            <a class="a-logo" href='@Url.Action("Home","Home")'>
+            <a class="a-logo" href='@Url.Action("Index","Home")'>
             <img src="/img/Logo3.png" class= "logo1">
             </a>
-            <nav>
+            <nav class= "nav-header-ppl">
                 <ul>
                     <li><a href='@Url.Action("Index", "Home")'>Inicio</a></li>
                     <li><a href='@Url.Action("AboutUs", "Home")'>Nosotros</a></li>
                 </ul>
             </nav>
-            <a class="boton-header" href='@Url.Action("Register", "Home")'>Ingresar</a>
+            <a class="boton-header" href='@Url.Action("register", "Home")'>Ingresar</a>
         </div> 
     </div>
 }else{
      <div class="engloba-header-2">
     <div class="header-logueado">
-        <a href="/Home/Index">
+        <a href="/Home/Home">
         <img src="/img/Logo3.png" class="logo">
         </a>
         
         <div class="derecha-header-logueado">
             <div class="perfil-container">
-                <p class="nombre-header-2">Magalí García</p>
+                <p class="nombre-header-2">@ViewBag.NombreUsuario</p>
                 <!-- Imagen de perfil como enlace -->
                 <a href="/Home/Perfil" class="perfil-enlace">
                 <a href="/Home/ConfigurarPerfil" class="perfil-enlace">

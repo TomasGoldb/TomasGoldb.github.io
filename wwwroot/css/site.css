@@ -679,21 +679,31 @@ justify-content: center;}
 }
 
 .boton-violeta{
-  padding: 1%;
-  width: 30%;
-  text-align: center;
-  font-size: 1vw;
-  background-color: #7A02ED;
-  text-decoration: none;
-  border-radius: 10px;
-  transition: all 0.1s ease-in;
-  color: white;
-  margin-bottom: 2%;
-  width: 20%;
+    padding: 3%;
+    width: 35%;
+    text-align: center;
+    font-size: 1vw;
+    background-color: #7A02ED;
+    text-decoration: none;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 3%;
 }
 .boton-violeta:hover{
   background-color: #6400c2;
   color: white;
+}
+
+.contenedores-pers{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
 }
 
 
@@ -1890,6 +1900,8 @@ textarea {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
+  border-radius: 10px;
+  margin-bottom: 4%;
 }
 
 .suggestions {
@@ -1898,7 +1910,7 @@ textarea {
   left: 0;
   right: 0;
   background: white;
-  border: 1px solid #ccc;
+
   max-height: none;
   overflow-y: auto;
   z-index: 1000;
@@ -2044,7 +2056,7 @@ textarea {
 .header-div {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   width: 80%; /* Ajusta el ancho según el contenedor */
 }
 
@@ -2088,4 +2100,10 @@ nav ul li a:hover {
 
 .boton-header:hover {
   background-color: #7a1bb3; /* Cambiar color del botón al pasar el mouse */
+}
+
+.nav-header-ppl{
+  
+  justify-content: center;
+  
 }
