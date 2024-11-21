@@ -395,6 +395,10 @@ header .boton-header:hover{
   padding: 0.5em 0.1em;
 }
 
+.mt-5{
+  margin-bottom: 3%;
+}
+
 mark{
   padding: 0 !important;
 }
@@ -1914,10 +1918,10 @@ textarea {
 }
 
 
-/*PERFIL*/
-/* Estilo específico para la vista "Perfil" */
+/* PERFILES */
+/* Header del perfil */
 .perfil-header {
-  background: linear-gradient(to right, #7A02ED, #c3b3e8);
+  background: linear-gradient(to right, #7A02ED, #A937B8);
   color: white;
   text-align: center;
   padding: 2rem 0;
@@ -1947,33 +1951,44 @@ textarea {
   color: #7A02ED;
   border: none;
   font-weight: bold;
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  transition: background-color 0.3s;
 }
 
 .perfil-header .btn:hover {
-  background-color: #c3b3e8;
+  background-color: #C3B3E8;
   color: #fff;
 }
 
-/* Estilo de los planes */
-/* Ajuste de las tarjetas (cards) */
+/* SECCIÓN DE PLANES */
+/* Contenedor para las tarjetas */
+.section-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; /* Espacio entre tarjetas */
+  justify-content: center;
+}
+
+/* Tarjetas */
 .section-cards .card {
   width: 100%;
-  max-width: 250px; /* Ajusta el ancho máximo de las tarjetas */
-  margin: auto;
-  border: 1px solid #c3b3e8;
+  max-width: 260px; /* Tamaño consistente de las tarjetas */
+  border: 1px solid #C3B3E8;
   border-radius: 10px;
   overflow: hidden;
-  transition: transform 0.3s ease;
   background-color: #fff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .section-cards .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .section-cards .card-img-top {
-  height: 150px; /* Altura fija para mantener proporción */
+  height: 150px;
   object-fit: cover;
 }
 
@@ -1981,61 +1996,126 @@ textarea {
   color: #7A02ED;
   font-weight: bold;
   font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 1rem;
 }
 
 .section-cards .card-text {
-  color: #6c757d; /* Color del texto de la dirección */
+  color: #6C757D;
   font-size: 0.9rem;
+  margin: 0 1rem;
 }
 
 .section-cards .estrellas {
-  color: #FFD700; /* Amarillo dorado */
+  color: #FFD700;
   font-size: 1.2rem;
-  margin: 0.5rem 0;
+  margin: 0.5rem 1rem;
 }
 
 .section-cards .btn-ver-mas {
+  display: block;
+  width: calc(100% - 2rem);
+  margin: 0.5rem auto;
+  padding: 0.5rem;
+  text-align: center;
   background-color: #7A02ED;
   color: white;
-  font-weight: bold;
   border: none;
   border-radius: 5px;
-  padding: 0.5rem 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
 .section-cards .btn-ver-mas:hover {
-  background-color: #c3b3e8;
-  color: #fff;
+  background-color: #5e01b5;
 }
 
-/* Estilo del historial */
+/* HISTORIAL */
 #carouselPlanesActuales, #carouselHistorialPlanes {
   padding: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
 }
 
-.estrellas {
-  color: #FFD700; /* Amarillo dorado */
-  font-size: 1.2rem;
+/* LISTA DE DOMICILIOS */
+.list-group {
+  max-width: 600px;
+  margin-left: 6%;
+  border-radius: 10px; /* Bordes redondeados para la lista */
+  overflow: hidden; /* Aplica bordes redondeados a los elementos internos */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para un efecto elevado */
 }
 
-/* Estilo de la lista de domicilios */
 .list-group-item {
-  background-color: #f9f9f9;
-  border: 1px solid #c3b3e8;
-  color: #7A02ED;
-  font-weight: bold;
+  background: linear-gradient(90deg, #f3f0ff, #ece8fc); /* Fondo degradado suave */
+  border: none; /* Sin bordes */
+  color: #5a2edb; /* Texto vibrante */
+  font-weight: 600; /* Peso moderado para el texto */
+  font-size: 1rem; /* Tamaño de fuente legible */
+  padding: 1rem 1.5rem; /* Espaciado cómodo */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Transiciones suaves */
+  position: relative; /* Necesario para el efecto decorativo */
+}
+
+.list-group-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px; /* Línea decorativa */
+  height: 80%; /* Altura relativa al elemento */
+  background-color: #5a2edb; /* Color de la línea */
+  border-radius: 5px; /* Bordes redondeados para la línea */
 }
 
 .list-group-item:hover {
-  background-color: #eae9f6;
+  background: linear-gradient(90deg, #ece8fc, #d9d5f7); /* Cambio de fondo al hover */
+  transform: translateY(-3px); /* Efecto de elevación */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más marcada */
+}
+
+.list-group-item:not(:last-child) {
+  margin-bottom: 0.5rem; /* Espaciado entre elementos */
 }
 
 
-/*HEADER INICIAL*/
-/* Estilo general para el header */
+/* Botón "+" Fachero */
+.btn-add-domicilio {
+  background-color: #7A02ED; /* Fondo con el color deseado */
+  color: #fff; /* Color de texto blanco */
+  width: 40px; 
+  height: 40px;
+  border: none;
+  border-radius: 50%; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-add-domicilio{
+  background-color: #5a2edb;
+  border-color: #5a2edb;
+  transition: none;
+  font-size: x-large;
+}
+
+.btn-add-domicilio:hover {
+  background-color: #5e01b5; /* Tono más oscuro al pasar el mouse */
+  transform: scale(1.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-add-domicilio:active {
+  transform: scale(0.9) rotate(15deg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* HEADER INICIAL */
 .header-inicial {
-  background: white; /* Degradado entre azul y rosa */
+  background: white;
   padding: 10px 0;
   display: flex;
   justify-content: center;
@@ -2045,22 +2125,18 @@ textarea {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 80%; /* Ajusta el ancho según el contenedor */
+  width: 90%; /* Ajusta el ancho */
 }
 
 .a-logo .logo1 {
-  height: 15%; 
-  width: 15%;
+  height: 60px;
+  width: auto; /* Mantén proporción */
 }
 
 nav ul {
   display: flex;
   list-style-type: none;
-  padding: 0;
-}
-
-nav ul li {
-  margin: 0 20px; /* Espacio entre los elementos de la lista */
+  gap: 1.5rem;
 }
 
 nav ul li a {
@@ -2072,14 +2148,14 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #ff00ff; /* Cambiar color cuando se pasa el mouse */
+  color: #FF00FF;
 }
 
 .boton-header {
-  background-color: #8a2be2; /* Color del botón */
+  background-color: #8A2BE2;
   color: white;
   padding: 10px 20px;
-  border-radius: 25px; /* Bordes redondeados */
+  border-radius: 25px;
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
@@ -2087,5 +2163,35 @@ nav ul li a:hover {
 }
 
 .boton-header:hover {
-  background-color: #7a1bb3; /* Cambiar color del botón al pasar el mouse */
+  background-color: #7A1BB3;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .perfil-header img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .perfil-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .perfil-header p {
+    font-size: 0.85rem;
+  }
+
+  .section-cards {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .list-group {
+    max-width: 100%;
+  }
+
+  .header-div {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
