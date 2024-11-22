@@ -81,6 +81,7 @@ public class CrearPlanController : Controller
         Sesion.CreandoPlan.TipoLugar=type;
     }
     public void IngresarParticipantes(List<int> idUsuarios){
+        Console.WriteLine(idUsuarios[0]);
         Sesion.idUsuariosPlan=idUsuarios;
     }
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

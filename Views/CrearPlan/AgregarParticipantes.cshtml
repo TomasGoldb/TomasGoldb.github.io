@@ -27,52 +27,50 @@
                 
                     
         <a class="copiar-enlace" id="copiarEnlace" href="#">Copiar enlace</a>
-        <a class="boton-violeta" id="siguiente-btn" href='@Url.Action("FinalizarPlan","CrearPlan")'>Siguiente</a>
+        <a class="boton-violeta" id="siguiente-btn" href='#'>Siguiente</a>
         
        </div>
     
 </main>
 
 <script>
-    let amigos=[], nombresParticipantes=[];
-    let cantPersonas=0;
-    $.ajax({
-                    url: '/CrearPlan/ListaAmigos',
-                    type: 'GET',
-                    data: {},
-                    dataType: 'json',
-                    success: function (data) {
-                        console.log(data);
-                        data.forEach(function (amigo, index) {
-                            if (!amigos[index]) {
-                        amigos[index] = {};  // Asegúrate de que el índice exista
-                            }
-                            nombresParticipantes.push(amigo.nombre);
-                        amigos[index].nombre = amigo.nombre;
-                        amigos[index].id = amigo.idUsuario;
-                        console.log(amigos[index]);
-                        
-                        
-                    });
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log("Error:", jqXHR.status, textStatus, errorThrown); 
-                    }
-    });
-            
+  let amigos = [], nombresParticipantes = [];
+let cantPersonas = 0;
+let idsAmigosAgregados = []; // Lista de IDs seleccionados
 
-    const suggestionsArray = nombresParticipantes;
-let tipo;
-document.getElementById('autocomplete-input').addEventListener('input', function() {
+$.ajax({
+    url: '/CrearPlan/ListaAmigos',
+    type: 'GET',
+    data: {},
+    dataType: 'json',
+    success: function (data) {
+        console.log(data);
+        data.forEach(function (amigo, index) {
+            if (!amigos[index]) {
+                amigos[index] = {}; // Asegúrate de que el índice exista
+            }
+            nombresParticipantes.push(amigo.nombre);
+            amigos[index].nombre = amigo.nombre;
+            amigos[index].id = amigo.idUsuario;
+            console.log(amigos[index]);
+        });
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+        console.log("Error:", jqXHR.status, textStatus, errorThrown);
+    }
+});
+
+const suggestionsArray = nombresParticipantes;
+
+document.getElementById('autocomplete-input').addEventListener('input', function () {
     const input = this.value.toLowerCase();
     const suggestionsBox = document.getElementById('suggestions');
     suggestionsBox.innerHTML = '';
 
     if (input) {
-        // Filtrar las sugerencias y limitar a 10 elementos
         const filteredSuggestions = suggestionsArray
             .filter(item => item.toLowerCase().includes(input))
-            .slice(0, 6); // Mostrar solo las primeras 10
+            .slice(0, 6); // Mostrar solo las primeras 6
 
         filteredSuggestions.forEach(item => {
             const div = document.createElement('div');
@@ -85,43 +83,76 @@ document.getElementById('autocomplete-input').addEventListener('input', function
         });
     }
 });
+
 let seleccionado;
+
 function selectSuggestion(item) {
     const inputField = document.getElementById('autocomplete-input');
     inputField.value = item;
     document.getElementById('suggestions').innerHTML = ''; // Limpiar sugerencias
     console.log(item);
-    seleccionado=item;
-    
-    
+    seleccionado = item;
 }
-let botonAgregar=document.getElementById("agregar-boton");
-botonAgregar.addEventListener("click",()=>{
-    console.log("a"+seleccionado);
-    let persona=
-    `<div class="participante-agregado" id="${cantPersonas}}">
-                    <div>
-                        <img src="/img/perfil.webp">
-                        <h2>${seleccionado}</h2>
-                    </div>
-                <a href="#"  onclick="eliminarParticipante(${cantPersonas})">Eliminar</a>
+
+let botonAgregar = document.getElementById("agregar-boton");
+botonAgregar.addEventListener("click", () => {
+    const amigo = amigos.find(a => a.nombre === seleccionado); // Busca al amigo por nombre
+    if (amigo && !idsAmigosAgregados.includes(amigo.id)) { // Evita duplicados
+        let persona =
+            `<div class="participante-agregado" id="${cantPersonas}">
+                <div>
+                    <img src="/img/perfil.webp">
+                    <h2>${amigo.nombre}</h2>
                 </div>
-    `;
-    cantPersonas++;
-    let contenedorAmigos = document.getElementById("par-agr");
-    console.log(contenedorAmigos);
-    console.log(persona);
-    contenedorAmigos.innerHTML=persona;
+                <a href="#" onclick="eliminarParticipante(${cantPersonas}, ${amigo.id})">Eliminar</a>
+            </div>`;
+        cantPersonas++;
+        idsAmigosAgregados.push(amigo.id); // Agregar ID a la lista
+        document.getElementById("par-agr").innerHTML += persona;
+    } else {
+        alert("Este amigo ya fue agregado o no es válido.");
+    }
 });
 
-
-
-
-   
-    function eliminarParticipante(id){
-        document.getElementById(id).remove();
+function eliminarParticipante(id, amigoId) {
+    const element = document.getElementById(id);
+    if (element) {
+        element.remove();
+        const index = idsAmigosAgregados.indexOf(amigoId);
+        if (index !== -1) {
+            idsAmigosAgregados.splice(index, 1); // Quitar el ID de la lista
+        }
+    } else {
+        console.error("Element with id '" + id + "' not found.");
     }
-                       
+}
+
+// Enviar la lista al servidor
+let botonEnviar = document.getElementById("siguiente-btn");
+botonEnviar.addEventListener("click", () => {
+    if (idsAmigosAgregados.length > 0) {
+        console.log(idsAmigosAgregados);
+        $.ajax({
+            url: '/CrearPlan/IngresarParticipantes',
+            type: 'POST',
+            contentType: 'application/json',
+            data: {idUsuarios: idsAmigosAgregados},
+            success: function (response) {
+                console.log("Participantes guardados:", response);
+                alert("Participantes guardados con éxito.");
+                //window.location.href="/crearplan/finalizarPlan"
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log("Error al guardar participantes:", jqXHR.status, textStatus, errorThrown);
+            }
+
+        });
+    } else {
+        alert("No hay participantes seleccionados para guardar.");
+    }
+});
+            
+  
 
 let botonCopiarEnlace = document.getElementById("copiarEnlace");
 botonCopiarEnlace.addEventListener("click", function(){
@@ -223,26 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-let boton=document.getElementById("siguiente-btn");
-boton.addEventListener("click", ()=>{
-    if(amigos!=null){
-        let idParticipantes=[];
-        for(let i=0;i<amigos.length;i++){
-            idParticipantes[i]=amigos[i].id;
-        }
-    $.ajax({
-                    url: '@Url.Action("IngresarParticipantes", "CrearPlan")',
-                    type: 'GET',
-                    data: {idUsuarios: idParticipantes},
-                    success: function (data) {
-                        console.log("Se han guardado correctamente los participantes.");
-                    }
-                });
-            window.location.href="/crearplan/finalizarPlan"
-    }else{
-        alert("error");
-    }
-});
+
 
  document.addEventListener("DOMContentLoaded", function(){
 AutoCompletado();
