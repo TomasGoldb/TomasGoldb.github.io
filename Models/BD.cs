@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Data;
 class BD
 {
-    private static string _connectionString = @"Server = TOMIGOLD24\SQLEXPRESS; Database = Juntify; Trusted_Connection = True;";
+    private static string _connectionString = @"Server = A-PHZ2-AMI-10; Database = Juntify; Trusted_Connection = True;";
     public static List<Usuario> Seleccionar(string sql){
         List<Usuario> listaUsuario = new List<Usuario>();
         using(SqlConnection db = new SqlConnection(_connectionString)){
@@ -79,14 +79,14 @@ class BD
             db.Execute(sql,new{@idPlan=idPlan, @idEstado=idEstado});
         }
     }
-    public static void CrearPlan(string tipoLugar){
-        int idPlan;
+    public static int CrearPlan(string tipoLugar){
+        int idPlan=-1;
         using(SqlConnection db=new SqlConnection(_connectionString)){
             string sql="SP_CrearPlan";
             idPlan=db.QueryFirstOrDefault<int>(sql, new{@tipoLugar=tipoLugar});
         }
+        return idPlan;
         }
-    }
     public static void EliminarAmigo(int idUsuario1, int idUsuario2){
         using(SqlConnection db=new SqlConnection(_connectionString)){
             string sql="SP_EliminarAmigo";

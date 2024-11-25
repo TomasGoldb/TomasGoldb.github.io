@@ -43,11 +43,14 @@ public class Sesion
             return BD.UsuarioXID(idUsuario);
         }
         public static bool CrearPlan(){
-            CreandoPlan.IdPlan=BD.CrearPlan(CreandoPlan.TipoLugar);
+            int idPlan=BD.CrearPlan(CreandoPlan.TipoLugar);
+            CreandoPlan.IdPlan=idPlan;
+            bool a=idPlan!=-1;
+            return a;
         }
 
-        public AgregarParticipantes(int idPlan){
-            if(idUsuariosPlan!=new List<int>){
+        public void AgregarParticipantes(int idPlan){
+            if(idUsuariosPlan!=new List<int>()){
                 foreach(int participante in idUsuariosPlan){
                     BD.AgregarParticipantePlan(participante,idPlan);
                 }

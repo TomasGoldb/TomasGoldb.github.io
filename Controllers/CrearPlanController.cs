@@ -57,7 +57,7 @@ public class CrearPlanController : Controller
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
         if(Sesion.idUsuariosPlan.Count==0){
-
+            return View("index");
         } else{
         return View("PlanCreado");
         }
