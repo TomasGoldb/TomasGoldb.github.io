@@ -8,4 +8,6 @@ public ParticipantePlan(int idusuario, int idplan){
     this.IdUsuario=idusuario;
     this.IdPlan=idplan;
 }
+
+    
 }

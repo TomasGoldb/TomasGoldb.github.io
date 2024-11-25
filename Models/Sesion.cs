@@ -42,5 +42,17 @@ public class Sesion
         public static Usuario UsuarioXID(int idUsuario){
             return BD.UsuarioXID(idUsuario);
         }
+        public static bool CrearPlan(){
+            CreandoPlan.IdPlan=BD.CrearPlan(CreandoPlan.TipoLugar);
+        }
 
+        public AgregarParticipantes(int idPlan){
+            if(idUsuariosPlan!=new List<int>){
+                foreach(int participante in idUsuariosPlan){
+                    BD.AgregarParticipantePlan(participante,idPlan);
+                }
+            } else{
+                Console.WriteLine("error"); 
+            }
+    }
     }

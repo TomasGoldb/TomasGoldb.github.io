@@ -56,7 +56,11 @@ public class CrearPlanController : Controller
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
+        if(Sesion.idUsuariosPlan.Count==0){
+
+        } else{
         return View("PlanCreado");
+        }
     }
     public void TomarParticipantes(string[] participantes){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
