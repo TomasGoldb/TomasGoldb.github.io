@@ -66,7 +66,108 @@ function mostrarEstrellas(calificacion, id) {
     }
 }
 
+const typeTranslations = {
+    accounting: "contabilidad",
+    point_of_interest: "punto de interés",
+    establishment: "establecimiento",
+    airport: "aeropuerto",
+    amusement_park: "parque de atracciones",
+    aquarium: "acuario",
+    art_gallery: "galería de arte",
+    atm: "cajero automático",
+    bakery: "panadería",
+    bank: "banco",
+    bar: "bar",
+    beauty_salon: "salón de belleza",
+    bicycle_store: "tienda de bicicletas",
+    book_store: "librería",
+    bowling_alley: "bolera",
+    bus_station: "estación de autobuses",
+    cafe: "cafetería",
+    campground: "campamento",
+    car_dealer: "concesionario de coches",
+    car_rental: "alquiler de coches",
+    car_repair: "reparación de coches",
+    car_wash: "lavado de coches",
+    casino: "casino",
+    cemetery: "cementerio",
+    church: "iglesia",
+    city_hall: "ayuntamiento",
+    clothing_store: "tienda de ropa",
+    convenience_store: "tienda de conveniencia",
+    courthouse: "palacio de justicia",
+    dentist: "dentista",
+    department_store: "gran almacén",
+    doctor: "doctor",
+    drugstore: "farmacia",
+    electrician: "electricista",
+    electronics_store: "tienda de electrónica",
+    embassy: "embajada",
+    fire_station: "estación de bomberos",
+    florist: "floristería",
+    funeral_home: "funeraria",
+    furniture_store: "tienda de muebles",
+    gas_station: "gasolinera",
+    gym: "gimnasio",
+    hair_care: "cuidado del cabello",
+    hardware_store: "ferretería",
+    hindu_temple: "templo hindú",
+    home_goods_store: "tienda de artículos para el hogar",
+    hospital: "hospital",
+    insurance_agency: "agencia de seguros",
+    jewelry_store: "joyería",
+    laundry: "lavandería",
+    lawyer: "abogado",
+    library: "biblioteca",
+    light_rail_station: "estación de tren ligero",
+    liquor_store: "licorería",
+    local_government_office: "oficina de gobierno local",
+    locksmith: "cerrajero",
+    lodging: "alojamiento",
+    meal_delivery: "entrega de comida",
+    meal_takeaway: "comida para llevar",
+    mosque: "mezquita",
+    movie_rental: "alquiler de películas",
+    movie_theater: "cine",
+    moving_company: "empresa de mudanzas",
+    museum: "museo",
+    night_club: "club nocturno",
+    painter: "pintor",
+    park: "parque",
+    parking: "estacionamiento",
+    pet_store: "tienda de mascotas",
+    pharmacy: "farmacia",
+    physiotherapist: "fisioterapeuta",
+    plumber: "plomero",
+    police: "policía",
+    post_office: "oficina de correos",
+    primary_school: "escuela primaria",
+    real_estate_agency: "agencia inmobiliaria",
+    restaurant: "restaurante",
+    roofing_contractor: "contratista de techos",
+    rv_park: "parque para casas rodantes",
+    school: "escuela",
+    secondary_school: "escuela secundaria",
+    shoe_store: "zapatería",
+    shopping_mall: "centro comercial",
+    spa: "spa",
+    stadium: "estadio",
+    storage: "almacenamiento",
+    store: "tienda",
+    subway_station: "estación de metro",
+    supermarket: "supermercado",
+    synagogue: "sinagoga",
+    taxi_stand: "parada de taxis",
+    tourist_attraction: "atracción turística",
+    train_station: "estación de tren",
+    transit_station: "estación de transporte",
+    travel_agency: "agencia de viajes",
+    university: "universidad",
+    veterinary_care: "cuidado veterinario",
+    zoo: "zoológico"
+  };
 
+  
 function fetchPlaceDetails(placeId) {
     if (!placeService) {
         console.error("El servicio de lugares no está disponible.");
@@ -76,7 +177,8 @@ function fetchPlaceDetails(placeId) {
     const request = {
         placeId: placeId
     };
-
+    let mapa=document.getElementById("iframeMapa");
+    mapa.src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC2Sp2t0k8EtGxiJDpcwDmYc_UzML9QIek&q=place_id:"+placeId;
     // Realizar la solicitud para obtener detalles del lugar
     placeService.getDetails(request, (place, status) => {
         const resultDiv = document.getElementById('result');
@@ -105,7 +207,7 @@ function fetchPlaceDetails(placeId) {
                         `;
 
 
-                       
+                
 
             const textoCompleto = place.reviews[i].text;
             const longitudVisible = 100; // Número máximo de caracteres a mostrar inicialmente
@@ -146,7 +248,15 @@ function fetchPlaceDetails(placeId) {
                 `;
                 reviews.innerHTML+=revi;
                 console.log(revi);
+                
             }
+            let tiposEspañol=[];
+            place.types.forEach((tipo)=>{
+                tiposEspañol.push(typeTranslations[tipo]);
+            });
+            let pTipos=document.getElementById("types-lugar");
+                let tipos=tiposEspañol.join(", ");;
+                pTipos.innerHTML+=tipos;
         } else {
             resultDiv.innerHTML = '<p class="error">No se pudo obtener los detalles del lugar. Estado: ' + status + '</p>';
         }
