@@ -41,9 +41,9 @@ public class CrearPlanController : Controller
     }
     public IActionResult FinalizarPlan(){
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
-        List<int> ides = Sesion.idUsuariosPlan;
+        int[] ides = Sesion.idUsuariosPlan;
         List<Usuario> listaParticipantes=new List<Usuario>();
-        for(int i=0;i<ides.Count;i++){
+        for(int i=0;i<ides.Length;i++){
             listaParticipantes[i]=Sesion.UsuarioXID(Sesion.idUsuariosPlan[i]);
         }
         ViewBag.ListaParticipantes=listaParticipantes;
@@ -56,16 +56,29 @@ public class CrearPlanController : Controller
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
-        if(Sesion.idUsuariosPlan.Count==0){
-            return View("index");
-        } else{
+        //if(Sesion.idUsuariosPlan.Length=0){
+        //    return View("index");
+        //} else{
         return View("PlanCreado");
-        }
+        //}
     }
     public void TomarParticipantes(string[] participantes){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
     }
+    [HttpPost]
+public IActionResult Accion(List<int> idsAmigos)
+{
+    // Aquí tienes los datos enviados desde JavaScript (a través del formulario)
+    ViewBag.a=string.Join(", ", idsAmigos);
+    // Hacer algo con los datos recibidos...
+    if(idsAmigos.Count!=0){
+    return View("hola");
+    } else{
+        return View("finalizarplan");
+    }
+}
+
     [HttpGet]
     public List<Usuario> ListaAmigos(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
@@ -84,7 +97,8 @@ public class CrearPlanController : Controller
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         Sesion.CreandoPlan.TipoLugar=type;
     }
-    public void IngresarParticipantes(List<int> idUsuarios){
+
+    public void IngresarParticipantes( int[] idUsuarios){
         Console.WriteLine(idUsuarios[0]);
         Sesion.idUsuariosPlan=idUsuarios;
     }

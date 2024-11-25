@@ -5,7 +5,7 @@ public class Sesion
     public static bool EstaLogeado = false;
         public static Usuario userActual = new Usuario();
         public static Planes CreandoPlan;
-        public static List<int> idUsuariosPlan = new List<int>();
+        public static int[] idUsuariosPlan;
 
 
         public static void SetearSesion(Usuario use){
@@ -50,7 +50,7 @@ public class Sesion
         }
 
         public void AgregarParticipantes(int idPlan){
-            if(idUsuariosPlan!=new List<int>()){
+            if(idUsuariosPlan.Length==0){
                 foreach(int participante in idUsuariosPlan){
                     BD.AgregarParticipantePlan(participante,idPlan);
                 }
