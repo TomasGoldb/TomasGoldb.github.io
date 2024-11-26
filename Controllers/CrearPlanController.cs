@@ -33,12 +33,7 @@ public class CrearPlanController : Controller
         ViewBag.logeado=Sesion.EstaLogeado;
         return View();
     }
-     public IActionResult Amigos(){
-        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
-        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
-        ViewBag.logeado=Sesion.EstaLogeado;
-        return View();
-    }
+    
     public IActionResult FinalizarPlan(){
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         int[] ides = Sesion.idUsuariosPlan;

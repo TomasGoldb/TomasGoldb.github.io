@@ -22,7 +22,12 @@ public class HomeController : Controller
         ViewBag.logeado=Sesion.EstaLogeado;
         return View();
     }
-
+    public IActionResult Amigos(){
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.logeado=Sesion.EstaLogeado;
+        return View();
+    }
     //Login y registro
     public IActionResult register()
     {
