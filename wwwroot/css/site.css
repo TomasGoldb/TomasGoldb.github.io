@@ -2217,3 +2217,80 @@ nav ul li a:hover {
 .div-opciones-perfil{
   margin-top:1.5%;
 }
+/*AMIGOS*/
+.requests-section {
+  display: flex;
+  justify-content: flex-start;
+  padding: 40px;
+  background-color: #f9f5ff;
+  width: 69vw;
+}
+
+.container-requests {
+  width: 80%;
+  max-width: 600px;
+}
+
+.requests-title {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.pending-requests,
+.current-requests {
+  margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.request-item {
+  display: flex;
+  align-items: stretch;
+  align-items: center;
+  background-color: #e4d3ff;
+  padding: 5px 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  position: relative;
+  width: 30%;
+}
+
+.request-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.request-name {
+  font-size: 1rem;
+  color: #333;
+  flex-grow: 1;
+}
+
+.btn-accept,
+.btn-remove {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #8f3af9;
+  cursor: pointer;
+}
+
+.btn-accept:hover {
+  color: #5e25c8;
+}
+
+.btn-remove:hover {
+  color: #c82525;
+}
+
+.btn-remove {
+  margin-left: 10px;
+}
