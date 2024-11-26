@@ -24,13 +24,6 @@
         <div class="participantes-agregados" id="par-agr">
         </div>
 
-
-
-<form id="miFormulario" method="post" action="/CrearPlan/Accion">
-    <input type="hidden" id="idsAmigos" name="idsAmigos" />
-    <button type="submit">Enviar Participantes</button>
-</form>
-
                 
                     
         <a class="copiar-enlace" id="copiarEnlace" href="#">Copiar enlace</a>
@@ -119,7 +112,31 @@ botonAgregar.addEventListener("click", () => {
     } else {
         alert("Este amigo ya fue agregado o no es válido.");
     }
-    console.log(idsAmigosAgregados);
+});
+
+let botonEnviar = document.getElementById("siguiente-btn");
+botonEnviar.addEventListener("click", () => {
+    if (idsAmigosAgregados.length > 0) {
+        let idsAmigosAgregadosStr=idsAmigosAgregados.join(",");
+        console.log(idsAmigosAgregadosStr);
+        console.log(idsAmigosAgregados);
+        $.ajax({
+            type: 'POST',
+            dataType: 'text',
+            url: '/CrearPlan/IngresarParticipantes',
+            data: {idUsuarios: idsAmigosAgregadosStr},
+            success: function (r) {
+                console.log(r);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log("Error al guardar participantes:", jqXHR.status, textStatus, errorThrown);
+                console.log("ajo y agua");
+            }
+
+        });
+    } else {
+        alert("No hay participantes seleccionados para guardar.");
+    }
 });
 
 function eliminarParticipante(id, amigoId) {
@@ -135,21 +152,7 @@ function eliminarParticipante(id, amigoId) {
     }
 }
 
-// Enviar la lista al servidor
-let botonEnviar = document.getElementById("siguiente-btn");
-botonEnviar.addEventListener("click", () => {
-    if (idsAmigosAgregados.length > 0) {
 
-// Coloca los datos en el campo oculto antes de enviar el formulario
-document.getElementById('idsAmigos').value = JSON.stringify(idsAmigosAgregados);
-
-// Envía el formulario
-document.getElementById('miFormulario').submit();
-        console.log(idsAmigosAgregados);
-    } else {
-        alert("No hay participantes seleccionados para guardar.");
-    }
-});
             
   
 
