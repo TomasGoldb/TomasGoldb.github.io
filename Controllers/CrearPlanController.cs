@@ -62,17 +62,6 @@ public class CrearPlanController : Controller
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
     }
     [HttpPost]
-public IActionResult Accion(List<int> idsAmigos)
-{
-    // Aquí tienes los datos enviados desde JavaScript (a través del formulario)
-    ViewBag.a=string.Join(", ", idsAmigos);
-    // Hacer algo con los datos recibidos...
-    if(idsAmigos.Count!=0){
-    return View("hola");
-    } else{
-        return View("finalizarplan");
-    }
-}
 
     [HttpGet]
     public List<Usuario> ListaAmigos(){
@@ -93,9 +82,15 @@ public IActionResult Accion(List<int> idsAmigos)
         Sesion.CreandoPlan.TipoLugar=type;
     }
 
-    public void IngresarParticipantes( int[] idUsuarios){
-        Console.WriteLine(idUsuarios[0]);
-        Sesion.idUsuariosPlan=idUsuarios;
+    public string IngresarParticipantes(string idUsuarios){
+        Console.WriteLine(idUsuarios);
+        string[] idUsuariosStr=idUsuarios.Split(",");
+        int[] idUsuariosInt=new int[idUsuariosStr.Length];
+        for(int i=0;i<idUsuariosStr.Length;i++){
+            idUsuariosInt[i]=int.Parse(idUsuariosStr[i]);
+        }
+        Sesion.idUsuariosPlan=idUsuariosInt;
+        return "A";
     }
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
