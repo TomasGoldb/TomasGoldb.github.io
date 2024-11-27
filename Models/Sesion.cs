@@ -53,6 +53,7 @@ public class Sesion
             if(idUsuariosPlan.Length!=0){
                 foreach(int participante in idUsuariosPlan){
                     BD.AgregarParticipantePlan(participante,idPlan);
+                    AgregarNotificacion(participante, $"¡{Sesion.userActual.Nombre} te ha invitado a unite a su plan! <a href=''>Ver plan</a>");
                 }
             } else{
                 Console.WriteLine("error"); 
@@ -63,7 +64,14 @@ public class Sesion
         public static List<Usuario> ListarParticipantesPlan(int idPlan){
             Planes plan=BD.PlanXID(idPlan);
             List<Usuario> listaParticipantes = new List<Usuario>();
-            
+            List<int> idParticipantes=BD.ListarIDParticipantes(idPlan);
+            foreach(int id in idParticipantes){
+                listaParticipantes.Add(BD.UsuarioXID(id));
+            }
+            return listaParticipantes;
+        }
+        public static void AgregarNotificacion(int idUsuario, string texto){
+            BD.AgregarNoti(idUsuario, texto);
         }
     }
 */

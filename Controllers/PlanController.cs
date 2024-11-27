@@ -17,6 +17,7 @@ public class PlanController : Controller
     {
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
@@ -24,6 +25,7 @@ public class PlanController : Controller
     {
          ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
@@ -31,18 +33,21 @@ public class PlanController : Controller
     {
          ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
     public IActionResult VerPlan(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
     public IActionResult Votar(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
@@ -50,6 +55,7 @@ public class PlanController : Controller
     public IActionResult PostVoto(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
@@ -57,13 +63,22 @@ public class PlanController : Controller
     public IActionResult DashPlan(int idPlan){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         Planes plan = BD.PlanXID(idPlan);
+        ViewBag.Plan=plan;
+        List<Usuario> participantes=Sesion.ListarParticipantesPlan(idPlan);
+        ViewBag.Participantes=participantes;
         return View();
+    }
+    public ActionResult EmpezarVotacion(){
+        
+        return RedirectToAction("DashPlan2");
     }
     public IActionResult DashPlan2(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
@@ -71,12 +86,14 @@ public class PlanController : Controller
     public IActionResult DashPlan3(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
     public IActionResult DashPlan4(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }

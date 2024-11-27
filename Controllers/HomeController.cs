@@ -19,6 +19,14 @@ public class HomeController : Controller
     {
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
+        ViewBag.logeado=Sesion.EstaLogeado;
+        return View();
+    }
+    public IActionResult AboutUs()
+    {
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
         return View();
     }
@@ -31,6 +39,7 @@ public class HomeController : Controller
         ViewBag.Amigos=ListaAmigos;
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.logeado=Sesion.EstaLogeado;
         return View();
     }
@@ -39,6 +48,7 @@ public class HomeController : Controller
     {
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.logeado = Sesion.EstaLogeado;
         
         return View();
@@ -47,6 +57,7 @@ public class HomeController : Controller
     public IActionResult RegistrarUsuario(string nombre, string nick, string mail, string confirmaContra, string contra){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.logeado = Sesion.EstaLogeado;
         bool coincide=false;
         if (contra==confirmaContra){
@@ -75,12 +86,14 @@ public class HomeController : Controller
     public IActionResult IniciarSesion(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.logeado=Sesion.EstaLogeado;
         return View("IniciarSesion");
     }
     public IActionResult LogearUsuario(string mail, string contra){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         bool coincide=false;
         List<Usuario> usuarios=BD.Seleccionar("SP_ListarUsuarios");
         foreach(Usuario usu in usuarios){
@@ -108,6 +121,7 @@ public class HomeController : Controller
     public IActionResult ConfigurarPerfil(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.logeado=Sesion.EstaLogeado;
         return View();
         
@@ -118,12 +132,14 @@ public class HomeController : Controller
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.IdUsuario=Sesion.userActual.idUsuario;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         return View();
     }
     public IActionResult ActualizarUsuario(IFormFile archivo, string nombre, string nick, string biografia){
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
         Usuario.ActualizarPerfilUsuario(nombre, nick, biografia);
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         bool seCambio=Sesion.userActual.CambiarFoto(archivo, Environment);
         if(seCambio){
             
@@ -153,23 +169,27 @@ public class HomeController : Controller
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.logeado=Sesion.EstaLogeado;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         return View("Home");
     }
     public IActionResult PruebaMaps(){
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         return View();
     }
 
     public IActionResult CrearPlan(){
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;        
         ViewBag.logeado=Sesion.EstaLogeado;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         return View();
     }
 
     public IActionResult DetalleLugar(string idLugarMaps){
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.idLugarMaps=idLugarMaps;
         return View();
     }

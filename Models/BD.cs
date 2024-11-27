@@ -38,8 +38,8 @@ class BD
     public static List<int> ListarIDParticipantes(int idUsuario){
         List<int> lista =  new List<int>();
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            string sql="SP_ListarAmigos";
-            lista = db.Query<int>(sql, new{ @idUsuario = idUsuario }).ToList();
+            string sql="SP_ListarParticipantesPlan";
+            lista = db.Query<int>(sql, new{ @idPlan = idPlan }).ToList();
         }
         return lista;
     }
@@ -102,6 +102,12 @@ class BD
             db.Execute(sql,new{@idUsuario1=idUsuario1, @idUsuario2=idUsuario2});
         }
     }
+    public static void AgregarNoti(int idUsuario, string msg){
+        using(SqlConnection db=new SqlConnection(_connectionString)){
+            string sql="SP_AgregarNotificacion";
+            db.Execute(sql,new{@idUsuario=idUsuario, @texto=msg});
+        }
+    }
       public static List<Usuario> ListarUsuarios(){
         List<Usuario> ListaUsuarios;
         using (SqlConnection db = new SqlConnection(_connectionString))
@@ -128,6 +134,16 @@ class BD
             user= db.QueryFirstOrDefault<Usuario>(sql,new{@idUsuario=idUsuario});
         }
         return user;
+    }
+    
+    public static List<Notificaciones> ListarNotis(int idUsuario){
+        List<Notificaciones> notis =new List<Notificaciones>();
+        using (SqlConnection db = new SqlConnection(_connectionString))
+        {
+            string sql = "SP_ListarNotificaciones";
+            notis = db.Query<Notificaciones>(sql, new{@idUsuario=idUsuario}).ToList();
+        }
+        return notis;
     }
     public static Planes PlanXID(int idPlan){
         Planes plan=new Planes();

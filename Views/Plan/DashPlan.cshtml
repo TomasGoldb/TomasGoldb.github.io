@@ -4,10 +4,10 @@
     <h3>Participantes invitados:</h3>
     <div class="participantes">     
         @{
-            for(int i=0;i<4;i++){
+            for(int i=0;i<ViewBag.Participantes.Count;i++){
                 <div class="participante">
-                    <img src="@ViewBag.ListaParticipantes[i].FotoPerfil" alt="Foto de perfil" class="profile-pic">
-                    <span>@ViewBag.ListaParticipantes[i].Nombre</span>
+                    <img src="@ViewBag.Participantes[i].FotoPerfil" alt="Foto de perfil" class="profile-pic">
+                    <span>@ViewBag.Participantes[i].Nombre</span>
                 </div>
             }
             
@@ -19,7 +19,7 @@
     <h3>Preferencia:</h3>
     <div class="preferences">
         <div class="participante">
-            <span>@ViewBag.preferencia</span>
+            <span>@ViewBag.Plan.TipoLugar</span>
         </div>    
     </div>
 </div>
