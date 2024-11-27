@@ -22,7 +22,14 @@ public class PlanController : Controller
     }
      public IActionResult Invitacion()
     {
-        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        return View();
+    }
+     public IActionResult AceptarPlan()
+    {
+         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();

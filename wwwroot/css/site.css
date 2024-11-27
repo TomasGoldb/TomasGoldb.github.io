@@ -2294,3 +2294,100 @@ nav ul li a:hover {
 .btn-remove {
   margin-left: 10px;
 }
+
+/*ACEPTAR INVITACIOMN*/
+
+/* Contenedor principal */
+.invitacion-container {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  margin: 50px auto;
+  width: 80%;
+  max-width: 800px; /* Aumenta el ancho máximo */
+}
+
+/* Título */
+.invitacion-container h1 {
+  color: #7A02ED;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Contenido general */
+.contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px; /* Más separación debajo */
+}
+
+/* Detalles del plan */
+.detalle-plan {
+  text-align: left;
+  width: 60%;
+}
+
+.detalle-plan p {
+  font-size: 20px; /* Texto más grande */
+  margin: 10px 0;
+}
+
+/* Sección de ubicación */
+.ubicacion {
+  text-align: left;
+  width: 35%;
+}
+
+.ubicacion label {
+  font-size: 18px; /* Etiqueta más grande */
+  margin-bottom: 10px;
+  display: block;
+}
+
+.ubicacion input {
+  width: 100%;
+  padding: 12px; /* Más espacio dentro del campo */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px; /* Texto más grande */
+}
+
+/* Botones */
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Más espacio entre botones */
+}
+
+.aceptar, .declinar {
+  padding: 15px 30px; /* Botones más grandes */
+  border: none;
+  border-radius: 20px; /* Bordes redondeados más marcados */
+  font-size: 18px; /* Texto más grande */
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.aceptar {
+  background-color: #8a2be2;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.aceptar:hover {
+  background-color: #7a1bb3;
+}
+
+.declinar {
+  background-color: white;
+  color: red;
+  border: 1px solid red;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.declinar:hover {
+  background-color: red;
+  color: white;
+}
+
