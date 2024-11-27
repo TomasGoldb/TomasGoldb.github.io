@@ -55,7 +55,7 @@ public class CrearPlanController : Controller
 
         bool seCreo=Sesion.CrearPlan();
         if(seCreo){
-            AgregarParticipantes();
+            Sesion.AgregarParticipantes(Sesion.CreandoPlan.IdPlan);
         }
         //if(Sesion.idUsuariosPlan.Length=0){
         //    return View("index");
