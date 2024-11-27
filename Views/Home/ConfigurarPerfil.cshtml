@@ -3,8 +3,8 @@
 }
 
 <main class="configurar-perfil">
-    <h1>Configura tu perfil</h1>
-    <form action='@Url.Action("ActualizarFotoPerfil", "Home")' method="post" enctype="multipart/form-data">
+    <h1>Editá tu perfil</h1>
+    <form action='@Url.Action("ActualizarUsuario", "Home")' method="post" enctype="multipart/form-data">
         <!-- Campo de Foto de perfil -->
         <div class="input-group">
             <input type="text" placeholder="Añade una foto de perfil" readonly id="profilePicInput" />
@@ -18,13 +18,16 @@
         <!-- Campo de Nombre -->
         <div class="form-group">
             <label for="name">Nombre</label>
-            <input type="text" id="name" placeholder="Ingresa tu nombre" />
+            <input type="text" id="name" placeholder="Ingresa tu nuevo nombre" name="nombre"/>
         </div>
-
+        <div class="form-group">
+            <label for="bio">Nombre De Usuario</label>
+            <input type="text" id="name" placeholder="Ingresa tu nuevo apodo" name="nick"/>
+        </div>
         <!-- Campo de Biografía -->
         <div class="form-group">
             <label for="bio">Biografía</label>
-            <textarea id="bio" placeholder="Añade una biografía"></textarea>
+            <textarea id="bio" placeholder="Añade una biografía" name="biografia"></textarea>
         </div>
 
         <!-- Botón de Enviar -->

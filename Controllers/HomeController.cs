@@ -22,7 +22,13 @@ public class HomeController : Controller
         ViewBag.logeado=Sesion.EstaLogeado;
         return View();
     }
+    public IActionResult EliminarAmigo(){
+        return View("Amigos");
+    }
     public IActionResult Amigos(){
+        List<Usuario> ListaAmigos=BD.ListarAmigos(Sesion.userActual.idUsuario);
+        ViewBag.CantAmigos=ListaAmigos.Count();
+        ViewBag.Amigos=ListaAmigos;
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
@@ -114,13 +120,14 @@ public class HomeController : Controller
         ViewBag.IdUsuario=Sesion.userActual.idUsuario;
         return View();
     }
-    public IActionResult ActualizarFotoPerfil(IFormFile archivo){
+    public IActionResult ActualizarUsuario(IFormFile archivo, string nombre, string nick, string biografia){
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
+        Usuario.ActualizarPerfilUsuario(nombre, nick, biografia);
         bool seCambio=Sesion.userActual.CambiarFoto(archivo, Environment);
         if(seCambio){
             
-            return RedirectToAction("index");
+            return RedirectToAction("Home");
         }else{
             ViewBag.error=FormatearError("ERROR_004_SinArchivo");
             return View("setearfotoperfil");
@@ -143,6 +150,7 @@ public class HomeController : Controller
     //Fin login y registro
 
     public IActionResult Home(){
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.logeado=Sesion.EstaLogeado;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         return View("Home");

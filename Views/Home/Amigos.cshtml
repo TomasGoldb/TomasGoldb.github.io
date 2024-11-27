@@ -4,15 +4,7 @@
 
 <main class="elegir-tipo-plan">
     <div class="main">
-        <div class="progress-container">
-            <div class="step completed">1</div>
-            <div class="line"></div>
-            <div class="step">2</div>
-            <div class="line"></div>
-            <div class="step">3</div>
-            <div class="line"></div>
-            <div class="step">4</div>
-        </div>
+       
         <div class="centrado">
             <h1 class="titulo-violeta">Agrega a un amigo!</h1>
 
@@ -37,26 +29,13 @@
 
     <h2 class="requests-title">Actuales:</h2>
     <div class="current-requests">
+    @for(int i=1;i<ViewBag.CantAmigos;i++){
       <div class="request-item">
         <img src="/img/perfil.webp" alt="Bill Puertas" class="request-img">
-        <p class="request-name">Bill Puertas</p>
-        <button class="btn-remove">&#10005;</button>
+        <p class="request-name">@ViewBag.Amigos[i].Nombre</p>
+        <a href='@Url.Action("EliminarAmigo","Home")'><button class="btn-remove" id="eliminar-amigo" onclick="eliminarAmigo()" name="@ViewBag.Amigos[i].idUsuario">&#10005;</button></a>
       </div>
-      <div class="request-item">
-        <img src="/img/perfil.webp" alt="Miguel Torres" class="request-img">
-        <p class="request-name">Miguel Torres</p>
-        <button class="btn-remove">&#10005;</button>
-      </div>
-      <div class="request-item">
-        <img src="/img/perfil.webp" alt="Nico Phelps" class="request-img">
-        <p class="request-name">Nico Phelps</p>
-        <button class="btn-remove">&#10005;</button>
-      </div>
-      <div class="request-item">
-        <img src="/img/perfil.webp" alt="Micaela Buyi" class="request-img">
-        <p class="request-name">Micaela Buyi</p>
-        <button class="btn-remove">&#10005;</button>
-      </div>
+    }
     </div>
   </div>
 </section>
@@ -64,8 +43,7 @@
         <!--PROBANDO FIN-->
                 
                     
-        <a class="copiar-enlace" id="copiarEnlace" href="#">Copiar enlace</a>
-        <a class="boton-violeta" href='@Url.Action("FinalizarPlan","CrearPlan")'>Siguiente</a>
+        <a class="boton-violeta" href='@Url.Action("Home","Home")'>Siguiente</a>
         </section>
        </div>
     

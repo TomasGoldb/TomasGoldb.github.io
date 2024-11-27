@@ -35,7 +35,7 @@ class BD
         }
         return lista;
     }
-    public static List<int> ListarIDParticipantes(int idPlan){
+    public static List<int> ListarIDParticipantes(int idUsuario){
         List<int> lista =  new List<int>();
         using(SqlConnection db = new SqlConnection(_connectionString)){
             string sql="SP_ListarAmigos";
