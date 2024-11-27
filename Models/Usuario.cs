@@ -9,7 +9,7 @@ public class Usuario
         public string Mail {set; private get;}
         public int Edad {set;get;}
         public string Biografia {get;set;}
-        public string FotoPerfil {get;set;}
+        public string FotoPerfil {get;set;} = "";
         
 
 
