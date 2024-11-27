@@ -35,15 +35,15 @@ public class PlanController : Controller
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        ViewBag.idPlan=idPlan;
         ViewBag.Direcciones=Sesion.listarDirecciones(Sesion.userActual.idUsuario);
         return View();
     }
-    public IActionResult Unirse(int direccion){
+    public IActionResult Unirse(int direccion, int idPlan){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
-        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
-        BD.AgregarDireccionPlan(Sesion.userActual.idUsuario,direccion);
+        Sesion.AceptarInvitacion(direccion,idPlan);
         return View();
     }
     public IActionResult VerPlan(){

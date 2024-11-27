@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Data;
 class BD
 {
-    private static string _connectionString = @"Server =A-PHZ2-CIDI-36; Database = Juntify; Trusted_Connection = True;";
+    private static string _connectionString = @"Server =TOMIGOLD24\SQLEXPRESS; Database = Juntify; Trusted_Connection = True;";
     public static List<Usuario> Seleccionar(string sql){
         List<Usuario> listaUsuario = new List<Usuario>();
         using(SqlConnection db = new SqlConnection(_connectionString)){
@@ -84,10 +84,16 @@ class BD
             db.Execute(sql,new{@idUsuario=idUsuario, @calle=calle,@altura=altura, @coordenada=coordenada});
         }
     }
-    public static void AgregarDireccionPlan(int idUsuario, int idDireccion){
+    public static void AgregarDireccionPlan(int idUsuario, int idDireccion, int idPlan){
         using(SqlConnection db=new SqlConnection(_connectionString)){
             string sql="SP_AgregarDireccionParticipante";
-            db.Execute(sql,new{@idUsuario=idUsuario, @idDireccion=idDireccion});
+            db.Execute(sql,new{@idUsuario=idUsuario, @idDireccion=idDireccion, @idPlan=idPlan});
+        }
+    }
+    public static void AceptarInvitacion(int idUsuario,int idPlan){
+        using(SqlConnection db=new SqlConnection(_connectionString)){
+            string sql="SP_AceptarInvitacion";
+            db.Execute(sql,new{@idPlan=idPlan, @idUsuario=idUsuario});
         }
     }
     public static void AgregarParticipantePlan(int idUsuario, int idPlan){

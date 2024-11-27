@@ -1,7 +1,7 @@
 <div class="invitacion-container">
     <h1>Aceptar invitación</h1>
     
-    <form asp-controller="Plan" asp-action="Unirse" method="post">
+    <form asp-controller="Plan" asp-action="Unirse" method="get">
     <div class="contenido">
         <div class="detalle-plan">
             <p><strong>Tipo de plan:</strong> Restaurante</p>
@@ -18,7 +18,7 @@
                 </select>
         </div>
     </div>
-    
+    <input type="number" style="display: none" value="@ViewBag.idPlan" name="idPlan">
     <div class="botones">
         <input type="submit" class="aceptar" value="Aceptar">
         <button class="declinar">Declinar</button>

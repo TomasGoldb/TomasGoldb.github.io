@@ -76,5 +76,10 @@ public class Sesion
         public static List<Direcciones> listarDirecciones(int idUsuario){
             return BD.ListarDirecciones(idUsuario);
         }
+        public static void AceptarInvitacion(int direccion, int idPlan){
+            Console.WriteLine("viva la merca");
+            BD.AgregarDireccionPlan(userActual.idUsuario,direccion,idPlan);
+            BD.AceptarInvitacion(userActual.idUsuario,idPlan);
+        }
 }
     
