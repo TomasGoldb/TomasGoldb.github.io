@@ -59,7 +59,14 @@ public class PlanController : Controller
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         Planes plan = BD.PlanXID(idPlan);
+        ViewBag.Plan=plan;
+        List<Usuario> participantes=Sesion.ListarParticipantesPlan(idPlan);
+        ViewBag.Participantes=participantes;
         return View();
+    }
+    public ActionResult EmpezarVotacion(){
+        
+        return RedirectToAction("DashPlan2");
     }
     public IActionResult DashPlan2(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
