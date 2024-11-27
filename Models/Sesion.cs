@@ -61,6 +61,10 @@ public class Sesion
         public static List<Usuario> ListarParticipantesPlan(int idPlan){
             Planes plan=BD.PlanXID(idPlan);
             List<Usuario> listaParticipantes = new List<Usuario>();
-            
+            List<int> idParticipantes=BD.ListarIDParticipantes(idPlan);
+            foreach(int id in idParticipantes){
+                listaParticipantes.Add(BD.UsuarioXID(id));
+            }
+            return listaParticipantes;
         }
     }

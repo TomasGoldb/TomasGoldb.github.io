@@ -38,8 +38,8 @@ class BD
     public static List<int> ListarIDParticipantes(int idPlan){
         List<int> lista =  new List<int>();
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            string sql="SP_ListarAmigos";
-            lista = db.Query<int>(sql, new{ @idUsuario = idUsuario }).ToList();
+            string sql="SP_ListarParticipantesPlan";
+            lista = db.Query<int>(sql, new{ @idPlan = idPlan }).ToList();
         }
         return lista;
     }
