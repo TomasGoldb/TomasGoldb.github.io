@@ -15,4 +15,5 @@ public class Direcciones
         this.Altura=altura;
         this.Coordenada=coordenada;
            }
+           public Direcciones(){}
 }

@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Data;
 class BD
 {
-    private static string _connectionString = @"Server =A-PHZ2-CIDI-14; Database = Juntify; Trusted_Connection = True;";
+    private static string _connectionString = @"Server =A-PHZ2-CIDI-36; Database = Juntify; Trusted_Connection = True;";
     public static List<Usuario> Seleccionar(string sql){
         List<Usuario> listaUsuario = new List<Usuario>();
         using(SqlConnection db = new SqlConnection(_connectionString)){
@@ -35,11 +35,19 @@ class BD
         }
         return lista;
     }
-    public static List<int> ListarIDParticipantes(int idUsuario){
+    public static List<int> ListarIDParticipantes(int idPlan){
         List<int> lista =  new List<int>();
         using(SqlConnection db = new SqlConnection(_connectionString)){
             string sql="SP_ListarParticipantesPlan";
             lista = db.Query<int>(sql, new{ @idPlan = idPlan }).ToList();
+        }
+        return lista;
+    }
+    public static List<Direcciones> ListarDirecciones(int idUsuario){
+        List<Direcciones> lista =  new List<Direcciones>();
+        using(SqlConnection db = new SqlConnection(_connectionString)){
+            string sql="SP_ListarDirecciones";
+            lista = db.Query<Direcciones>(sql, new{ @idUsuario=idUsuario }).ToList();
         }
         return lista;
     }
@@ -61,6 +69,7 @@ class BD
             db.Execute(sql);
         }
     }
+  
 
     public static void AgregarAmigo(int idUsuario1, int idUsuario2){
         using (SqlConnection db = new SqlConnection(_connectionString))
@@ -73,6 +82,12 @@ class BD
         using(SqlConnection db=new SqlConnection(_connectionString)){
             string sql="SP_AgregarDireccion";
             db.Execute(sql,new{@idUsuario=idUsuario, @calle=calle,@altura=altura, @coordenada=coordenada});
+        }
+    }
+    public static void AgregarDireccionPlan(int idUsuario, int idDireccion){
+        using(SqlConnection db=new SqlConnection(_connectionString)){
+            string sql="SP_AgregarDireccionParticipante";
+            db.Execute(sql,new{@idUsuario=idUsuario, @idDireccion=idDireccion});
         }
     }
     public static void AgregarParticipantePlan(int idUsuario, int idPlan){

@@ -29,12 +29,21 @@ public class PlanController : Controller
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
-     public IActionResult AceptarPlan()
+     public IActionResult AceptarPlan(int idPlan)
     {
          ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        ViewBag.Direcciones=Sesion.listarDirecciones(Sesion.userActual.idUsuario);
+        return View();
+    }
+    public IActionResult Unirse(int direccion){
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
+        BD.AgregarDireccionPlan(Sesion.userActual.idUsuario,direccion);
         return View();
     }
     public IActionResult VerPlan(){

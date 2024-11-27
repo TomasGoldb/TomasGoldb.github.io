@@ -59,8 +59,8 @@ public class Sesion
                 Console.WriteLine("error"); 
             }
     }
-}
-    /*
+
+    
         public static List<Usuario> ListarParticipantesPlan(int idPlan){
             Planes plan=BD.PlanXID(idPlan);
             List<Usuario> listaParticipantes = new List<Usuario>();
@@ -73,5 +73,8 @@ public class Sesion
         public static void AgregarNotificacion(int idUsuario, string texto){
             BD.AgregarNoti(idUsuario, texto);
         }
-    }
-*/
+        public static List<Direcciones> listarDirecciones(int idUsuario){
+            return BD.ListarDirecciones(idUsuario);
+        }
+}
+    
