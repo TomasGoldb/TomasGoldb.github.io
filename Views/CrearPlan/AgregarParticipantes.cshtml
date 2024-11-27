@@ -16,20 +16,20 @@
         <div class="centrado">
             <h1 class="titulo-violeta">Agrega participantes al plan</h1>
 
-        <div class="autocomplete-container">
+<div class="autocomplete-container">
+    <div class="buscador-con-boton">
         <input type="text" id="autocomplete-input" autocomplete="off" placeholder="Escribe para buscar...">
-        <div class="suggestions" id="suggestions"></div>
         <button id="agregar-boton">Agregar</button>
+    </div>
+    <div class="suggestions" id="suggestions"></div>
 
-        <div class="participantes-agregados" id="par-agr">
-        </div>
+    <div class="participantes-agregados" id="par-agr"></div>
 
-                
-                    
+    <div class="acciones-inferiores">
         <a class="copiar-enlace" id="copiarEnlace" href="#">Copiar enlace</a>
         <a class="boton-violeta" id="siguiente-btn" href='#'>Siguiente</a>
-        
-       </div>
+    </div>
+</div>
     
 </main>
 
@@ -161,7 +161,7 @@ let botonCopiarEnlace = document.getElementById("copiarEnlace");
 botonCopiarEnlace.addEventListener("click", function(){
     botonCopiarEnlace.classList.add("copiado");
     botonCopiarEnlace.innerHTML="Enlace copiado";
-    navigator.clipboard.writeText("Berman es CAPOOO");
+    navigator.clipboard.writeText("https://juntifyapp/3112621/jurejiuyghyIUCHWuwhqih/es.");
     setTimeout(() => {
         botonCopiarEnlace.classList.remove("copiado");
         botonCopiarEnlace.innerHTML="Copiar enlace";

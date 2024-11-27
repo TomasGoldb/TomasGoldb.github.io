@@ -21,12 +21,23 @@
         <div id="suggestions" class="suggestions"></div>
         </div>--->
         <div class="contenedores-pers">
+<<<<<<< HEAD
+        <div class="autocomplete-container">
+        <input type="text" id="autocomplete-input" autocomplete="off" placeholder="Escribe para buscar...">
+
+
+        <div class="suggestions" id="suggestions"></div>
+                <div id="siguiente-btn-personalizado">
+                    <a class="boton-violeta" id="siguiente-btn" href="#">Siguiente</a>
+                </div>
+=======
             <div class="autocomplete-container">
                 <input type="text" id="autocomplete-input" autocomplete="off" placeholder="Escribe para buscar...">
                 <a class="boton-violeta" id="siguiente-btn" href="#">Siguiente</a>
 
                 <div class="suggestions" id="suggestions"></div>
             </div>
+>>>>>>> 2d376e846bba0124fc3cb3cde56c22c4df10b7d3
         </div>
 
 
@@ -166,7 +177,7 @@ function selectSuggestion(item) {
     inputField.value = item;
     document.getElementById('suggestions').innerHTML = ''; // Limpiar sugerencias
     tipo=getKeyByValue(typeTranslations,item);
-    
+    $("#siguiente-btn-personalizado").show(); //ejemplo con jquery asi ven la diferencia con getelementbyid
     console.log(getKeyByValue(typeTranslations,item));
 }
 
