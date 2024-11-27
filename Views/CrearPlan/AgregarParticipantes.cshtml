@@ -126,9 +126,10 @@ botonEnviar.addEventListener("click", () => {
             url: '/CrearPlan/IngresarParticipantes',
             data: {idUsuarios: idsAmigosAgregadosStr},
             success: function (r) {
-                console.log(r);
+                window.location.href="/CrearPlan/FinalizarPlan";
             },
             error: function (jqXHR, textStatus, errorThrown) {
+                alert("Error subiendo los participantes");
                 console.log("Error al guardar participantes:", jqXHR.status, textStatus, errorThrown);
                 console.log("ajo y agua");
             }

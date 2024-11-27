@@ -20,6 +20,20 @@ public class PlanController : Controller
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
+     public IActionResult Invitacion()
+    {
+         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        return View();
+    }
+     public IActionResult AceptarPlan()
+    {
+         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        return View();
+    }
     public IActionResult VerPlan(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
@@ -40,10 +54,11 @@ public class PlanController : Controller
         return View();
     }
 
-    public IActionResult DashPlan(){
+    public IActionResult DashPlan(int idPlan){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        Planes plan = BD.PlanXID(idPlan);
         return View();
     }
     public IActionResult DashPlan2(){

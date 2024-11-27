@@ -19,8 +19,8 @@
         @{
             for(int i=0;i<ViewBag.ListaParticipantes.Count;i++){
                 <div class="participante">
-                    <img src="@ViewBag.ListaParticipantes.FotoPerfil" alt="Foto de perfil" class="profile-pic">
-                    <span>@ViewBag.ListaParticipantes.Nombre</span>
+                    <img src="@ViewBag.ListaParticipantes[i].FotoPerfil" alt="Foto de perfil" class="profile-pic">
+                    <span>@ViewBag.ListaParticipantes[i].Nombre</span>
                 </div>
             }
             
@@ -29,11 +29,10 @@
 </div>
 
 <div class="section-participantes-preferencias">
-    <h3>Preferencias:</h3>
+    <h3>Preferencia:</h3>
     <div class="preferences">
         <div class="participante">
-            <img src="/img/empanadas.png" alt="Foto de perfil" class="profile-pic">
-            <span>Empanadas</span>
+            <span>@ViewBag.preferencia</span>
         </div>    
     </div>
 </div>
