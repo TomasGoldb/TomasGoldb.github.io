@@ -35,6 +35,14 @@ class BD
         }
         return lista;
     }
+    public static List<int> ListarIDParticipantes(int idPlan){
+        List<int> lista =  new List<int>();
+        using(SqlConnection db = new SqlConnection(_connectionString)){
+            string sql="SP_ListarAmigos";
+            lista = db.Query<int>(sql, new{ @idUsuario = idUsuario }).ToList();
+        }
+        return lista;
+    }
     
         public static int CrearUsuario(Usuario objeto){
         int idUsuario;
@@ -120,6 +128,15 @@ class BD
             user= db.QueryFirstOrDefault<Usuario>(sql,new{@idUsuario=idUsuario});
         }
         return user;
+    }
+    public static Planes PlanXID(int idPlan){
+        Planes plan=new Planes();
+        using (SqlConnection db = new SqlConnection(_connectionString))
+        {
+            string sql = "SP_PlanXID";
+            plan= db.QueryFirstOrDefault<Planes>(sql,new{@idPlan=idPlan});
+        }
+        return plan;
     }
 }
 

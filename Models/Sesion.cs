@@ -49,8 +49,8 @@ public class Sesion
             return a;
         }
 
-        public void AgregarParticipantes(int idPlan){
-            if(idUsuariosPlan.Length==0){
+        public static void AgregarParticipantes(int idPlan){
+            if(idUsuariosPlan.Length!=0){
                 foreach(int participante in idUsuariosPlan){
                     BD.AgregarParticipantePlan(participante,idPlan);
                 }
@@ -58,4 +58,9 @@ public class Sesion
                 Console.WriteLine("error"); 
             }
     }
+        public static List<Usuario> ListarParticipantesPlan(int idPlan){
+            Planes plan=BD.PlanXID(idPlan);
+            List<Usuario> listaParticipantes = new List<Usuario>();
+            
+        }
     }
