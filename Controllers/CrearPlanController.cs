@@ -39,10 +39,11 @@ public class CrearPlanController : Controller
         int[] ides = Sesion.idUsuariosPlan;
         List<Usuario> listaParticipantes=new List<Usuario>();
         for(int i=0;i<ides.Length;i++){
-            listaParticipantes[i]=Sesion.UsuarioXID(Sesion.idUsuariosPlan[i]);
+            listaParticipantes.Add(Sesion.UsuarioXID(ides[i]));
         }
         ViewBag.ListaParticipantes=listaParticipantes;
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.preferencia=Sesion.CreandoPlan.TipoLugar;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
         return View();
@@ -51,6 +52,11 @@ public class CrearPlanController : Controller
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
+
+        bool seCreo=Sesion.CrearPlan();
+        if(seCreo){
+            AgregarParticipantes();
+        }
         //if(Sesion.idUsuariosPlan.Length=0){
         //    return View("index");
         //} else{

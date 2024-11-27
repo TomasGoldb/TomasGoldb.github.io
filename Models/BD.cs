@@ -85,6 +85,7 @@ class BD
             string sql="SP_CrearPlan";
             idPlan=db.QueryFirstOrDefault<int>(sql, new{@tipoLugar=tipoLugar});
         }
+        Console.WriteLine(idPlan);
         return idPlan;
         }
     public static void EliminarAmigo(int idUsuario1, int idUsuario2){
