@@ -20,6 +20,13 @@ public class PlanController : Controller
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
+     public IActionResult Invitacion()
+    {
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        return View();
+    }
     public IActionResult VerPlan(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
