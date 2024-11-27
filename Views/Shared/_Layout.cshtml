@@ -47,17 +47,15 @@
 
             <div class="notificacion">
                 <img src="/img/campana.png" class="icono-notificacion" onclick="toggleNotificationMenu()">
-                <span class="badge">2</span>
+                <span class="badge">@ViewBag.Notificaciones.Count</span>
                 <div class="notification-content" id="notificationMenu">
                     <p class="notification-title">Notificaciones</p>
+                    @for(int i=0;i<ViewBag.Notificaciones.Count;i++){
                     <div class="notification-item">
-                        <p><strong>Juan Pérez</strong> te ha enviado una solicitud de amistad.</p>
-                        <a href="#" class="see-more">Ver más</a>
+                        <p>@Html.Raw(ViewBag.Notificaciones[i].Texto)</p>
                     </div>
-                    <div class="notification-item">
-                        <p><strong>María Gómez</strong> comentó en tu plan.</p>
-                        <a href="#" class="see-more">Ver más</a>
-                    </div>
+                    }
+                    
                 </div>
             </div>
 
