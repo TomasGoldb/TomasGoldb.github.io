@@ -2471,3 +2471,115 @@ nav ul li a:hover {
   color: white;
 }
 
+/*ABOUT US*/
+
+/* Contenedor principal */
+.sobre-nosotros-container {
+  font-family: 'Arial', sans-serif;
+  
+}
+
+/* Encabezado */
+.encabezado {
+  position: relative;
+  text-align: center;
+}
+
+/* Imagen principal (encabezado) */
+.imagen-principal {
+  width: 100%;
+  max-height: 400px; /* Limita la altura vertical */
+  object-fit: cover; /* Recorta los bordes si es necesario */
+  border-radius: 10px;
+}
+
+/* Encabezado */
+.encabezado {
+  position: relative;
+}
+.encabezado::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%; /* Ajusta la altura del degradado */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+  z-index: 1; /* Coloca el degradado por encima de la imagen */
+}
+
+.encabezado h1 {
+  position: absolute;
+  bottom: 20px; /* Espaciado desde la parte inferior */
+  left: 20px; /* Espaciado desde la izquierda */
+  color: #8a2be2;
+  font-size: 36px;
+  font-weight: bold; /* Texto más grueso */
+  padding: 50px 200px;
+  border-radius: 5px;
+  margin: 0;
+}
+
+
+/* Descripción principal */
+.descripcion-principal {
+  text-align: center;
+  margin: 30px 0;
+  font-size: 18px;
+  color: #333;
+  line-height: 1.8;
+}
+
+/* Motivación del equipo */
+.motivacion {
+  margin: 50px 0;
+  text-align: center;
+}
+
+.motivacion h2 {
+  color: #1e3a8a;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.contenido-motivacion {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.imagen-ilustrativa img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.texto-motivacion {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+  max-width: 500px;
+}
+
+/* Beneficios adicionales */
+.beneficios {
+  margin: 50px 0;
+}
+
+.contenido-beneficios {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.texto-beneficios {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+  max-width: 500px;
+}
+
+
