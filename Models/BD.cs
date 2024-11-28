@@ -96,6 +96,12 @@ class BD
             db.Execute(sql,new{@idPlan=idPlan, @idUsuario=idUsuario});
         }
     }
+    public static void SacarNoti(int idNoti){
+        using(SqlConnection db=new SqlConnection(_connectionString)){
+            string sql="SP_SacarNoti";
+            db.Execute(sql,new{@idNoti=idNoti});
+        }
+    }
     public static void AgregarParticipantePlan(int idUsuario, int idPlan){
         using(SqlConnection db=new SqlConnection(_connectionString)){
             string sql="SP_AgregarParticipantePlan";
@@ -108,13 +114,12 @@ class BD
             db.Execute(sql,new{@idPlan=idPlan, @idEstado=idEstado});
         }
     }
-    public static int CrearPlan(string tipoLugar){
-        int idPlan=-1;
+    public static int CrearPlan(string tipoLugar, int idUsuario){
+        int idPlan;
         using(SqlConnection db=new SqlConnection(_connectionString)){
             string sql="SP_CrearPlan";
-            idPlan=db.QueryFirstOrDefault<int>(sql, new{@tipoLugar=tipoLugar});
+            idPlan=db.QueryFirstOrDefault<int>(sql, new{@tipoLugar=tipoLugar, @idUsuario=idUsuario});
         }
-        Console.WriteLine(idPlan);
         return idPlan;
         }
     public static void EliminarAmigo(int idUsuario1, int idUsuario2){
@@ -123,10 +128,18 @@ class BD
             db.Execute(sql,new{@idUsuario1=idUsuario1, @idUsuario2=idUsuario2});
         }
     }
-    public static void AgregarNoti(int idUsuario, string msg){
+    public static int AgregarNoti(int idUsuario){
+        int idNoti;
         using(SqlConnection db=new SqlConnection(_connectionString)){
             string sql="SP_AgregarNotificacion";
-            db.Execute(sql,new{@idUsuario=idUsuario, @texto=msg});
+            idNoti=db.Execute(sql,new{@idUsuario=idUsuario});
+        }
+        return idNoti;
+    }
+    public static void AgregarTextoNoti(int idNoti, string texto){
+        using(SqlConnection db=new SqlConnection(_connectionString)){
+            string sql="SP_AgregarTextoNoti";
+            db.Execute(sql,new{@idNoti=idNoti, @txt=texto});
         }
     }
       public static List<Usuario> ListarUsuarios(){

@@ -11,7 +11,7 @@
     
     <img src="/img/checkv.svg">
 </div>
-<button class="view-plan-button" onclick="window.location.href='@Url.Action("DashPlan", "Plan")'">Ver plan</button>
+<button class="view-plan-button" onclick='window.location.href="/Plan/DashPlan?idPlan=@ViewBag.idPlan"'>Ver plan</button>
 
 
 <div class="container my-5">
@@ -135,6 +135,5 @@
   </div>
 
 
-<button class="view-plan-button" onclick="window.location.href='@Url.Action("DashPlan", "Plan")'">Ver plan</button>
 
 </main>

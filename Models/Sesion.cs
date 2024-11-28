@@ -37,13 +37,20 @@ public class Sesion
             return coords;
         }
         public static List<Usuario> ListarAmigos(int idUsuario){
-            return BD.ListarAmigos(idUsuario);
+            List<Usuario> amigos =BD.ListarAmigos(idUsuario);
+            List<Usuario> amigosSinYo = new List<Usuario>();
+            foreach(Usuario user in amigos){
+                if(user.idUsuario!=userActual.idUsuario){
+                    amigosSinYo.Add(user);
+                }
+            }
+            return amigosSinYo;
         }
         public static Usuario UsuarioXID(int idUsuario){
             return BD.UsuarioXID(idUsuario);
         }
         public static bool CrearPlan(){
-            int idPlan=BD.CrearPlan(CreandoPlan.TipoLugar);
+            int idPlan=BD.CrearPlan(CreandoPlan.TipoLugar, Sesion.userActual.idUsuario);
             CreandoPlan.IdPlan=idPlan;
             bool a=idPlan!=-1;
             return a;
@@ -53,13 +60,16 @@ public class Sesion
             if(idUsuariosPlan.Length!=0){
                 foreach(int participante in idUsuariosPlan){
                     BD.AgregarParticipantePlan(participante,idPlan);
-                    AgregarNotificacion(participante, $"¡{Sesion.userActual.Nombre} te ha invitado a unite a su plan! <a href=''>Ver plan</a>");
+                    int idNoti=AgregarNotificacion(participante);
+                    BD.AgregarTextoNoti(idNoti, $"¡{Sesion.userActual.Nombre} te ha invitado a unite a su plan! <a href='/Plan/AceptarPlan?idPlan={idPlan}&idNoti={idNoti}'>Ver plan</a>");
                 }
             } else{
                 Console.WriteLine("error"); 
             }
     }
-
+    public static void SacarNotificacion(int idNoti){
+        BD.SacarNoti(idNoti);
+    }
     
         public static List<Usuario> ListarParticipantesPlan(int idPlan){
             Planes plan=BD.PlanXID(idPlan);
@@ -72,12 +82,12 @@ public class Sesion
         }
         public static void AgregarNotificacion(int idUsuario, string texto){
             BD.AgregarNoti(idUsuario, texto);
+
         }
         public static List<Direcciones> listarDirecciones(int idUsuario){
             return BD.ListarDirecciones(idUsuario);
         }
         public static void AceptarInvitacion(int direccion, int idPlan){
-            Console.WriteLine("viva la merca");
             BD.AgregarDireccionPlan(userActual.idUsuario,direccion,idPlan);
             BD.AceptarInvitacion(userActual.idUsuario,idPlan);
         }

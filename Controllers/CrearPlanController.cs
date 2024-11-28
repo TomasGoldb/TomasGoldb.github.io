@@ -65,6 +65,7 @@ public class CrearPlanController : Controller
         //if(Sesion.idUsuariosPlan.Length=0){
         //    return View("index");
         //} else{
+        ViewBag.idPlan=Sesion.CreandoPlan.IdPlan;
         return View("PlanCreado");
         //}
     }
@@ -81,7 +82,8 @@ public class CrearPlanController : Controller
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.logeado=Sesion.EstaLogeado;
-        return Sesion.ListarAmigos(Sesion.userActual.idUsuario);
+        List<Usuario> amigos = Sesion.ListarAmigos(Sesion.userActual.idUsuario);
+        return amigos;
     }
     public IActionResult Privacy()
     {
