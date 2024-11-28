@@ -8,7 +8,7 @@
         <!-- Campo de Foto de perfil -->
         <div class="input-group">
             <input type="text" placeholder="Añade una foto de perfil" readonly id="profilePicInput" />
-            <input type="file" class="file-input" id="inputGroupFile04" name="archivo" onchange="document.getElementById('profilePicInput').value = this.files[0].name" />
+            <input type="file" value="@ViewBag.FotoUsuario"class="file-input" id="inputGroupFile04" name="archivo" onchange="document.getElementById('profilePicInput').value = this.files[0].name" />
             <label class="btn-seleccionar" style="border-radius:10px;" for="inputGroupFile04">
                     Selecciona
             </label>
@@ -18,16 +18,16 @@
         <!-- Campo de Nombre -->
         <div class="form-group">
             <label for="name">Nombre</label>
-            <input type="text" id="name" placeholder="Ingresa tu nuevo nombre" name="nombre"/>
+            <input type="text" id="name" value="@ViewBag.NombreUsuario" placeholder="Ingresa tu nuevo nombre" name="nombre"/>
         </div>
         <div class="form-group">
             <label for="bio">Nombre De Usuario</label>
-            <input type="text" id="name" placeholder="Ingresa tu nuevo apodo" name="nick"/>
+            <input type="text" id="name" value="@ViewBag.Nick" placeholder="Ingresa tu nuevo apodo" name="nick"/>
         </div>
         <!-- Campo de Biografía -->
         <div class="form-group">
             <label for="bio">Biografía</label>
-            <textarea id="bio" placeholder="Añade una biografía" name="biografia"></textarea>
+            <textarea id="bio" placeholder="Añade una biografía" name="biografia">@ViewBag.Biografia</textarea>
         </div>
 
         <!-- Botón de Enviar -->

@@ -119,6 +119,8 @@ public class HomeController : Controller
         }
     }
     public IActionResult ConfigurarPerfil(){
+        ViewBag.Nick=Sesion.userActual.Nick;
+        ViewBag.Biografia=Sesion.userActual.Biografia;
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
@@ -138,9 +140,10 @@ public class HomeController : Controller
     public IActionResult ActualizarUsuario(IFormFile archivo, string nombre, string nick, string biografia){
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
-        Usuario.ActualizarPerfilUsuario(nombre, nick, biografia);
-        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         bool seCambio=Sesion.userActual.CambiarFoto(archivo, Environment);
+        string foto=Sesion.userActual.FotoPerfil;
+        Usuario.ActualizarPerfilUsuario(nombre, nick, biografia, foto);
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         if(seCambio){
             
             return RedirectToAction("Home");

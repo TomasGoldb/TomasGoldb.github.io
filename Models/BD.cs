@@ -70,7 +70,12 @@ class BD
         }
     }
   
-
+    public static void ActualizarPerfilBD(string nombre, string nick, string biografia, string fotoPerfil, int idUsuario){
+        using(SqlConnection db = new SqlConnection(_connectionString)){
+            string sql = "SP_ActualizarPerfil";
+            db.Execute(sql, new {@nombre=nombre, @nick=nick, @biografia=biografia, @foto=fotoPerfil, @id=idUsuario});
+        }
+    }
     public static void AgregarAmigo(int idUsuario1, int idUsuario2){
         using (SqlConnection db = new SqlConnection(_connectionString))
         {

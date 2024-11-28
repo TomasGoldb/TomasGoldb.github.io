@@ -50,9 +50,11 @@ public class Usuario
             return false;
         }
         }
-        public static void ActualizarPerfilUsuario(string nombre, string nick, string biografia){
+        public static void ActualizarPerfilUsuario(string nombre, string nick, string biografia, string fotoPerfil){
             Sesion.userActual.Nombre=nombre;
             Sesion.userActual.Nick=nick;
             Sesion.userActual.Biografia=biografia;
+            BD.ActualizarPerfilBD(nombre, nick, biografia, fotoPerfil, Sesion.userActual.idUsuario);
         }
+
 }
