@@ -80,8 +80,8 @@ public class Sesion
             }
             return listaParticipantes;
         }
-        public static void AgregarNotificacion(int idUsuario, string texto){
-            BD.AgregarNoti(idUsuario, texto);
+        public static int AgregarNotificacion(int idUsuario){
+            return BD.AgregarNoti(idUsuario);
 
         }
         public static List<Direcciones> listarDirecciones(int idUsuario){
