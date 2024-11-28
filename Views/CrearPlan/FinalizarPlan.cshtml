@@ -59,4 +59,17 @@
             });
         }, 500);
     }
+
+    let paso = 4;
+const steps = document.querySelectorAll('.step');
+const lines = document.querySelectorAll('.line');
+document.addEventListener('DOMContentLoaded', () => {
+    for (let i=1;i<paso;i++){
+    if (i < steps.length) {
+        steps[i].classList.add('completed');
+        lines[i - 1].classList.add('completed'); // Marca la línea anterior como completada
+    }
+}
+});
+
 </script>
