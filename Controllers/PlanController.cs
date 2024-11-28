@@ -29,7 +29,7 @@ public class PlanController : Controller
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
-     public IActionResult AceptarPlan(int idPlan)
+     public IActionResult AceptarPlan(int idPlan, int idNoti)
     {
          ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
@@ -37,6 +37,7 @@ public class PlanController : Controller
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         ViewBag.idPlan=idPlan;
         ViewBag.Direcciones=Sesion.listarDirecciones(Sesion.userActual.idUsuario);
+        Sesion.SacarNotificacion(idNoti);
         return View();
     }
     public IActionResult Unirse(int direccion, int idPlan){
@@ -80,9 +81,15 @@ public class PlanController : Controller
         ViewBag.Participantes=participantes;
         return View();
     }
-    public ActionResult EmpezarVotacion(){
-        
-        return RedirectToAction("DashPlan2");
+    /*public ActionResult EmpezarVotacion(int idPlan){
+        double[] promCoords=Sesion.IniciarVotacion(idPlan);
+        ViewBag.coords=promCoords;
+        return RedirectToAction("redirect");
+    }*/
+    public IActionResult EmpezarVotacion(int idPlan){
+        double[] promCoords=Sesion.IniciarVotacion(idPlan);
+        ViewBag.coords=promCoords;
+        return View("redirect");
     }
     public IActionResult DashPlan2(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
@@ -91,7 +98,6 @@ public class PlanController : Controller
         ViewBag.EstaLogeado=Sesion.EstaLogeado;
         return View();
     }
-    
     public IActionResult DashPlan3(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;

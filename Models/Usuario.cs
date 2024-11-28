@@ -10,6 +10,9 @@ public class Usuario
         public int Edad {set;get;}
         public string Biografia {get;set;}
         public string FotoPerfil {get;set;} = "";
+        public int EsHost {get;set;}
+        public int SeUnio {get;set;}
+        public int idDireccion {get;set;}
         
 
 
@@ -22,6 +25,16 @@ public class Usuario
             this.Contrasena = contrasena;
             this.Mail = mail;
             this.FotoPerfil = "/fotosPerfil/fotoDefault.png";
+        }
+        public Usuario(string nombre, string nick,string contrasena, string mail, int esHost, int seUnio, int idDireccion){
+            this.Nombre = nombre;
+            this.Nick = nick;
+            this.Contrasena = contrasena;
+            this.Mail = mail;
+            this.FotoPerfil = "/fotosPerfil/fotoDefault.png";
+            this.EsHost=esHost;
+            this.SeUnio=seUnio;
+            this.idDireccion=idDireccion;
         }
         public bool CheckContra (string contrasenaPosible){
             if (contrasenaPosible==this.Contrasena){

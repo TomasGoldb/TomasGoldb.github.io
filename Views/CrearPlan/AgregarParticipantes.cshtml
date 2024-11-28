@@ -109,6 +109,9 @@ botonAgregar.addEventListener("click", () => {
         cantPersonas++;
         idsAmigosAgregados.push(amigo.id); // Agregar ID a la lista
         document.getElementById("par-agr").innerHTML += persona;
+        let inp = document.getElementById('autocomplete-input');
+        inp.value="";
+        inp.focus();
     } else {
         alert("Este amigo ya fue agregado o no es válido.");
     }

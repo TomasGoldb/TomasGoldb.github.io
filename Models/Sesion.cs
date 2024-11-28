@@ -52,6 +52,7 @@ public class Sesion
         public static bool CrearPlan(){
             int idPlan=BD.CrearPlan(CreandoPlan.TipoLugar, Sesion.userActual.idUsuario);
             CreandoPlan.IdPlan=idPlan;
+            BD.AceptarInvitacion(userActual.idUsuario,CreandoPlan.IdPlan);
             bool a=idPlan!=-1;
             return a;
         }
@@ -76,7 +77,7 @@ public class Sesion
             List<Usuario> listaParticipantes = new List<Usuario>();
             List<int> idParticipantes=BD.ListarIDParticipantes(idPlan);
             foreach(int id in idParticipantes){
-                listaParticipantes.Add(BD.UsuarioXID(id));
+                listaParticipantes.Add(BD.ParticipanteXID(id));
             }
             return listaParticipantes;
         }
@@ -90,6 +91,20 @@ public class Sesion
         public static void AceptarInvitacion(int direccion, int idPlan){
             BD.AgregarDireccionPlan(userActual.idUsuario,direccion,idPlan);
             BD.AceptarInvitacion(userActual.idUsuario,idPlan);
+        }
+        public static double[] IniciarVotacion(int idPlan){
+            BD.CambiarEstadoPlan(idPlan, 2);
+            List<string> coordenadas = BD.ListarCoordenadas(idPlan);
+            double[] coordsX=new double[coordenadas.Count], coordsY=new double[coordenadas.Count];
+            int cantCoords=0;
+            foreach(string coordenada in coordenadas){
+                string[] coo = coordenada.Split("/");
+                coordsX[cantCoords]=Convert.ToDouble(coo[0]);
+                coordsY[cantCoords]=Convert.ToDouble(coo[1]);
+            }
+            return promedioCoordenadas(coordsX,coordsY);
+
+
         }
 }
     

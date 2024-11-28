@@ -2583,3 +2583,17 @@ nav ul li a:hover {
 }
 
 
+.icon-persona{
+  width: 15%;
+}
+.nombre-foto{
+  display: flex;
+  width: 80%;
+  justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nombre-foto span{
+  margin-left: 8%;
+}

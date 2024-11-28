@@ -51,6 +51,14 @@ class BD
         }
         return lista;
     }
+    public static List<string> ListarCoordenadas(int idUsuario){
+        List<string> lista =  new List<string>();
+        using(SqlConnection db = new SqlConnection(_connectionString)){
+            string sql="SP_ListarCoordenadas";
+            lista = db.Query<string>(sql, new{ @idPlan=idUsuario }).ToList();
+        }
+        return lista;
+    }
     
         public static int CrearUsuario(Usuario objeto){
         int idUsuario;
@@ -93,7 +101,7 @@ class BD
     public static void AceptarInvitacion(int idUsuario,int idPlan){
         using(SqlConnection db=new SqlConnection(_connectionString)){
             string sql="SP_AceptarInvitacion";
-            db.Execute(sql,new{@idPlan=idPlan, @idUsuario=idUsuario});
+            db.Execute(sql,new{@idUsuario=idUsuario, @idPlan=idPlan});
         }
     }
     public static void SacarNoti(int idNoti){
@@ -132,7 +140,7 @@ class BD
         int idNoti;
         using(SqlConnection db=new SqlConnection(_connectionString)){
             string sql="SP_AgregarNotificacion";
-            idNoti=db.Execute(sql,new{@idUsuario=idUsuario});
+            idNoti = db.QuerySingle<int>(sql, new { idUsuario }, commandType: CommandType.StoredProcedure);
         }
         return idNoti;
     }
@@ -170,6 +178,15 @@ class BD
         return user;
     }
     
+    public static Usuario ParticipanteXID(int idUsuario){
+        Usuario user=new Usuario();
+        using (SqlConnection db = new SqlConnection(_connectionString))
+        {
+            string sql = "SP_ParticipanteXID";
+            user= db.QueryFirstOrDefault<Usuario>(sql,new{@idUsuario=idUsuario});
+        }
+        return user;
+    }
     public static List<Notificaciones> ListarNotis(int idUsuario){
         List<Notificaciones> notis =new List<Notificaciones>();
         using (SqlConnection db = new SqlConnection(_connectionString))
