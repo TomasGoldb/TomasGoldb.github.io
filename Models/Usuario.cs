@@ -26,7 +26,8 @@ public class Usuario
             this.Mail = mail;
             this.FotoPerfil = "/fotosPerfil/fotoDefault.png";
         }
-        public Usuario(string nombre, string nick,string contrasena, string mail, int esHost, int seUnio, int idDireccion){
+        public Usuario(int idUsuario,string nombre, string nick,string contrasena, string mail, int esHost, int seUnio, int idDireccion){
+            this.idUsuario=idUsuario;
             this.Nombre = nombre;
             this.Nick = nick;
             this.Contrasena = contrasena;

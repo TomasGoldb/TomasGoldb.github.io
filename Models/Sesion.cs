@@ -100,5 +100,15 @@ public class Sesion
 
 
         }
+        public static Usuario ParticipanteYo(int idPlan){
+            List<Usuario> participants=BD.ListarParticipantes(idPlan);
+            Usuario parti=new Usuario();
+            foreach(Usuario u in participants){
+                if(u.idUsuario==userActual.idUsuario){
+                    parti=u;
+                }
+            }
+            return parti;
+        }
 }
     

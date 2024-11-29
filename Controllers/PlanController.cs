@@ -80,6 +80,8 @@ public class PlanController : Controller
         ViewBag.Plan=plan;
         List<Usuario> participantes=Sesion.ListarParticipantesPlan(idPlan);
         ViewBag.Participantes=participantes;
+        //ViewBag.tieneDireccion=Sesion.TieneDireccion(idPlan);
+        ViewBag.yo=Sesion.ParticipanteYo(idPlan);
         return View();
     }
     /*public ActionResult EmpezarVotacion(int idPlan){
