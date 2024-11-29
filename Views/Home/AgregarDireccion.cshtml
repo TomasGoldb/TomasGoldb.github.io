@@ -1,0 +1,70 @@
+
+
+<div class="agregar-direccion invitacion-container">
+    <h3>Agrega una nueva dirección</h3>
+    <div>
+        <form asp-controller="Home" asp-action="Direccion" method="get">
+        <div>
+            <input type="text" name="nombre" placeholder="Nombre">
+            <input type="text" name="direccion" id="autocomplete" placeholder="Dirección">
+            <input type="text" id="coord" name="coordenadas" style="display: none;">
+            <input type="submit" value="Agregar">
+        </div>
+        </form>
+        <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
+    </div>
+</div>
+
+
+<script>
+    let map, marker;
+
+    function initMap() {
+        // Inicializa el mapa centrado en un punto predeterminado
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: -34.6037, lng: -58.3816 }, // Coordenadas de Buenos Aires
+            zoom: 14,
+        });
+
+        // Agrega un marcador en el centro predeterminado
+        marker = new google.maps.Marker({
+            map: map,
+            position: { lat: -34.6037, lng: -58.3816 },
+        });
+
+        // Inicializa el Autocomplete vinculado al input
+        const input = document.getElementById("autocomplete");
+        const autocomplete = new google.maps.places.Autocomplete(input, {
+            types: ["address"], // Enfocado únicamente en direcciones exactas
+            componentRestrictions: { country: "ar" }, // Restringido a Argentina
+        });
+
+        // Evento cuando el usuario selecciona una dirección
+        autocomplete.addListener("place_changed", () => {
+            const place = autocomplete.getPlace();
+
+            if (!place.geometry) {
+                console.error("No se encontraron detalles para esta dirección.");
+                return;
+            }
+
+            // Mueve el mapa al lugar seleccionado
+            map.setCenter(place.geometry.location);
+            map.setZoom(16);
+
+            // Mueve el marcador al lugar seleccionado
+            marker.setPosition(place.geometry.location);
+
+            // Opcional: Muestra detalles en consola
+            console.log("Dirección seleccionada:", place.formatted_address);
+            console.log("Latitud:", place.geometry.location.lat());
+            console.log("Longitud:", place.geometry.location.lng());
+            let coord=document.getElementById("coord");
+            let coordenadas=place.geometry.location.lat()+"/"+place.geometry.location.lng();
+            coord.value=coordenadas;
+        });
+    }
+
+    // Carga el mapa y el autocomplete al cargar la página
+    window.onload = initMap;
+</script>

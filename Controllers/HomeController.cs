@@ -83,6 +83,17 @@ public class HomeController : Controller
         }
         
     }
+    public IActionResult AgregarDireccion(){
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
+        ViewBag.logeado = Sesion.EstaLogeado;
+        return View();
+    }
+    public IActionResult Direccion(string nombre, string direccion, string coordenadas){
+        BD.AgregarDireccion(Sesion.userActual.idUsuario,nombre,direccion,coordenadas);
+        return View();
+    }
     public IActionResult IniciarSesion(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
