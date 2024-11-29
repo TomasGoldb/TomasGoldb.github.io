@@ -183,12 +183,12 @@ class BD
         return user;
     }
     
-    public static Usuario ParticipanteXID(int idUsuario){
-        Usuario user=new Usuario();
+    public static List<Usuario> ListarParticipantes(int idPlan){
+        List<Usuario> user=new List<Usuario>();
         using (SqlConnection db = new SqlConnection(_connectionString))
         {
             string sql = "SP_ParticipanteXID";
-            user= db.QueryFirstOrDefault<Usuario>(sql,new{@idUsuario=idUsuario});
+            user= db.Query<Usuario>(sql,new{@idPlan=idPlan}).ToList();
         }
         return user;
     }
