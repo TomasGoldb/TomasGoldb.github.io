@@ -44,6 +44,7 @@ public class PlanController : Controller
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
+        ViewBag.idPlan=idPlan;
         Sesion.AceptarInvitacion(direccion,idPlan);
         return View();
     }
