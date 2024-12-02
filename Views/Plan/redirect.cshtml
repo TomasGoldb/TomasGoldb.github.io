@@ -2,7 +2,7 @@
 <div></div>
 
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2Sp2t0k8EtGxiJDpcwDmYc_UzML9QIek&libraries=places"></script>
+
 
 <script>
 function initMap() {
@@ -10,6 +10,7 @@ function initMap() {
     // Aquí puedes inicializar el mapa o servicios
 }
  let coords = { lat: @ViewBag.coords[0], lng: @ViewBag.coords[1] }; // Coordenadas dinámicas
+ let idPlan=@ViewBag.idPlan;
  console.log(coords);
         let placeType = "@ViewBag.type"; // Tipo de lugar dinámico
         console.log(placeType);
@@ -34,7 +35,7 @@ function initMap() {
         results.forEach((place, index) => {
             console.log(`Lugar ${index + 1}:`, place);
         });
-        window.location.href=`/Plan/LugaresElegidos?id1=${results[0].place_id}&id2=${results[1].place_id}&id3=${results[1].place_id}`;
+        window.location.href=`/Plan/LugaresElegidos?idPlan=${idPlan}&id1=${results[0].place_id}&id2=${results[1].place_id}&id3=${results[1].place_id}`;
     } else {
         console.error('Error en la búsqueda de lugares:', status);
     }
@@ -44,10 +45,10 @@ function initMap() {
 
 
 </script>
-
 <script 
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2Sp2t0k8EtGxiJDpcwDmYc_UzML9QIek&libraries=places" 
     async 
     defer 
     onload="initializePlaces()">
 </script>
+

@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Data;
 class BD
 {
-    private static string _connectionString = @"Server =TOMIGOLD24\SQLEXPRESS; Database = Juntify; Trusted_Connection = True;";
+    private static string _connectionString = @"Server =A-PHZ2-CIDI-21; Database = Juntify; Trusted_Connection = True;";
     public static List<Usuario> Seleccionar(string sql){
         List<Usuario> listaUsuario = new List<Usuario>();
         using(SqlConnection db = new SqlConnection(_connectionString)){
@@ -91,10 +91,23 @@ class BD
             db.Execute(sql, new {@idUsuario1=idUsuario1, @idUsuario2 = idUsuario2});
         }
     }
+    public static void SacarNoUnidos(int idPlan){
+        using (SqlConnection db = new SqlConnection(_connectionString))
+        {
+            string sql = "SP_BorrarNoUnidos";
+            db.Execute(sql, new {@idPlan=idPlan});
+        }
+    }
     public static void AgregarDireccion(int idUsuario, string nombre, string calle, string coordenada){
         using(SqlConnection db=new SqlConnection(_connectionString)){
             string sql="SP_AgregarDireccion";
             db.Execute(sql,new{@idUsuario=idUsuario, @nombre=nombre,@calle=calle, @coordenada=coordenada});
+        }
+    }
+    public static void IngresarOpcionesVotacion(int idPlan, string opciones){
+        using(SqlConnection db=new SqlConnection(_connectionString)){
+            string sql="SP_IngresarOpcionesVotacion";
+            db.Execute(sql,new{@idPlan=idPlan,@opciones=opciones});
         }
     }
     public static void AgregarDireccionPlan(int idUsuario, int idDireccion, int idPlan){

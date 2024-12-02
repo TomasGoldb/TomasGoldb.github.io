@@ -82,7 +82,13 @@ public class PlanController : Controller
         ViewBag.Participantes=participantes;
         //ViewBag.tieneDireccion=Sesion.TieneDireccion(idPlan);
         ViewBag.yo=Sesion.ParticipanteYo(idPlan);
+        ViewBag.estadoPlan=plan.IdEstado;
         return View();
+    }
+    public ActionResult CerrarPlan(int idPlan){
+        BD.SacarNoUnidos(idPlan);
+        BD.CambiarEstadoPlan(idPlan, 3);
+        return RedirectToAction("DashPlan");
     }
     /*public ActionResult EmpezarVotacion(int idPlan){
         double[] promCoords=Sesion.IniciarVotacion(idPlan);
@@ -97,26 +103,15 @@ public class PlanController : Controller
         string[] promCoords=Sesion.IniciarVotacion(idPlan);
         ViewBag.coords=promCoords;
         ViewBag.type=BD.PlanXID(idPlan).TipoLugar;
+        ViewBag.idPlan=idPlan;
         return View("redirect");
     }
-    public IActionResult DashPlan2(){
-        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
-        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
-        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
-        ViewBag.logueado=Sesion.EstaLogeado;
-        return View();
+    public ActionResult LugaresElegidos(int idPlan, string id1, string id2, string id3){
+        string lugares=id1+"/"+id2+"/"+id3;
+        BD.IngresarOpcionesVotacion(idPlan,lugares);
+        return RedirectToAction("DashPlan");
     }
-    public ActionResult LugaresElegidos(string id1, string id2, string id3){
-        /*falta hacer la logica aca*/
-        return IActionResult("DashPlan");
-    }
-    public IActionResult DashPlan3(){
-        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
-        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
-        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
-        ViewBag.logueado=Sesion.EstaLogeado;
-        return View();
-    }
+
     public IActionResult DashPlan4(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;

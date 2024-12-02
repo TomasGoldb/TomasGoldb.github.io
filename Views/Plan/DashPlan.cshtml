@@ -40,7 +40,7 @@
 
   <div class="buttonsDash">
     <a class="btnDash" href='@Url.Action("AgregarParticipantes","CrearPlan")'>Agregar participante</a>
-    <a class="btnDash" href='@Url.Action("DashPlan2","Plan")'>Iniciar votación</a>
+    <a class="btnDash" href='Plan/CerrarPlan?idPlan=@ViewBag.Plan.IdPlan'>Iniciar votación</a>
   </div>
 break;
 case 2:
@@ -78,7 +78,36 @@ case 2:
 
 
 break;
+case 3:
 
+<div class="section-participantes-preferencias">
+    <h3>Participantes invitados:</h3>
+    <div class="participantes">     
+        @{
+            for(int i=0;i<ViewBag.Participantes.Count;i++){
+                <div class="participante">
+                    <div class="nombre-foto">
+                    <img src="@ViewBag.Participantes[i].FotoPerfil" alt="Foto de perfil" class="profile-pic">
+                    <span>@ViewBag.Participantes[i].Nombre</span>
+                    </div>
+                </div>
+            }
+            
+        }
+    </div>
+</div>
+  
+  <div class="opciones-lugares">
+
+  </div>
+
+  <div class="buttonsDash">
+    <a class="btnDash" href='@Url.Action("AgregarParticipantes","CrearPlan")'>Agregar participante</a>
+    <a class="btnDash" href='@Url.Action("DashPlan2","Plan")'>Iniciar votación</a>
+  </div>
+
+
+break;
 
     }
 
