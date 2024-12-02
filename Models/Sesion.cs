@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Globalization;
+
 namespace JuntifyApp.Models;
 
 public class Sesion
@@ -86,20 +89,38 @@ public class Sesion
             BD.AgregarDireccionPlan(userActual.idUsuario,direccion,idPlan);
             BD.AceptarInvitacion(userActual.idUsuario,idPlan);
         }
-        public static double[] IniciarVotacion(int idPlan){
+        public static string[] IniciarVotacion(int idPlan){
             BD.CambiarEstadoPlan(idPlan, 2);
             List<string> coordenadas = BD.ListarCoordenadas(idPlan);
-            double[] coordsX=new double[coordenadas.Count], coordsY=new double[coordenadas.Count];
-            int cantCoords=0;
-            foreach(string coordenada in coordenadas){
-                string[] coo = coordenada.Split("/");
-                coordsX[cantCoords]=Convert.ToDouble(coo[0]);
-                coordsY[cantCoords]=Convert.ToDouble(coo[1]);
+            // Variables para almacenar la suma de latitudes y longitudes
+            double sumaLat = 0;
+            double sumaLon = 0;
+            int totalCoordenadas = 0;
+
+            foreach (string coordenada in coordenadas)
+            {
+                // Dividir la string en latitud y longitud
+                var partes = coordenada.Split('/');
+
+                // Convertir a números
+                // Parsear las coordenadas usando el formato correcto
+            double lat = double.Parse(partes[0], CultureInfo.InvariantCulture);
+            double lon = double.Parse(partes[1], CultureInfo.InvariantCulture);
+
+                // Sumar latitudes y longitudes
+                sumaLat += lat;
+                sumaLon += lon;
+
+                totalCoordenadas++;
             }
-            return promedioCoordenadas(coordsX,coordsY);
 
-
-        }
+            // Calcular los promedios
+            string promedioLat = (sumaLat / totalCoordenadas).ToString(CultureInfo.InvariantCulture);
+            string promedioLon = (sumaLon / totalCoordenadas).ToString(CultureInfo.InvariantCulture);
+            string[] prom = {promedioLat,promedioLon};
+        
+            return prom;
+            }
         public static Usuario ParticipanteYo(int idPlan){
             List<Usuario> participants=BD.ListarParticipantes(idPlan);
             Usuario parti=new Usuario();

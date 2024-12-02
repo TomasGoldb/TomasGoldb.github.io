@@ -2,6 +2,11 @@
 
 
 <section class= "dash">
+
+
+@{
+    switch(ViewBag.estadoPlan){
+        case 1:
 <div class="section-participantes-preferencias">
     <h3>Participantes invitados:</h3>
     <div class="participantes">     
@@ -37,6 +42,67 @@
     <a class="btnDash" href='@Url.Action("AgregarParticipantes","CrearPlan")'>Agregar participante</a>
     <a class="btnDash" href='@Url.Action("DashPlan2","Plan")'>Iniciar votación</a>
   </div>
+break;
+case 2:
+
+<div class="section-participantes-preferencias">
+    <h3>Participantes invitados:</h3>
+    <div class="participantes">     
+        @{
+            for(int i=0;i<ViewBag.Participantes.Count;i++){
+                <div class="participante">
+                    <div class="nombre-foto">
+                    <img src="@ViewBag.Participantes[i].FotoPerfil" alt="Foto de perfil" class="profile-pic">
+                    <span>@ViewBag.Participantes[i].Nombre</span>
+                    </div>
+                    @if(ViewBag.Participantes[i].SeUnio==0){
+                        <img class="icon-persona" src="/img/reloj.svg">
+                    } else{
+                        <img class="icon-persona" src="/img/tick.svg">
+                    }
+                </div>
+            }
+            
+        }
+    </div>
 </div>
+  
+  <div class="opciones-lugares">
+
+  </div>
+
+  <div class="buttonsDash">
+    <a class="btnDash" href='@Url.Action("AgregarParticipantes","CrearPlan")'>Agregar participante</a>
+    <a class="btnDash" href='@Url.Action("DashPlan2","Plan")'>Iniciar votación</a>
+  </div>
+
+
+break;
+
+
+    }
+
+    
+}
+
+
 
 </section>
+
+
+<script>
+
+
+
+'<div class="col-md-3">
+                <div class="card">
+                <img src="/img/mcdonalds.jpg" class="card-img-top" alt="Lugar 1">
+                <div class="card-body">
+                    <h5 class="card-title">Don Zoilo</h5>
+                    <p class="card-text">Honorio Pueyrredón 1406</p>
+                    <p class ="estrellas">★★★★★</p>
+                    <a href='@Url.Action("DetalleLugar","Home")' class="btn btn-ver-mas">Ver más</a>
+                </div>
+                </div>
+          </div>'; 
+</script>

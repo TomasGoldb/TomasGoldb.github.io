@@ -1,12 +1,53 @@
-<p>Redirecting... @ViewBag.coords</p>
+<p>Redirecting... @ViewBag.coords[0] @ViewBag.coords[1]</p>
+<div></div>
 
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2Sp2t0k8EtGxiJDpcwDmYc_UzML9QIek&libraries=places"></script>
 
-<script onload="obtenerResultados(@ViewBag.coords)">
-/*
-function obtenerResultados(coords){
-console.log();
+<script>
+function initMap() {
+    console.log('Google Maps API inicializada correctamente');
+    // Aquí puedes inicializar el mapa o servicios
 }
-*/
+ let coords = { lat: @ViewBag.coords[0], lng: @ViewBag.coords[1] }; // Coordenadas dinámicas
+ console.log(coords);
+        let placeType = "@ViewBag.type"; // Tipo de lugar dinámico
+        console.log(placeType);
 
+        function initializePlaces() {
+            const mapContainer = document.createElement('div'); // Contenedor invisible
+            const map = new google.maps.Map(mapContainer, {
+                center: coords,
+                zoom: 15,
+            });
+
+            const service = new google.maps.places.PlacesService(map);
+
+            const request = {
+                location: coords,
+                radius: 400, // Radio en metros
+                type: placeType,
+            };
+
+            service.nearbySearch(request, (results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+        results.forEach((place, index) => {
+            console.log(`Lugar ${index + 1}:`, place);
+        });
+        window.location.href=`/Plan/LugaresElegidos?id1=${results[0].place_id}&id2=${results[1].place_id}&id3=${results[1].place_id}`;
+    } else {
+        console.error('Error en la búsqueda de lugares:', status);
+    }
+});
+          
+    }
+
+
+</script>
+
+<script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2Sp2t0k8EtGxiJDpcwDmYc_UzML9QIek&libraries=places" 
+    async 
+    defer 
+    onload="initializePlaces()">
 </script>

@@ -90,29 +90,38 @@ public class PlanController : Controller
         return RedirectToAction("redirect");
     }*/
     public IActionResult EmpezarVotacion(int idPlan){
-        double[] promCoords=Sesion.IniciarVotacion(idPlan);
+         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
+        ViewBag.logueado=Sesion.EstaLogeado;
+        string[] promCoords=Sesion.IniciarVotacion(idPlan);
         ViewBag.coords=promCoords;
+        ViewBag.type=BD.PlanXID(idPlan).TipoLugar;
         return View("redirect");
     }
     public IActionResult DashPlan2(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
-        ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        ViewBag.logueado=Sesion.EstaLogeado;
         return View();
+    }
+    public ActionResult LugaresElegidos(string id1, string id2, string id3){
+        /*falta hacer la logica aca*/
+        return IActionResult("DashPlan");
     }
     public IActionResult DashPlan3(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
-        ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        ViewBag.logueado=Sesion.EstaLogeado;
         return View();
     }
     public IActionResult DashPlan4(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
-        ViewBag.EstaLogeado=Sesion.EstaLogeado;
+        ViewBag.logueado=Sesion.EstaLogeado;
         return View();
     }
 
