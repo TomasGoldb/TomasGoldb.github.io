@@ -85,17 +85,9 @@ public class PlanController : Controller
         ViewBag.estadoPlan=plan.IdEstado;
         return View();
     }
-    public ActionResult CerrarPlan(int idPlan){
+    public IActionResult CerrarPlan(int idPlan){
         BD.SacarNoUnidos(idPlan);
         BD.CambiarEstadoPlan(idPlan, 3);
-        return RedirectToAction("DashPlan");
-    }
-    /*public ActionResult EmpezarVotacion(int idPlan){
-        double[] promCoords=Sesion.IniciarVotacion(idPlan);
-        ViewBag.coords=promCoords;
-        return RedirectToAction("redirect");
-    }*/
-    public IActionResult EmpezarVotacion(int idPlan){
          ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
@@ -106,19 +98,28 @@ public class PlanController : Controller
         ViewBag.idPlan=idPlan;
         return View("redirect");
     }
+    /*public ActionResult EmpezarVotacion(int idPlan){
+        double[] promCoords=Sesion.IniciarVotacion(idPlan);
+        ViewBag.coords=promCoords;
+        return RedirectToAction("redirect");
+    }*/
+    public ActionResult EmpezarVotacion(int idPlan){
+         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
+        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
+        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
+        ViewBag.logueado=Sesion.EstaLogeado;
+        BD.CambiarEstadoPlan(idPlan, 2);
+
+        /*lo de mandar notis para votar*/
+
+        return RedirectToAction("DashPlan");
+    }
     public ActionResult LugaresElegidos(int idPlan, string id1, string id2, string id3){
         string lugares=id1+"/"+id2+"/"+id3;
         BD.IngresarOpcionesVotacion(idPlan,lugares);
         return RedirectToAction("DashPlan");
     }
 
-    public IActionResult DashPlan4(){
-        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
-        ViewBag.NombreUsuario=Sesion.userActual.Nombre;
-        ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
-        ViewBag.logueado=Sesion.EstaLogeado;
-        return View();
-    }
 
     public IActionResult Privacy()
     {

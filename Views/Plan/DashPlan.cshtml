@@ -40,7 +40,7 @@
 
   <div class="buttonsDash">
     <a class="btnDash" href='@Url.Action("AgregarParticipantes","CrearPlan")'>Agregar participante</a>
-    <a class="btnDash" href='Plan/CerrarPlan?idPlan=@ViewBag.Plan.IdPlan'>Iniciar votación</a>
+    <a class="btnDash" href='/Plan/CerrarPlan?idPlan=@ViewBag.Plan.IdPlan'>Cerrar plan</a>
   </div>
 break;
 case 2:
@@ -67,7 +67,7 @@ case 2:
     </div>
 </div>
   
-  <div class="opciones-lugares">
+  <div class="opciones-lugares" id="opciones-lugares">
 
   </div>
 
@@ -102,8 +102,7 @@ case 3:
   </div>
 
   <div class="buttonsDash">
-    <a class="btnDash" href='@Url.Action("AgregarParticipantes","CrearPlan")'>Agregar participante</a>
-    <a class="btnDash" href='@Url.Action("DashPlan2","Plan")'>Iniciar votación</a>
+    <a class="btnDash" href='/Plan/EmpezarVotacion?idPlan=@ViewBag.Plan.IdPlan'>Iniciar votación</a>
   </div>
 
 
@@ -117,21 +116,85 @@ break;
 
 
 </section>
-
+<iframe id="iframeMapa" width="600" height="450" frameborder="0" style="display: none" allowfullscreen></iframe>
 
 <script>
+// Define placeService in the global scope so it can be accessed in other functions
+let placeService;
+let codigoAInsertar;
+let contenedor=document.getElementById("opciones-lugares");
 
+// This function initializes the Google Map and the PlaceService
+function initMap() {
+    // Check if the google object is loaded
+    if (typeof google === "undefined" || !google.maps) {
+        console.error("La API de Google Maps no se ha cargado correctamente.");
+        return;
+    }
 
+    // Create a dummy map to initialize the PlacesService (the map itself is not needed)
+    const map = new google.maps.Map(document.createElement('div'));
 
-'<div class="col-md-3">
+    // Initialize the PlacesService with the dummy map
+    placeService = new google.maps.places.PlacesService(map);
+    console.log('El servicio de lugares está disponible:', placeService); // This will confirm if placeService is initialized
+
+    // Now that placeService is initialized, we can call fetchPlaceDetails
+    let lugaresString = "@ViewBag.Plan.OpcionesVotacion";
+    let idLugares = lugaresString.split("/");
+    idLugares.forEach(placeId => fetchPlaceDetails(placeId)); // Call for each placeId
+}
+
+// This function fetches the details of a place using its placeId
+function fetchPlaceDetails(placeId) {
+    // Check if the placeService is initialized
+    if (!placeService) {
+        console.error("El servicio de lugares no está disponible.");
+        return;
+    }
+
+    const request = {
+        placeId: placeId
+    };
+
+    // Embed the map iframe
+    let mapa = document.getElementById("iframeMapa");
+    mapa.src = "https://www.google.com/maps/embed/v1/place?key=AIzaSyC2Sp2t0k8EtGxiJDpcwDmYc_UzML9QIek&q=place_id:" + placeId;
+
+    // Request place details from the Google Places API
+    placeService.getDetails(request, (place, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            console.log(place); // Place details retrieved successfully
+            codigoAInsertar+=`<div class="col-md-3">
                 <div class="card">
                 <img src="/img/mcdonalds.jpg" class="card-img-top" alt="Lugar 1">
                 <div class="card-body">
-                    <h5 class="card-title">Don Zoilo</h5>
-                    <p class="card-text">Honorio Pueyrredón 1406</p>
+                    <h5 class="card-title">${place.name}</h5>
+                    <p class="card-text">${place.address_components[1].short_name} ${place.add  ress_components[0].short_name}</p>
                     <p class ="estrellas">★★★★★</p>
                     <a href='@Url.Action("DetalleLugar","Home")' class="btn btn-ver-mas">Ver más</a>
                 </div>
                 </div>
-          </div>'; 
+          </div>`;
+        } else {
+            console.error("Error al obtener los detalles del lugar:", status); // Handle the error case
+        }
+    });
+    contenedor.innerHTML+=codigoAInsertar;
+}
+
+// Load the Google Maps API asynchronously
+function loadGoogleMapsApi() {
+    const script = document.createElement('script');
+    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC2Sp2t0k8EtGxiJDpcwDmYc_UzML9QIek&libraries=places&callback=initMap";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+}
+
+// Call the function to load the Google Maps API
+loadGoogleMapsApi();
+
+
+
 </script>
