@@ -131,5 +131,8 @@ public class Sesion
             }
             return parti;
         }
+        public static void CambiarEstadoPlan(int idPlan, int nuevoEstado){
+            BD.CambiarEstadoPlan(idPlan,nuevoEstado);
+        }
 }
     
