@@ -218,6 +218,8 @@ header .boton-header:hover{
 
 }
 .inicio-sesion-register {
+  display: flex;
+  flex-direction:row;
   text-align: center; 
   margin: 20px; 
 }
@@ -2142,7 +2144,6 @@ textarea {
   background: linear-gradient(90deg, #f3f0ff, #ece8fc); /* Fondo degradado suave */
   border: none; /* Sin bordes */
   color: #5a2edb; /* Texto vibrante */
-  font-weight: 600; /* Peso moderado para el texto */
   font-size: 1rem; /* Tamaño de fuente legible */
   padding: 1rem 1.5rem; /* Espaciado cómodo */
   transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Transiciones suaves */
@@ -2522,13 +2523,19 @@ nav ul li a:hover {
 
 /* Descripción principal */
 .descripcion-principal {
+  display:flex;
+justify-content: center;
   text-align: center;
   margin: 30px 0;
   font-size: 18px;
   color: #333;
   line-height: 1.8;
 }
-
+.texto-general{
+  width:80%;
+  display:flex;
+  text-align: center;
+}
 /* Motivación del equipo */
 .motivacion {
   margin: 50px 0;
@@ -2598,3 +2605,9 @@ nav ul li a:hover {
 }
 
 
+
+.texto-intro-register{
+  background-color:rgba(255, 255, 255, 0.384);
+  border-radius:10px;
+  color:#5c02af
+}

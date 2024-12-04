@@ -2,17 +2,20 @@
     ViewData["Title"] = "Home Page";
 }
 
-
-
-
 <main class="pagina-register-login">
     <section class="card-formulario">
         <div class="texto-register">
             <h1>Hora de registrarse!</h1>
-            <p>Crea tu cuenta en minutos y empieza a organizar tus planes de manera eficiente. Regístrate ahora para acceder a todas nuestras funciones y llevar tu planificación al siguiente nivel.</p>
+            <p class="texto-intro-register">Crea tu cuenta en minutos y empieza a organizar tus planes de manera eficiente. Regístrate ahora para acceder a todas nuestras funciones y llevar tu planificación al siguiente nivel.</p>
         </div>
         <div class="register-form">
             <h1>Registrarse Gratis</h1>
+            <form action='@Url.Action("IniciarSesion", "Home")' method="post">
+               <div class="inicio-sesion-register">
+                    <p class="sing-in-boton boton-blanco">¿Ya tenés cuenta?
+                    <button type="submit" class="sing-in-boton boton-blanco underline">Inicia sesion</button>
+               </div>
+            </form>
             <form action='@Url.Action("RegistrarUsuario", "Home")' method="post">
                 <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="floatingInput" autocomplete="off" placeholder="" name="nombre" required>
@@ -41,9 +44,7 @@
                 @Html.Raw(ViewBag.error)
                 <button type="submit" class="login-boton boton-azul">Registrarse</button>
             </form>
-            <form action='@Url.Action("IniciarSesion", "Home")' method="post">
-               <div class="inicio-sesion-register"><p class="sing-in-boton boton-blanco">¿Ya tenés cuenta?<button type="submit" class="sing-in-boton boton-blanco underline">Inicia sesion</button></div>
-            </form>
+            
         </div>
 
     </section>
