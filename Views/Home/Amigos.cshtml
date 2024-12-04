@@ -9,7 +9,9 @@
             <h1 class="titulo-violeta">Agrega a un amigo!</h1>
 
         <div class="autocomplete-container">
-        <input type="text" id="autocomplete-input" autocomplete="off" placeholder="Escribe para buscar...">
+                 <div class="buscador-con-boton">
+                         <input type="text" id="autocomplete-input" autocomplete="off" placeholder="Escribe para buscar...">
+                 <button id="agregar-boton">Agregar</button></div>
         <div class="suggestions" id="suggestions"></div>
 
         <section class="participantes-agregados">
@@ -226,6 +228,103 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function filterTag (tag) {
         return tag.replace(/[^\w -]/g, '').trim().replace(/\W+/g, '-');
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let amigos = [];
+    let cantPersonas = 0;
+    let idsAmigosAgregados = []; // Lista de IDs seleccionados
+    const suggestionsArray = [];
+
+    // Obtener la lista de amigos vía AJAX
+    $.ajax({
+        url: '/CrearPlan/ListaAmigos',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            amigos = data.map(amigo => ({
+                id: amigo.idUsuario,
+                nombre: amigo.nombre,
+            }));
+            suggestionsArray.push(...amigos.map(amigo => amigo.nombre));
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error("Error al obtener la lista de amigos:", jqXHR.status, textStatus, errorThrown);
+        }
+    });
+
+    // Autocomplete
+    document.getElementById('autocomplete-input').addEventListener('input', function () {
+        const input = this.value.toLowerCase();
+        const suggestionsBox = document.getElementById('suggestions');
+        suggestionsBox.innerHTML = '';
+
+        if (input) {
+            const filteredSuggestions = suggestionsArray
+                .filter(item => item.toLowerCase().includes(input))
+                .slice(0, 6);
+
+            filteredSuggestions.forEach(item => {
+                const div = document.createElement('div');
+                div.textContent = item;
+                div.classList.add('suggestion-item');
+                div.onclick = () => {
+                    selectSuggestion(item);
+                };
+                suggestionsBox.appendChild(div);
+            });
+        }
+    });
+
+    // Seleccionar una sugerencia
+    let seleccionado;
+    function selectSuggestion(item) {
+        const inputField = document.getElementById('autocomplete-input');
+        inputField.value = item;
+        document.getElementById('suggestions').innerHTML = '';
+        seleccionado = item;
+    }
+
+    // Agregar participante
+    document.getElementById("agregar-boton").addEventListener("click", () => {
+        const amigo = amigos.find(a => a.nombre === seleccionado);
+        if (amigo && !idsAmigosAgregados.includes(amigo.id)) {
+            const contenedorAmigos = document.getElementById("par-agr");
+            contenedorAmigos.innerHTML += `
+                <div class="participante-agregado" id="participante-${cantPersonas}">
+                    <div>
+                        <img src="/img/perfil.webp">
+                        <h2>${amigo.nombre}</h2>
+                    </div>
+                    <a href="#" onclick="eliminarParticipante(${cantPersonas}, ${amigo.id})">Eliminar</a>
+                </div>`;
+            cantPersonas++;
+            idsAmigosAgregados.push(amigo.id);
+        } else {
+            alert("Este amigo ya fue agregado o no es válido.");
+        }
+    });
+
+    // Eliminar participante
+    window.eliminarParticipante = function (id, amigoId) {
+        document.getElementById(`participante-${id}`).remove();
+        idsAmigosAgregados = idsAmigosAgregados.filter(id => id !== amigoId);
+    };
+
+    // Copiar enlace
+    const botonCopiarEnlace = document.getElementById("copiarEnlace");
+    if (botonCopiarEnlace) {
+        botonCopiarEnlace.addEventListener("click", function () {
+            botonCopiarEnlace.classList.add("copiado");
+            botonCopiarEnlace.innerHTML = "Enlace copiado";
+            navigator.clipboard.writeText("https://juntifyapp/3112621/jurejiuyghyIUCHWuwhqih/es.");
+            setTimeout(() => {
+                botonCopiarEnlace.classList.remove("copiado");
+                botonCopiarEnlace.innerHTML = "Copiar enlace";
+            }, 5000);
+        });
     }
 });
 

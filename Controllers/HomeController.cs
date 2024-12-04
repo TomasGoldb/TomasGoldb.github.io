@@ -140,6 +140,7 @@ public class HomeController : Controller
         
     }
     public IActionResult Perfil(){
+        ViewBag.Direcciones=BD.ListarDirecciones(Sesion.userActual.idUsuario);
         ViewBag.Biografia=Sesion.userActual.Biografia;
         ViewBag.Nick=Sesion.userActual.Nick;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
@@ -201,6 +202,7 @@ public class HomeController : Controller
     }
 
     public IActionResult DetalleLugar(string idLugarMaps){
+        ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
         ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);

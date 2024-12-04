@@ -115,12 +115,14 @@
 <div class="mt-5">
   <div class="d-flex align-items-center mb-3">
     <h4 class="me-3 mb-0">Mis Domicilios</h4>
+    <form action='@Url.Action("AgregarDireccion", "Home")'>
     <button class="btn-add-domicilio">+</button>
+    </form>
   </div>
   <ul class="list-group text-start"> <!-- Alineación izquierda -->
-    <li class="list-group-item">Rivadavia 2344, CABA</li>
-    <li class="list-group-item">Yatay 456, CABA</li>
-    <li class="list-group-item">Av. Diaz Velez 346, CABA</li>
+  @for(int i=0;i<ViewBag.Direcciones.Count;i++){
+    <li class="list-group-item"><b>@ViewBag.Direcciones[i].Nombre</b> : @ViewBag.Direcciones[i].Calle</li>
+  }
   </ul>
 </div>
   </div>
