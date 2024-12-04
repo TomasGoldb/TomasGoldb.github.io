@@ -16,7 +16,7 @@
                 width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" id="iframeMapa"></iframe>
 </iframe>
 
-                
+                <p class="txt-detallelugar" id="direccion"><b>Direccion:</b> </p>
                 <p class="txt-detallelugar" id="types-lugar"><b>Tipo de lugar:</b> </p>
                 <p class="txt-detallelugar"><b>Transportes para llegar:</b></p>
                 <div class="transport">
@@ -32,9 +32,9 @@
             </div>
         </div>
     </div>
-    <div id="result"></div>
-    <div id="predictions"></div>
-    <input id="placeInput" type="text" placeholder="Buscar lugar">
+    <div class="container-result">
+        <div id="result" class="result"></div>
+    </div>
     </div>
 @ViewBag.idLugarMaps
 <script src="/js/maps.js"></script>
@@ -51,13 +51,3 @@
             testPlaceDetails(); 
         }
     </script>
-
-
-
-    
-
-
-    <div id="result"></div>
-    <div id="predictions"></div>
-    <input id="placeInput" type="text" placeholder="Buscar lugar">
-

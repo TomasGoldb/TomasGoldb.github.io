@@ -1164,6 +1164,7 @@ textarea {
 }
 .container-foto-user{
   display: flex;
+  flex-direction:column;
   justify-content: space-between;
 }
 
@@ -1186,7 +1187,7 @@ textarea {
   align-items: flex-end
 }
 .imagenPerfil{
- width: 15%;
+ width: 10%;
  height: auto;
 }
 .ver-mas{
@@ -2617,4 +2618,15 @@ justify-content: center;
   background-color:rgba(255, 255, 255, 0.384);
   border-radius:10px;
   color:#5c02af
+}
+
+.container-result{
+  width: 100%;
+}
+
+.result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
