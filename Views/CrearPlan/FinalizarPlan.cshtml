@@ -36,7 +36,15 @@
         </div>    
     </div>
 </div>
+
 <section>
+<p>Su dirección:
+<select name="direccion" id="id-direccion">
+                @for(int i=0;i<ViewBag.Direcciones.Count;i++){
+                    string texto=ViewBag.Direcciones[i].Nombre+" - "+ViewBag.Direcciones[i].Calle;
+                    <option value="@ViewBag.Direcciones[i].IdDireccion">@texto</option>
+                }
+                </select>
 
 <button class="create-button" onclick="startLoading()">Crear</button>
 
@@ -55,7 +63,8 @@
             loadingBar.style.width = "100%";
             
             loadingBar.addEventListener("transitionend", () => {
-                window.location.href = '/CrearPlan/PlanCreado';
+                let id = document.getElementById("id-direccion");
+                window.location.href = `/CrearPlan/PlanCreado?idDireccion=${id.value}`;
             });
         }, 500);
     }
