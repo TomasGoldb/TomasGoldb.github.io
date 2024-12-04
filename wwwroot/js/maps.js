@@ -183,15 +183,8 @@ function fetchPlaceDetails(placeId) {
     placeService.getDetails(request, (place, status) => {
         const resultDiv = document.getElementById('result');
         if (status === google.maps.places.PlacesServiceStatus.OK) {
-            console.log(place);
-            resultDiv.innerHTML = `
-                <h2>${place.name}</h2>
-                <p><strong>Dirección:</strong> ${place.formatted_address || 'No disponible'}</p>
-                <p><strong>Teléfono:</strong> ${place.formatted_phone_number || 'No disponible'}</p>
-                <p><strong>Reviews</strong> ${place.reviews || 'No disponible'}</p>
-                <p><strong>Calificación:</strong> ${place.rating || 'No disponible'} (${place.user_ratings_total || 0} reseñas)</p>
-                <p><strong>Sitio web:</strong> ${place.website ? `<a href="${place.website}" target="_blank">${place.website}</a>` : 'No disponible'}</p>
-            `;
+            
+            document.getElementById("nombre").innerHTML=place.name;
             let reviews=document.getElementById("reviews");
             
 
