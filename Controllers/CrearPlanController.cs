@@ -45,6 +45,7 @@ public class CrearPlanController : Controller
         for(int i=0;i<ides.Length;i++){
             listaParticipantes.Add(Sesion.UsuarioXID(ides[i]));
         }
+        
         ViewBag.ListaParticipantes=listaParticipantes;
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
          Dictionary<string, string> typeTranslations = new Dictionary<string, string>
@@ -153,14 +154,15 @@ public class CrearPlanController : Controller
         ViewBag.preferencia=tipominu;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.logeado=Sesion.EstaLogeado;
+        ViewBag.Direcciones=Sesion.listarDirecciones(Sesion.userActual.idUsuario);
         return View();
     }
-    public IActionResult PlanCreado(){
+    public IActionResult PlanCreado(int idDireccion){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
         ViewBag.NombreUsuario=Sesion.userActual.Nombre;
         ViewBag.Notificaciones=BD.ListarNotis(Sesion.userActual.idUsuario);
         ViewBag.logeado=Sesion.EstaLogeado;
-
+        Sesion.AceptarInvitacion(idDireccion,Sesion.CreandoPlan.IdPlan);
         bool seCreo=Sesion.CrearPlan();
         if(seCreo){
             Sesion.AgregarParticipantes(Sesion.CreandoPlan.IdPlan);

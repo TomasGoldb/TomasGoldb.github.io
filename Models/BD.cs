@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Data;
 class BD
 {
-    private static string _connectionString = @"Server =A-PHZ2-CIDI-22; Database = Juntify; Trusted_Connection = True;";
+    private static string _connectionString = @"Server =A-PHZ2-LUM-03; Database = Juntify; Trusted_Connection = True;";
     public static List<Usuario> Seleccionar(string sql){
         List<Usuario> listaUsuario = new List<Usuario>();
         using(SqlConnection db = new SqlConnection(_connectionString)){

@@ -90,9 +90,9 @@ public class HomeController : Controller
         ViewBag.logeado = Sesion.EstaLogeado;
         return View();
     }
-    public IActionResult Direccion(string nombre, string direccion, string coordenadas){
+    public ActionResult Direccion(string nombre, string direccion, string coordenadas){
         BD.AgregarDireccion(Sesion.userActual.idUsuario,nombre,direccion,coordenadas);
-        return View();
+        return RedirectToAction("Home");
     }
     public IActionResult IniciarSesion(){
         ViewBag.FotoUsuario=Sesion.userActual.FotoPerfil;
