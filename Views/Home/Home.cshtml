@@ -1,8 +1,10 @@
 
 <h1 class="titulo-homehome">Explora los mejores destinos</h1>
 
+
+
 <!--Lugares para ti-->
-<div class="container my-5">
+<div class="container my-5" id="contenedor-carrusel">
   <h2 class="my-4">Lugares Para ti</h2>
   <div id="carouselLugaresParaTi" class="carousel slide" data-bs-ride="true">
     <div class="carousel-inner">
@@ -238,3 +240,95 @@
     </section>
   </div>
 </div>
+
+
+
+<script>
+function initMap() {
+    console.log('Google Maps API inicializada correctamente');
+    // Aquí puedes inicializar el mapa o servicios
+    let coords = { lat: -34.61067935812534, lng: -58.429013552880235 }; // Coordenadas dinámicas
+    console.log(coords);
+
+    let placeType = "restaurant"; // Tipo de lugar dinámico
+    console.log(placeType);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const mapContainer = document.createElement('div'); // Contenedor invisible
+        const map = new google.maps.Map(mapContainer, {
+            center: coords,
+            zoom: 15,
+        });
+
+        const service = new google.maps.places.PlacesService(map);
+
+        const request = {
+            location: coords,
+            radius: 700, // Radio en metros
+            type: placeType,
+        };
+
+        service.nearbySearch(request, (results, status) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                let injerto = `
+                <div id="carouselLugaresParaTi" class="carousel slide" data-bs-ride="true">
+                    <div class="carousel-inner">
+                        <!-- Primera Slide -->
+                        <div class="carousel-item active">
+                            <section class="section-cards">
+                                <div class="row text-center">
+                `;
+                results.forEach((place, index) => {
+                    console.log(place);
+                    if (index <= 15) {
+                        injerto += `
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="${place.photos[0].getUrl()}" class="card-img-top" alt="Lugar 5">
+                                <div class="card-body">
+                                    <h5 class="card-title">${place.name}</h5>
+                                    <p class="card-text">${place.vicinity}</p>
+                                    <p class="estrellas">★★★★★</p>
+                                    <a href='/Home/DetalleLugar?idLugarMaps=${place.place_id}' class="btn btn-ver-mas">Ver más</a>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                        if ((index + 1) % 4 === 0 && index < 15) {
+                            injerto += `
+                                </div>
+                            </section>
+                        </div>
+                        
+                        <div class="carousel-item">
+                            <section class="section-cards">
+                                <div class="row text-center">
+                            `;
+                        } else if (index === 15) {
+                            injerto += `
+                                </div>
+                            </section>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselLugaresParaTi" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselLugaresParaTi" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                            `;
+                        }
+                    }
+                });
+
+                let conten = document.getElementById("contenedor-carrusel");
+                conten.innerHTML = injerto;
+            } else {
+                console.error('Error en la búsqueda de lugares:', status);
+            }
+        });
+    });
+}
+</script>

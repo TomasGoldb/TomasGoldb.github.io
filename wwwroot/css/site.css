@@ -70,6 +70,7 @@ main{
 }
 
 .pagina-index .cards-index .contenedor-cards .card{
+  height: 100%;
   width: 28%;
   display: flex;
   flex-direction: column;
@@ -574,6 +575,11 @@ justify-content: center;}
 
 
 .card-body {
+  display: flex
+;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
   background-color: #e6ccff;
   text-align: center;
 }
@@ -2064,6 +2070,7 @@ textarea {
 /* Tarjetas */
 .section-cards .card {
   width: 100%;
+  height: 400px;
   max-width: 260px; /* Tamaño consistente de las tarjetas */
   border: 1px solid #C3B3E8;
   border-radius: 10px;
