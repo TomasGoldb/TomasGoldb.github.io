@@ -873,7 +873,7 @@ marquee{
 }
 
 .elegir-tipo-plan .participantes-agregados{
-  width: 60%;
+  width: 100%;
 
 }
 .elegir-tipo-plan .participante-agregado{
@@ -893,7 +893,7 @@ marquee{
   font-size: 1vw;
 }
 .elegir-tipo-plan .participante-agregado div img{
-  width: 5%;
+  width: 3%;
   border-radius: 50%;
   margin: 1%;
 }
@@ -942,7 +942,7 @@ marquee{
 /*PARAAA*/
 .buscador-con-boton {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px; /* Separación entre el input y el botón */
   width: 100%;
 }
@@ -1985,6 +1985,10 @@ textarea {
 .autocomplete-container {
   position: relative;
   width: 100%;
+  display: flex
+  ;
+      flex-direction: column;
+      align-items: center;
 }
 
 #autocomplete-input {

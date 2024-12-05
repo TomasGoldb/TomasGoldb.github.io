@@ -182,6 +182,8 @@ function fetchPlaceDetails(placeId) {
     // Realizar la solicitud para obtener detalles del lugar
     placeService.getDetails(request, (place, status) => {
         const resultDiv = document.getElementById('result');
+        console.log(place);
+        document.getElementById("direccion").innerHTML+=place.formatted_address;
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             
             document.getElementById("nombre").innerHTML=place.name;
@@ -193,7 +195,7 @@ function fetchPlaceDetails(placeId) {
                 <div class="review">
                     <div class= "container-foto-user">
                         <div class="avatar">
-                                <img class="imagenPerfil" src="${place.reviews[i].profile_photo_url}">
+                                <img class="imagenPerfil" src=${place.reviews[i].profile_photo_url}>
                                 <p class="user-nombre"><b>${place.reviews[i].author_name}</b></p>
                         </div>
                         <div class="rating${i}"></div>
